@@ -18,6 +18,11 @@
           {
             "glob": "**/*",
             "input": "apps/ecommerce/public"
+          },
+          {
+            "glob": "**/*",
+            "input": "libs/shared-translations/src/lib/assets/i18n/",
+            "output": "assets/shared/i18n/"
           }
         ],
         "styles": ["apps/ecommerce/src/styles.scss"],

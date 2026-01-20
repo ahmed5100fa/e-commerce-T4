@@ -18,6 +18,10 @@
           {
             "glob": "**/*",
             "input": "apps/dashboard/public"
+          },{
+            "glob": "**/*",
+            "input": "libs/shared-translations/src/lib/assets/i18n/",
+            "output": "assets/shared/i18n/"
           }
         ],
         "styles": ["apps/dashboard/src/styles.scss"],
