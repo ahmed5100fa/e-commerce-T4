@@ -17,6 +17,10 @@
     ],
     "sharedGlobals": []
   },
+  "workspaceLayout": {
+    "appsDir": "apps",
+    "libsDir": "libs"
+  },
   "targetDefaults": {
     "@angular/build:application": {
       "cache": true,
@@ -67,7 +71,8 @@
   },
   "release": {
     "projects": [
-      "api"
+      "dashboard",
+      "ecommerce"
     ],
     "projectsRelationship": "independent",
     "docker": {
