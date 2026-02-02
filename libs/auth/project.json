@@ -1,0 +1,21 @@
+{
+  "name": "auth",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/auth/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "build": {
+      "executor": "@nx/js:tsc",
+      "options": {
+        "outputPath": "dist/libs/auth",
+        "tsConfig": "libs/auth/tsconfig.lib.json",
+        "main": "libs/auth/src/public-api.ts"
+      }
+    }
+  }
+}
