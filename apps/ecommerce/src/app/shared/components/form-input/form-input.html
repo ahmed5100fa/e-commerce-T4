@@ -1,0 +1,13 @@
+<div class="flex flex-col gap-2 my-4 m-auto">
+  <label [for]="Id" class="font-medium">{{ label }}</label>
+  <input
+    pInputText
+    [type]="type"
+    [id]="Id"
+    [placeholder]="placeholder"
+    [value]="value"
+    [disabled]="disabled"
+    (input)="onInputChange($event)"
+    class="placeholder:text-[#A1A1AA]"
+  />
+</div>
