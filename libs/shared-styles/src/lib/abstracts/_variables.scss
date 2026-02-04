@@ -1,0 +1,46 @@
+// Variables - Colors, Sizes, Fonts, etc.
+
+//background colors
+$background-primary-light: #ffffff;
+$background-secondary-light: #FBEAEA;
+
+$background-primary-dark: #27272A;
+$background-secondary-dark: #3F3F46;
+
+//text colors
+$text-primary-light: #27272A;
+$text-secondary-light: #741C21;
+$text-placeholder-light: #71717A;
+
+$text-primary-dark: #FAFAFA;
+$text-secondary-dark: #FFC2D0;
+$text-placeholder-dark: #757F95;
+
+//buttons background 
+$button-primary-light: #A6252A;
+$button-secondary-light: #FBEAEA;
+$button-primary-dark: #FFA3B9;
+$button-secondary-dark: #3F3F46;
+
+//icons background
+$icon-primary-light: #A6252A;
+$icon-primary-dark: #CD2E33;
+
+//modal colors 
+$success-light: #ECFDF5;
+$success-dark: #5EE9B5;
+
+//links 
+$link-primary-light: #1447E6;
+$link-primary-dark: #50A2FF;
+
+// Sizes
+$base-font-size: 16px;
+$base-line-height: 1.5;
+$spacing-unit: 1rem;
+
+// Breakpoints
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 992px;
+$large-desktop: 1200px;

@@ -1,0 +1,41 @@
+// Card component styles
+
+.card {
+  background-color: $background-color;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  overflow: hidden;
+  @include box-shadow(1);
+  transition: all 0.3s ease;
+
+  &:hover {
+    @include box-shadow(2);
+  }
+}
+
+.card-header {
+  padding: $spacing-unit;
+  border-bottom: 1px solid $border-color;
+  background-color: #f8f9fa;
+}
+
+.card-body {
+  padding: $spacing-unit;
+}
+
+.card-footer {
+  padding: $spacing-unit;
+  border-top: 1px solid $border-color;
+  background-color: #f8f9fa;
+}
+
+.card-title {
+  font-size: rem(20);
+  font-weight: 600;
+  margin-bottom: calc($spacing-unit * 0.5);
+}
+
+.card-text {
+  color: $text-light;
+  font-size: rem(14);
+}

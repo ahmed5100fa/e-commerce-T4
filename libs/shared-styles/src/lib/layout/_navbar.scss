@@ -1,0 +1,59 @@
+// Navbar layout styles
+
+.navbar {
+  background-color: $primary-color;
+  color: white;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  @include box-shadow(1);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-unit;
+  @include flex-between;
+}
+
+.navbar-brand {
+  font-size: rem(24);
+  font-weight: 700;
+  color: white;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.navbar-nav {
+  @include flex-center;
+  gap: $spacing-unit;
+
+  a {
+    color: white;
+    padding: calc($spacing-unit * 0.5) $spacing-unit;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba(white, 0.1);
+      text-decoration: none;
+    }
+  }
+}
+
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: rem(24);
+  cursor: pointer;
+
+  @include responsive('mobile') {
+    display: block;
+  }
+}
