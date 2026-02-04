@@ -1,54 +1,164 @@
-// // Typography styles
+@import '../abstracts/_mixins.scss';
+@import '../abstracts/_variables.scss';
+//7xl
+.text-7xl-regular {
+  @include text-style($font-size-7xl, $font-weight-regular);
+}
+.text-7xl-medium {
+  @include text-style($font-size-7xl, $font-weight-medium);
+}
+.text-7xl-semibold {
+  @include text-style($font-size-7xl, $font-weight-semibold);
+}
+.text-7xl-bold{
+  @include text-style($font-size-7xl, $font-weight-bold);
+}
 
-// h1 {
-//   font-size: rem(32);
-//   line-height: 1.2;
-//   margin-bottom: $spacing-unit;
-// }
 
-// h2 {
-//   font-size: rem(28);
-//   line-height: 1.2;
-//   margin-bottom: calc($spacing-unit * 0.75);
-// }
 
-// h3 {
-//   font-size: rem(24);
-//   line-height: 1.3;
-//   margin-bottom: calc($spacing-unit * 0.75);
-// }
+//6xl
+.text-6xl-regular {
+  @include text-style($font-size-6xl, $font-weight-regular);
+}
+.text-6xl-medium {
+  @include text-style($font-size-6xl, $font-weight-medium);
+}
+.text-6xl-semibold {
+  @include text-style($font-size-6xl, $font-weight-semibold);
+}
+.text-6xl-bold{
+  @include text-style($font-size-6xl, $font-weight-bold);
+}
 
-// h4 {
-//   font-size: rem(20);
-//   line-height: 1.3;
-//   margin-bottom: calc($spacing-unit * 0.5);
-// }
 
-// h5 {
-//   font-size: rem(18);
-//   line-height: 1.4;
-//   margin-bottom: calc($spacing-unit * 0.5);
-// }
+//5xl
+.text-5xl-regular {
+  @include text-style($font-size-5xl, $font-weight-regular);
+}
+.text-5xl-medium {
+  @include text-style($font-size-5xl, $font-weight-medium);
+}
+.text-5xl-semibold {
+  @include text-style($font-size-5xl, $font-weight-semibold);
+}
+.text-5xl-bold{
+  @include text-style($font-size-5xl, $font-weight-bold);
+}
 
-// h6 {
-//   font-size: rem(16);
-//   line-height: 1.4;
-//   margin-bottom: calc($spacing-unit * 0.5);
-// }
 
-// p {
-//   margin-bottom: $spacing-unit;
-//   line-height: $base-line-height;
-// }
+//4xl
+.text-4xl-regular {
+  @include text-style($font-size-4xl, $font-weight-regular);
+}
+.text-4xl-medium {
+  @include text-style($font-size-4xl, $font-weight-medium);
+}
+.text-4xl-semibold {
+  @include text-style($font-size-4xl, $font-weight-semibold);
+}
+.text-4xl-bold{
+  @include text-style($font-size-4xl, $font-weight-bold);
+}
 
-// small {
-//   font-size: rem(14);
-// }
 
-// strong {
-//   font-weight: 700;
-// }
+//3xl
+.text-3xl-regular {
+  @include text-style($font-size-3xl, $font-weight-regular);
+}
+.text-3xl-medium {
+  @include text-style($font-size-3xl, $font-weight-medium);
+}
+.text-3xl-semibold {
+  @include text-style($font-size-3xl, $font-weight-semibold);
+}
+.text-3xl-bold{
+  @include text-style($font-size-3xl, $font-weight-bold);
+}
 
-// em {
-//   font-style: italic;
-// }
+
+//2xl
+.text-2xl-regular {
+  @include text-style($font-size-2xl, $font-weight-regular);
+}
+.text-2xl-medium {
+  @include text-style($font-size-2xl, $font-weight-medium);
+}
+.text-2xl-semibold {
+  @include text-style($font-size-2xl, $font-weight-semibold);
+}
+.text-2xl-bold{
+  @include text-style($font-size-2xl, $font-weight-bold);
+}
+
+
+
+.text-xl-regular {
+  @include text-style($font-size-xl, $font-weight-regular);
+}
+.text-xl-medium {
+  @include text-style($font-size-xl, $font-weight-medium);
+}
+.text-xl-semibold {
+  @include text-style($font-size-xl, $font-weight-semibold);
+}
+.text-xl-bold{
+  @include text-style($font-size-xl, $font-weight-bold);
+}
+
+//lg
+.text-lg-regular {
+  @include text-style($font-size-lg, $font-weight-regular);
+}
+.text-lg-medium {
+  @include text-style($font-size-lg, $font-weight-medium);
+}
+.text-lg-semibold {
+  @include text-style($font-size-lg, $font-weight-semibold);
+}
+.text-lg-bold{
+  @include text-style($font-size-lg, $font-weight-bold);
+}
+
+//base
+.text-base-regular {
+  @include text-style($font-size-base, $font-weight-regular);
+}
+.text-base-medium {
+  @include text-style($font-size-base, $font-weight-medium);
+}
+.text-base-semibold {
+  @include text-style($font-size-base, $font-weight-semibold);
+}
+.text-base-bold{
+  @include text-style($font-size-base, $font-weight-bold);
+}
+
+
+//sm
+.text-sm-regular {
+  @include text-style($font-size-sm, $font-weight-regular);
+}
+.text-sm-medium {
+  @include text-style($font-size-sm, $font-weight-medium);
+}
+.text-sm-semibold {
+  @include text-style($font-size-sm, $font-weight-semibold);
+}
+.text-sm-bold{
+  @include text-style($font-size-sm, $font-weight-bold);
+}
+
+//xs
+.text-xs-regular {
+  @include text-style($font-size-xs, $font-weight-regular);
+}
+.text-xs-medium {
+  @include text-style($font-size-xs, $font-weight-medium);
+}
+.text-xs-semibold {
+  @include text-style($font-size-xs, $font-weight-semibold);
+}
+.text-xs-bold{
+  @include text-style($font-size-xs, $font-weight-bold);
+}
+

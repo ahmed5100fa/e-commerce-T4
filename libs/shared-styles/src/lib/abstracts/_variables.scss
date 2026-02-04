@@ -34,10 +34,27 @@ $success-dark: #5EE9B5;
 $link-primary-light: #1447E6;
 $link-primary-dark: #50A2FF;
 
-// Sizes
-$base-font-size: 16px;
-$base-line-height: 1.5;
-$spacing-unit: 1rem;
+
+//font size
+$font-size-7xl: 72px;
+$font-size-6xl: 60px;
+$font-size-5xl: 48px;
+$font-size-4xl: 36px;
+$font-size-3xl: 30px;
+$font-size-2xl: 24px;
+$font-size-xl: 20px;
+$font-size-lg: 18px;
+$font-size-base: 16px;
+$font-size-sm: 14px;
+$font-size-xs: 12px;
+// Font weights
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Font family
+$font-family-base: 'Sauburn', sans-serif;
 
 // Breakpoints
 $mobile: 576px;
