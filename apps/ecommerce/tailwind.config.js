@@ -8,7 +8,20 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors:{
+        'background-primary': 'var(--background-primary)',
+        'background-secondary': 'var(--background-secondary)',
+        'text-primary': 'var(--text-primary)',
+        'text-secondary': 'var(--text-secondary)',
+        'text-placeholder': 'var(--text-placeholder)',
+        'button-primary': 'var(--button-primary)',
+        'button-secondary': 'var(--button-secondary)',
+        'icon-primary': 'var(--icon-primary)',
+        'success': 'var(--success)',
+        'link-primary': 'var(--link-primary)',
+      }
+    },
   },
   plugins: [],
 };

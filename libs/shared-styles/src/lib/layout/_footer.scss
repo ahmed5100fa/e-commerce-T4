@@ -1,60 +1,60 @@
-// Footer layout styles
+// // Footer layout styles
 
-.footer {
-  background-color: #333;
-  color: #aaa;
-  padding: calc($spacing-unit * 2) 0;
-  margin-top: auto;
-}
+// .footer {
+//   background-color: #333;
+//   color: #aaa;
+//   padding: calc($spacing-unit * 2) 0;
+//   margin-top: auto;
+// }
 
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 $spacing-unit;
-}
+// .footer-container {
+//   max-width: 1200px;
+//   margin: 0 auto;
+//   padding: 0 $spacing-unit;
+// }
 
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: $spacing-unit;
-  margin-bottom: $spacing-unit;
+// .footer-content {
+//   display: grid;
+//   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+//   gap: $spacing-unit;
+//   margin-bottom: $spacing-unit;
 
-  @include responsive('mobile') {
-    grid-template-columns: 1fr;
-  }
-}
+//   @include responsive('mobile') {
+//     grid-template-columns: 1fr;
+//   }
+// }
 
-.footer-section {
-  h4 {
-    color: white;
-    margin-bottom: calc($spacing-unit * 0.5);
-  }
+// .footer-section {
+//   h4 {
+//     color: white;
+//     margin-bottom: calc($spacing-unit * 0.5);
+//   }
 
-  ul {
-    list-style: none;
+//   ul {
+//     list-style: none;
 
-    li {
-      margin-bottom: calc($spacing-unit * 0.25);
+//     li {
+//       margin-bottom: calc($spacing-unit * 0.25);
 
-      a {
-        color: #aaa;
-        text-decoration: none;
+//       a {
+//         color: #aaa;
+//         text-decoration: none;
 
-        &:hover {
-          color: white;
-        }
-      }
-    }
-  }
-}
+//         &:hover {
+//           color: white;
+//         }
+//       }
+//     }
+//   }
+// }
 
-.footer-bottom {
-  border-top: 1px solid #555;
-  padding-top: $spacing-unit;
-  text-align: center;
-  color: #888;
+// .footer-bottom {
+//   border-top: 1px solid #555;
+//   padding-top: $spacing-unit;
+//   text-align: center;
+//   color: #888;
 
-  p {
-    margin: 0;
-  }
-}
+//   p {
+//     margin: 0;
+//   }
+// }

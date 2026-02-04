@@ -1,24 +1,24 @@
 @import '../abstracts/_variables.scss';
 :root[data-theme='light'], :root:not([data-theme]) {
     // Background colors
-    --background-primary: var($background-primary-light);
-    --background-secondary: var($background-secondary-light);
+    --background-primary: #{$background-primary-light};
+    --background-secondary: #{$background-secondary-light};
     
     // Text colors
-    --text-primary: var($text-primary-light);
-    --text-secondary: var($text-secondary-light);
-    --text-placeholder: var($text-placeholder-light);
+    --text-primary: #{$text-primary-light};
+    --text-secondary: #{$text-secondary-light};
+    --text-placeholder: #{$text-placeholder-light};
     
     // Button background colors
-    --button-primary: var($button-primary-light);
-    --button-secondary: var($button-secondary-light);
+    --button-primary: #{$button-primary-light};
+    --button-secondary: #{$button-secondary-light};
     
     // Icon background colors
-    --icon-primary: var($icon-primary-light);
+    --icon-primary: #{$icon-primary-light};
     
     // Modal colors
-    --success: var($success-light);
+    --success: #{$success-light};
     
     // Link colors
-    --link-primary: var($link-primary-light);
+    --link-primary: #{$link-primary-light};
 }
