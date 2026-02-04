@@ -4,9 +4,9 @@ import { NxWelcome } from './nx-welcome';
 import { FormsModule } from '@angular/forms';
 import { SliderModule } from 'primeng/slider';
 import {AuthLibraryService } from '@org/auth';
-import { FormInput } from "./shared/components/form-input/form-input";
+import { PhoneInput } from "./shared/components/phone-input/phone-input";
 @Component({
-  imports: [RouterModule, SliderModule, FormsModule, FormInput],
+  imports: [RouterModule, SliderModule, FormsModule, PhoneInput],
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.scss',
