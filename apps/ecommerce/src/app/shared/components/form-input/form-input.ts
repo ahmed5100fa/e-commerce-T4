@@ -25,37 +25,45 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class FormInput {
+export class FormInput <T = string> implements ControlValueAccessor
+{
   @Input() label!: string;
-  @Input() placeholder!: string;
-  @Input() type: string = 'text';
-  @Input() Id : string = '';
+  @Input() placeholder = '';
+  @Input() type = 'text';
+  @Input() Id = '';
 
-  value: any = '';
-  disabled: boolean = false;
+  value!: T;
+  disabled = false;
 
-  // Callbacks
-  onChange: any = () => {};
-  onTouched: any = () => {};
+  private onChange: (value: T) => void = () => {};
+  private onTouched: () => void = () => {};
 
-  writeValue(obj: any): void {
-    this.value = obj;
-  }
+  writeValue(value: T | null): void {
+  this.value = value as T;
+}
 
-  registerOnChange(fn: any): void {
+
+  registerOnChange(fn: (value: T) => void): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: any): void {
+  registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
 
-  setDisabledState?(isDisabled: boolean): void {
+  setDisabledState(isDisabled: boolean): void {
     this.disabled = isDisabled;
   }
 
-  onInputChange(event: any) {
-    this.value = event.target.value;
+  onInputChange(event: Event): void {
+    const input = event.target as HTMLInputElement;
+
+    const parsedValue =
+      this.type === 'number'
+        ? (Number(input.value) as unknown as T)
+        : (input.value as unknown as T);
+
+    this.value = parsedValue;
     this.onChange(this.value);
     this.onTouched();
   }
