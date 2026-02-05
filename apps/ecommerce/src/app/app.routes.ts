@@ -1,21 +1,16 @@
+
 import { Route } from '@angular/router';
-import { LayoutcomponentComponent } from './layouts/layoutcomponent/layoutcomponent.component';
+import { Authlayout } from './layouts/authlayout';
 import { LogincomponentComponent } from './features/auth/logincomponent/logincomponent.component';
 
 export const appRoutes: Route[] = [
   {
-    path: 'auth',
-    component: LayoutcomponentComponent,
+    path: '',
+    component: Authlayout, 
     children: [
-      {
-        path: 'login',
-        component: LogincomponentComponent,
-      },
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'login',
-      },
-    ],
+      {path: 'login', component:LogincomponentComponent, title: 'Login'},
+      
+    ]
   },
+
 ];
