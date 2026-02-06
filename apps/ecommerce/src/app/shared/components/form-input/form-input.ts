@@ -6,15 +6,29 @@
  * Implements ControlValueAccessor for seamless form integration.
  */
 
-
 import { Component, forwardRef, Input } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
+// Define allowed input types
+export type InputType =
+  | 'text'
+  | 'password'
+  | 'email'
+  | 'number'
+  | 'tel'
+  | 'url'
+  | 'search'
+  | 'date'
+  | 'datetime-local'
+  | 'month'
+  | 'week'
+  | 'time'
+  | 'color';
 
 @Component({
   selector: 'app-form-input',
-  imports: [InputTextModule ],
+  imports: [InputTextModule],
   templateUrl: './form-input.html',
   styleUrl: './form-input.scss',
   providers: [
@@ -25,11 +39,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class FormInput <T = string> implements ControlValueAccessor
-{
+export class FormInput<T = string> implements ControlValueAccessor {
   @Input() label!: string;
   @Input() placeholder = '';
-  @Input() type = 'text';
+  @Input() type: InputType = 'text';
   @Input() Id = '';
 
   value!: T;
@@ -39,9 +52,8 @@ export class FormInput <T = string> implements ControlValueAccessor
   private onTouched: () => void = () => {};
 
   writeValue(value: T | null): void {
-  this.value = value as T;
-}
-
+    this.value = value as T;
+  }
 
   registerOnChange(fn: (value: T) => void): void {
     this.onChange = fn;
