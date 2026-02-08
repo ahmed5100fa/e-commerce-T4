@@ -2,6 +2,7 @@
 
 <!-- login --> 
 <!-- register -->
+
 <div class="flex min-h-screen">
 
  
@@ -12,16 +13,18 @@
 
     <!-- form -->
     <div class="h-52 justify-center items-center flex">
-      <app-logincomponent></app-logincomponent>
+     
+      <router-outlet></router-outlet>
+
     </div>
 
-    <app-dicor-image class="mt-4"></app-dicor-image>
+    <app-dicor-image  [rotate]="180" ></app-dicor-image>
 
   </div>
 
   <!-- right photo-->
-  <div class="hidden sm:w-1/4  md:w-32 lg:w-48 lg:flex flex-1 justify-end  ">
-    <app-auth-right-image class="h-screen w-auto object-cover"></app-auth-right-image>
+  <div class="flex-1 flex justify-end items-center overflow-hidden ">
+    <app-auth-right-image  ></app-auth-right-image>
   </div>
 
 </div>
