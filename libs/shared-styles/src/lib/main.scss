@@ -2,21 +2,21 @@
 // Import order: abstracts, base, components, layout, pages, themes, vendors
 
 // 1. Abstracts
-@import 'abstracts/variables';
-@import 'abstracts/mixins';
-@import 'abstracts/functions';
+@import 'abstracts/_variables';
+@import 'abstracts/_mixins';
+@import 'abstracts/_functions';
 
 // 2. Base
-@import 'base/reset';
-@import 'base/typography';
+@import 'base/_reset';
+@import 'base/_typography';
 
 // 3. Components
-@import 'components/buttons';
-@import 'components/cards';
+@import 'components/_buttons';
+@import 'components/_cards';
 
 // 4. Layout
-@import 'layout/navbar';
-@import 'layout/footer';
+@import 'layout/_navbar';
+@import 'layout/_footer';
 
 // 5. Pages
 // Import page-specific styles here

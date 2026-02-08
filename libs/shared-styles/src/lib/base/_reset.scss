@@ -10,6 +10,10 @@ html {
   font-size: 16px;
 }
 
+:root{
+  --font-family-base: #{$font-family-base};
+}
+
 
 h1,
 h2,

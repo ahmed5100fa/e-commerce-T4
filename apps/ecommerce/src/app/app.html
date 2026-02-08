@@ -1,11 +1,13 @@
+<div class="w-[100vw] h-[100vh] bg-red-500 p-8">
 <app-nx-welcome></app-nx-welcome>
-    <button class="w-full h-[70px] bg-button-primary text-text-primary rounded-lg mb-4 text-7xl-regular">
+    <button class="w-full h-[70px] bg-button-primary text-text-primary flex rounded-lg mb-4 text-7xl-regular">
             Primary Button
         </button>
         <button class="w-full h-[70px] bg-button-secondary text-text-secondary rounded-lg mb-4">
             Secondary Button
     </button>
-        <div class="card flex justify-center  w-full h-[50vh] bg-background-primary">
+        <div class="card flex justify-center  w-full h-[50vh] bg-background-primary  ">
             <p-slider [(ngModel)]="value" class="w-56" />
         </div>
 <router-outlet></router-outlet>
+    </div>
