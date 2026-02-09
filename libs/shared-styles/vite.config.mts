@@ -3,17 +3,17 @@ import { defineConfig } from 'vite';
 import angular from '@analogjs/vite-plugin-angular';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
 import { nxCopyAssetsPlugin } from '@nx/vite/plugins/nx-copy-assets.plugin';
-import tailwindcss from '@tailwindcss/vite';
+
 export default defineConfig(() => ({
   root: __dirname,
-  cacheDir: '../node_modules/.vite/ecommerce',
-  plugins: [angular(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md']), tailwindcss()],
+  cacheDir: '../../node_modules/.vite/libs/shared-styles',
+  plugins: [angular(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md'])],
   // Uncomment this if you are using workers.
   // worker: {
   //   plugins: () => [ nxViteTsPaths() ],
   // },
   test: {
-    name: 'ecommerce',
+    name: 'shared-styles',
     watch: false,
     globals: true,
     environment: 'jsdom',
@@ -21,7 +21,7 @@ export default defineConfig(() => ({
     setupFiles: ['src/test-setup.ts'],
     reporters: ['default'],
     coverage: {
-      reportsDirectory: '../coverage/ecommerce',
+      reportsDirectory: '../../coverage/libs/shared-styles',
       provider: 'v8' as const,
     },
   },

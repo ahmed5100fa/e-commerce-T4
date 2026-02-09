@@ -1,0 +1,29 @@
+// Main SCSS file - 7-in-1 Pattern
+// Import order: abstracts, base, components, layout, pages, themes, vendors
+
+// 1. Abstracts
+@import 'abstracts/_variables';
+@import 'abstracts/_mixins';
+@import 'abstracts/_functions';
+
+// 2. Base
+@import 'base/_reset';
+@import 'base/_typography';
+
+// 3. Components
+@import 'components/_buttons';
+@import 'components/_cards';
+
+// 4. Layout
+@import 'layout/_navbar';
+@import 'layout/_footer';
+
+// 5. Pages
+// Import page-specific styles here
+
+// 6. Themes
+// Import theme-specific styles here
+@import 'themes/_light';
+@import 'themes/_dark';
+// 7. Vendors
+// Import third-party library styles here

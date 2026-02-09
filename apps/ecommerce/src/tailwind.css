@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+
+
+
+@theme inline {
+  --color-background-primary: var(--background-primary);
+  --color-background-secondary: var(--background-secondary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-placeholder: var(--text-placeholder);
+  --color-button-primary: var(--button-primary);
+  --color-button-secondary: var(--button-secondary);
+  --color-icon-primary: var(--icon-primary);
+  --color-success: var(--success);
+  --color-link-primary: var(--link-primary);
+}
