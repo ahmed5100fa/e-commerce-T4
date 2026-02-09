@@ -45,15 +45,19 @@ export class FormInput<T = string> implements ControlValueAccessor {
   @Input() type: InputType = 'text';
   @Input() Id = '';
 
-  value!: T;
+  value: T = null as unknown as T;
   disabled = false;
 
   private onChange: (value: T) => void = () => {};
   private onTouched: () => void = () => {};
 
   writeValue(value: T | null): void {
-    this.value = value as T;
+  if (this.type === 'number') {
+    this.value = (value ?? null) as T;
+  } else {
+    this.value = (value ?? '') as T;
   }
+}
 
   registerOnChange(fn: (value: T) => void): void {
     this.onChange = fn;
@@ -71,9 +75,9 @@ export class FormInput<T = string> implements ControlValueAccessor {
     const input = event.target as HTMLInputElement;
 
     const parsedValue =
-      this.type === 'number'
-        ? (Number(input.value) as unknown as T)
-        : (input.value as unknown as T);
+  this.type === 'number'
+    ? (input.value === '' ? null : Number(input.value)) as unknown as T
+    : (input.value as unknown as T);
 
     this.value = parsedValue;
     this.onChange(this.value);
