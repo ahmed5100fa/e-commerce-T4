@@ -45,17 +45,21 @@ export class FormInput<T = string> implements ControlValueAccessor {
   @Input() type: InputType = 'text';
   @Input() Id = '';
 
-  value!: T;
+  value: T | null = null;  // Use union type to handle null better
   disabled = false;
 
-  private onChange: (value: T) => void = () => {};
+  private onChange: (value: T | null) => void = () => {};
   private onTouched: () => void = () => {};
 
   writeValue(value: T | null): void {
-    this.value = value as T;
+    if (this.type === 'number') {
+      this.value = value !== undefined ? value : null;
+    } else {
+      this.value = value !== undefined ? value : '' as unknown as T | null;
+    }
   }
 
-  registerOnChange(fn: (value: T) => void): void {
+  registerOnChange(fn: (value: T | null) => void): void {
     this.onChange = fn;
   }
 
@@ -70,10 +74,13 @@ export class FormInput<T = string> implements ControlValueAccessor {
   onInputChange(event: Event): void {
     const input = event.target as HTMLInputElement;
 
-    const parsedValue =
-      this.type === 'number'
-        ? (Number(input.value) as unknown as T)
-        : (input.value as unknown as T);
+    let parsedValue: T | null = null;
+
+    if (this.type === 'number') {
+      parsedValue = (input.value === '' ? null : Number(input.value)) as unknown as T;
+    } else {
+      parsedValue = input.value as unknown as T;
+    }
 
     this.value = parsedValue;
     this.onChange(this.value);
