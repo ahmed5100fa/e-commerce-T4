@@ -1,0 +1,24 @@
+@import '../abstracts/_variables.scss';
+:root[data-theme='dark'] {
+    // Background colors
+    --background-primary: #{$background-primary-dark};
+    --background-secondary: #{$background-secondary-dark};
+    
+    // Text colors
+    --text-primary: #{$text-primary-dark};
+    --text-secondary: #{$text-secondary-dark};
+    --text-placeholder: #{$text-placeholder-dark};
+    
+    // Button background colors
+    --button-primary: #{$button-primary-dark};
+    --button-secondary: #{$button-secondary-dark};
+    
+    // Icon background colors
+    --icon-primary: #{$icon-primary-dark};
+    
+    // Modal colors
+    --success: #{$success-dark};
+    
+    // Link colors
+    --link-primary: #{$link-primary-dark};
+}
