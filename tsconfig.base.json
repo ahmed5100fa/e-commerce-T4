@@ -16,9 +16,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@org/models": ["./libs/shared/models/src/index.ts"],
-      "@org/shared-translations": ["libs/shared-translations/src/index.ts"],
-      "@org/auth": ["libs/auth/src/public-api.ts"]
+      "@org/shared-translations": ["./libs/shared-translations/src/index.ts"],
+      "@org/auth": ["./libs/auth/src/public-api.ts"],
+      "@org/shared-styles": ["libs/shared-styles/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
