@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component , input , HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'app-dicor-image',
@@ -6,4 +6,12 @@ import { Component } from '@angular/core';
   templateUrl: './dicor-image.html',
   styleUrl: './dicor-image.css',
 })
-export class DicorImage {}
+export class DicorImage {
+
+  @Input() rotate = 0;
+
+@HostBinding('style.transform') get transform() {
+  return `rotate(${this.rotate}deg)`;
+}
+
+}
