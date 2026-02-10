@@ -2,38 +2,37 @@
 
 //background colors
 $background-primary-light: #ffffff;
-$background-secondary-light: #FBEAEA;
+$background-secondary-light: #fbeaea;
 
-$background-primary-dark: #27272A;
-$background-secondary-dark: #3F3F46;
+$background-primary-dark: #27272a;
+$background-secondary-dark: #3f3f46;
 
 //text colors
-$text-primary-light: #27272A;
-$text-secondary-light: #741C21;
-$text-placeholder-light: #71717A;
+$text-primary-light: #27272a;
+$text-secondary-light: #741c21;
+$text-placeholder-light: #71717a;
 
-$text-primary-dark: #FAFAFA;
-$text-secondary-dark: #FFC2D0;
-$text-placeholder-dark: #757F95;
+$text-primary-dark: #fafafa;
+$text-secondary-dark: #ffc2d0;
+$text-placeholder-dark: #757f95;
 
-//buttons background 
-$button-primary-light: #A6252A;
-$button-secondary-light: #FBEAEA;
-$button-primary-dark: #FFA3B9;
-$button-secondary-dark: #3F3F46;
+//buttons background
+$button-primary-light: #a6252a;
+$button-secondary-light: #fbeaea;
+$button-primary-dark: #ffa3b9;
+$button-secondary-dark: #3f3f46;
 
 //icons background
-$icon-primary-light: #A6252A;
-$icon-primary-dark: #CD2E33;
+$icon-primary-light: #a6252a;
+$icon-primary-dark: #cd2e33;
 
-//modal colors 
-$success-light: #ECFDF5;
-$success-dark: #5EE9B5;
+//modal colors
+$success-light: #ecfdf5;
+$success-dark: #5ee9b5;
 
-//links 
-$link-primary-light: #1447E6;
-$link-primary-dark: #50A2FF;
-
+//links
+$link-primary-light: #1447e6;
+$link-primary-dark: #50a2ff;
 
 //font size
 $font-size-7xl: 72px;
@@ -52,10 +51,10 @@ $font-weight-regular: 400;
 $font-weight-medium: 500;
 $font-weight-semibold: 600;
 $font-weight-bold: 700;
-
-// Font family
+// Fonts Family
 $font-family-base: 'Sauburn', sans-serif;
-
+$font-family-label: '"Birthstone", cursive';
+$font-family-arabic: 'Tajawal', sans-serif;
 // Breakpoints
 $mobile: 576px;
 $tablet: 768px;

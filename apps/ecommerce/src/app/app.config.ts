@@ -20,10 +20,13 @@ export const appConfig: ApplicationConfig = {
     provideRouter(appRoutes),
     provideHttpClient(withFetch()),
     { provide: BaseUrl, useValue: 'https://flower.elevateegy.com/api/v1/' },
-     providePrimeNG({ 
-        theme: {
-            preset: Aura,
-          }
-        })
+    providePrimeNG({
+      theme: {
+        preset: Aura,
+        options: {
+          darkModeSelector: '.my-app-dark',
+        },
+      },
+    }),
   ],
 };
