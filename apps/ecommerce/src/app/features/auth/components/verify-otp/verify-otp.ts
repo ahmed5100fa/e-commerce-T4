@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input, signal } from '@angular/core';
+import { Component, ElementRef, inject, Input, signal, ViewChild } from '@angular/core';
 import { AuthLibraryService } from '@org/auth';
 
 /**
@@ -38,15 +38,21 @@ export class VerifyOtp {
   @Input() email: string = '';
 
 
+  @ViewChild('digit1') firstInput!: ElementRef<HTMLInputElement>;
+
   ngOnInit() {
     this.startTimer();
+  }
+
+  ngAfterViewInit() {
+    this.firstInput?.nativeElement.focus();
   }
 
   ngOnDestroy() {
     this.clearTimer();
   }
 
-   clearTimer() {
+  clearTimer() {
     if (this.timerInterval) {
       clearInterval(this.timerInterval);
       this.timerInterval = null;
@@ -73,36 +79,31 @@ export class VerifyOtp {
     }, 1000);
   }
 
-    resendCode() {
-        if (!this.canResend || this.isLoading()) return;
+  resendCode() {
+    if (!this.canResend || this.isLoading()) return;
 
-        this.isLoading.set(true);
+    this.isLoading.set(true);
 
-        this._AuthService.forgotPassword({ email: this.email }).subscribe({
-          next: () => {
-            this.isLoading.set(false);
-            this.startTimer();
-            this.resetCode();
-            console.log("hello");
-
-          },
-          error: (err) => {
-            this.isLoading.set(false);
-            console.log("error");
-
-            this.apiError = err.error?.message || 'Failed to resend code. Please try again.';
-          }
-        });
+    this._AuthService.forgotPassword({ email: this.email }).subscribe({
+      next: () => {
+        this.isLoading.set(false);
+        this.startTimer();
+        this.resetCode();
+        console.log("hello");
+      },
+      error: (err) => {
+        this.isLoading.set(false);
+        console.log("error");
+        this.apiError = err.error?.message || 'Failed to resend code. Please try again.';
       }
-
+    });
+  }
 
   resetCode() {
     setTimeout(() => {
-      const firstInput = document.getElementById('digit1') as HTMLInputElement;
-      firstInput?.focus();
+      this.firstInput?.nativeElement.focus();
     }, 100);
   }
-
 
 
 }
