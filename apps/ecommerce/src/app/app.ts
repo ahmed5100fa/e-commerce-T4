@@ -10,7 +10,7 @@ import { FormInput } from "./shared/components/form-input/form-input";
   imports: [RouterModule, SliderModule, FormsModule, PhoneInput, NxWelcome, FormInput],
   selector: 'app-root',
   templateUrl: './app.html',
-  styleUrls: ['./app.scss'], 
+  styleUrls: ['./app.scss'],
 })
 
 export class App {
