@@ -1,35 +1,12 @@
 <button
+  [class]="buttonClasses"
   (click)="onHandleClick()"
-  [ngClass]="{
-   
-  'primary-btn':primaryButton && !disabledState,
-  'primary-btn-disabled':primaryButton && disabledState,
-
-  'second-btn':secondButton && !disabledState,
-  'second-btn-disabled':secondButton && disabledState,
-
-  'third-btn':thirdButton && !disabledState,
-  'third-btn-disabled' : thirdButton && disabledState,
-
-
-  'fourth-btn':fourthButton && !disabledState,
-  'fourth-btn-disabled' : fourthButton && disabledState,
-
-  'fifth-btn':fifthButton && !disabledState,
-  'fifth-btn-disabled' : fifthButton && disabledState,
-
-  
-  'sixth-btn':sixthButton && !disabledState,
-  'sixth-btn-disabled' : sixthButton && disabledState
-}"
   [disabled]="disabledState"
 >
   @if(icon && dir == "rtl" ){
   <span>{{icon}}&nbsp;</span>
   }
-
   <span class="">{{label}}</span>
-
   @if (icon && dir == "ltr" ) {
   <span>&nbsp;{{icon}}</span>
   }
