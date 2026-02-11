@@ -1,0 +1,38 @@
+<section class="">
+  <div class="container mx-auto flex flex-col justify-center items-center gap-6 py-8 px-4">
+    
+    <!-- Title -->
+    <div class="text-center">
+      <h2 class="font-semibold text-2xl">Enter The OTP Code</h2>
+      <p class="text-gray-700 mt-2">
+        We have sent a 6-digit code to user@example.com  
+        <a class="underline underline-offset-4 hover:text-blue-500" routerLink="/..forgot-password-example">edit</a>
+      </p>
+    </div>
+
+    <!-- HR -->
+    <hr class="w-full border-t-2 border-gray-400 my-4">
+
+    <!-- OTP Form -->
+    <div class="w-full max-w-xs">
+      <form [formGroup]="verifyCode" class="flex flex-col gap-4">
+        <p-input-otp class="mx-auto" [length]="6" name="otp"></p-input-otp>
+        <button class="bg-red-950 text-white w-full py-2 rounded-md border border-gray-50 hover:bg-red-800 transition">
+          Verify OTP
+        </button>
+      </form>
+      <p class="text-center text-gray-600 mt-2 cursor-pointer hover:text-red-900">Send a new code</p>
+    </div>
+
+    <!-- HR -->
+    <hr class="w-full border-t-2 border-gray-400 my-4">
+
+    <!-- Help Links -->
+    <div class="flex gap-4 text-gray-700">
+      <p>Need help?</p>
+      <a class="underline underline-offset-4 hover:text-blue-500" routerLink="/..register-example">Contact us</a>
+    </div>
+    
+  </div>
+</section>
+
