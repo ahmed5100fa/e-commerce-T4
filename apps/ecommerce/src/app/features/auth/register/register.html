@@ -1,0 +1,183 @@
+<div>
+  <form-label [label]="'Become part of our family!'"></form-label>
+  <form
+    class="w-full flex flex-col gap-2"
+    [formGroup]="registerForm"
+    (ngSubmit)="submitRegister()"
+  >
+    <!-- first and last name -->
+
+    <div class="grid gap-2 grid-cols-2">
+      <!-- first name -->
+
+      <div class="">
+        <app-form-input
+          formControlName="firstName"
+          [label]="'First name'"
+          [id]="'firstName'"
+          [placeholder]="'Jonathan'"
+        />
+        @if (this.registerForm.get('firstName')?.value) { @if
+        (this.registerForm.hasError('pattern', 'firstName')) {
+        <p class="text-red-400 text-xs">
+          First name must be at least 3 characters
+        </p>
+        } @else if (this.registerForm.hasError("required","firstName")) {
+        <p class="text-red-400 text-xs">this field is required</p>
+        } }
+      </div>
+
+      <!-- last name -->
+      <div class="">
+        <app-form-input
+          formControlName="lastName"
+          [label]="'Last name'"
+          [id]="'lastName'"
+          [placeholder]="'Adrian'"
+        />
+
+        @if (this.registerForm.get('lastName')?.value) { @if
+        (this.registerForm.hasError('pattern', 'lastName')) {
+        <p class="text-red-400 text-xs">
+          Last name must be at least 3 characters
+        </p>
+        } @else if (this.registerForm.hasError("required","lastName")) {
+        <p class="text-red-400 text-xs">this field is required</p>
+        } }
+      </div>
+    </div>
+
+    <!-- =================== -->
+
+    <!-- user E-mail Address -->
+
+    <div>
+      <app-form-input
+        formControlName="email"
+        [label]="'Email'"
+        [type]="'email'"
+        [placeholder]="'user@example.com'"
+        [id]="'userEmail'"
+      />
+
+      @if (this.registerForm.get('email')?.value) { @if
+      (this.registerForm.hasError('pattern', 'email')) {
+      <p class="text-red-400 text-xs">Please enter a valid email address</p>
+      } @else if (this.registerForm.hasError("required","email")) {
+      <p class="text-red-400 text-xs">this field is required</p>
+      } }
+    </div>
+    <!-- =================== -->
+
+    <!-- user phone -->
+    <div>
+      <app-phone-input formControlName="phone" />
+
+      @if (this.registerForm.get('phone')?.value) { @if
+      (this.registerForm.hasError('pattern', 'phone')) {
+      <p class="text-red-400 text-xs">Please enter a valid phone number</p>
+      } @else if (this.registerForm.hasError("required","phone")) {
+      <p class="text-red-400 text-xs">this field is required</p>
+      } }
+    </div>
+    <!-- =================== -->
+
+    <!-- user Gender -->
+    <div>
+      <label for="userGender" class="font-medium">Gender</label>
+      <p-select
+        formControlName="gender"
+        [id]="'userGender'"
+        [options]="genders"
+        optionLabel="name"
+        optionValue="code"
+        placeholder="Select a Gender"
+        class="w-full"
+        name="selectGender"
+        required="true"
+        autofocus="false"
+      ></p-select>
+      @if (this.registerForm.get('gender')?.value) {@if
+      (this.registerForm.hasError("required","gender")) {
+      <p class="text-red-400 text-xs">this field is required</p>
+      } }
+    </div>
+    <!-- =================== -->
+
+    <!-- user password -->
+    <div>
+      <app-form-input
+        formControlName="password"
+        [label]="'Password'"
+        [type]="'password'"
+        [id]="'userPassword'"
+        [placeholder]="'*********'"
+      />
+
+      @if (this.registerForm.get('password')?.value) { @if
+      (this.registerForm.hasError('pattern', 'password')) {
+      <p class="text-red-400 text-xs">
+        Password must be at least 8 characters <br />
+        and include uppercase, lowercase, number, and special character
+      </p>
+      } @else if (this.registerForm.hasError("required","password")) {
+      <p class="text-red-400 text-xs">this field is required</p>
+      } }
+    </div>
+    <!-- =================== -->
+
+    <!-- user confirm password -->
+    <div>
+      <app-form-input
+        formControlName="rePassword"
+        [label]="'Confirm Password'"
+        [type]="'password'"
+        [id]="'userConfirmPassword'"
+        [placeholder]="'*********'"
+        (input)="rePasswordVaildator()"
+      />
+
+      @if (this.registerForm.get('rePassword')?.value) { @if
+      (this.registerForm.hasError('mismatch', 'rePassword')) {
+      <p class="text-red-400 text-xs">Passwords do not match</p>
+      } @else if (this.registerForm.hasError("required","rePassword")) {
+      <p class="text-red-400 text-xs">this field is required</p>
+      } }
+    </div>
+    <!-- =================== -->
+
+    <!-- Button -->
+
+    <div class="">
+      <custom-button
+        (click)="submitRegister()"
+        [label]="'Create Account'"
+        [buttonStyle]="'primary'"
+        [disabledState]="disableButton"
+      ></custom-button>
+    </div>
+  </form>
+  <form-link
+    [routerLink]="'/login'"
+    [label]="'Already have an account? '"
+    [link]="'Login'"
+  ></form-link>
+
+  <custom-alert></custom-alert>
+</div>
+
+<!-- 
+password regex:
+/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
+
+
+phone regex:
+^(+2)?01[0125][0-9]{8}$
+
+
+name regex:
+^[a-zA-Z\s]{3,}$
+
+email regex:
+^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
+-->

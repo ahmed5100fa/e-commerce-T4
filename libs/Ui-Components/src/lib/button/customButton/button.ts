@@ -72,9 +72,4 @@ export class CustomButton {
 
     return classes;
   }
-
-  @Output() buttonClicked = new EventEmitter<void>();
-  onHandleClick() {
-    this.buttonClicked.emit();
-  }
 }

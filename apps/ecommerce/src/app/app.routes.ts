@@ -8,6 +8,13 @@ export const appRoutes: Route[] = [
     component: Authlayout,
     children: [
       { path: 'login', component: LoginComponent },
+      {
+        path: 'register',
+        loadComponent: () =>
+          import('./features/auth/register/register').then(
+            (m) => m.RegisterComponent,
+          ),
+      },
       { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],
   },

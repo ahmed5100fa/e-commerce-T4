@@ -1,8 +1,4 @@
-<button
-  [class]="buttonClasses"
-  (click)="onHandleClick()"
-  [disabled]="disabledState"
->
+<button type="button" [class]="buttonClasses" [disabled]="disabledState">
   @if(icon && dir == "rtl" ){
   <span>{{icon}}&nbsp;</span>
   }
