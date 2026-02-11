@@ -1,3 +1,4 @@
+
 import { PASSWORD_REGEX } from './../../../../../../../../libs/auth/src/lib/shared/utils/regex.constants';
 import { loginData } from '../../../../../../../../libs/auth/src/lib/interfaces/auth-data';
 import { Component, inject } from '@angular/core';
@@ -12,6 +13,7 @@ import {
 } from '@angular/forms';
 import { AuthApiAdaptorService } from 'libs/auth/src/lib/adaptor/auth-api.adaptor';
 import { AuthLibraryService } from '@org/auth';
+import { AuthApiAdaptor } from 'libs/auth/src/lib/interfaces/adaptor';
 
 @Component({
   selector: 'app-login',
@@ -39,13 +41,13 @@ export class LoginComponent {
  
 
 
- //test
+
 
  submitForm(): void {
   if (this.loginForm.valid) {
 
     this._authLibraryService.login(this.loginForm.value as any).subscribe({
-      next: (res: any) => {
+      next: (res: AuthApiAdaptor) => {
         console.log(res);
 
         if (res.message === 'success') {
