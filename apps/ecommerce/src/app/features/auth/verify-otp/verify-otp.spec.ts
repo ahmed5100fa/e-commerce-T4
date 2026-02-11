@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { VerifyOpt } from './verify-opt';
+import { VerifyOtp } from './verify-otp';
 
-describe('VerifyOpt', () => {
-  let component: VerifyOpt;
-  let fixture: ComponentFixture<VerifyOpt>;
+describe('VerifyOtp', () => {
+  let component: VerifyOtp;
+  let fixture: ComponentFixture<VerifyOtp>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [VerifyOpt],
+      imports: [VerifyOtp],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(VerifyOpt);
+    fixture = TestBed.createComponent(VerifyOtp);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

@@ -1,7 +1,8 @@
-import { loginData } from './../../../../../../../libs/auth/src/lib/interfaces/auth-data';
+import { PASSWORD_REGEX } from './../../../../../../../../libs/auth/src/lib/shared/utils/regex.constants';
+import { loginData } from '../../../../../../../../libs/auth/src/lib/interfaces/auth-data';
 import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { FormInput } from '../../../shared/components/form-input/form-input';
+import { FormInput } from '../../../../shared/components/form-input/form-input';
 import {
   FormControl,
   FormGroup,
@@ -30,7 +31,7 @@ export class LoginComponent {
     password: new FormControl('', [
       Validators.required,
       Validators.pattern(
-        /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/,
+       PASSWORD_REGEX
       ),
     ]),
   });

@@ -42,7 +42,7 @@
     Login
   </button>
 <div>
-    <a href="/forgot-password" class="text-red-950 hover:underline justify-end">Forgot Password?</a>
+    <a [routerLink]="'/forgot-password'" class="text-red-950 hover:underline justify-end">Forgot Password?</a>
 
     <br>
 
@@ -52,6 +52,6 @@
 
   <hr class="w-full border-gray-300">
 
-  <p>Don,t have an account yet <a href="/register" class="text-red-950 hover:underline m-5">create one now!</a></p>
+  <p>Don,t have an account yet <a routerLink="'/register'" class="text-red-950 hover:underline m-5">create one now!</a></p>
 </form>
 
