@@ -61,9 +61,10 @@ export class LoginComponent {
         }
       },
 
-      error: (err: any) => {
+      error: (err: AuthApiAdaptor) => {
         console.log(err);
-        this.msgError = err.error.message;
+        this.msgError = err.message || 'Login failed';
+       
       },
     });
 
