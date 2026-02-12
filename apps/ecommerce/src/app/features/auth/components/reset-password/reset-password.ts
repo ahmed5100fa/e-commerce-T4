@@ -1,10 +1,11 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, DestroyRef, input, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormInput } from "../../../../shared/components/form-input/form-input";
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthLibraryService } from '@org/auth'
-import { inject, WritableSignal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { inject } from '@angular/core';
 @Component({
   selector: 'app-reset-password',
   imports: [CommonModule, FormInput, ReactiveFormsModule],
@@ -34,7 +35,7 @@ export class ResetPassword {
       this._AuthLibraryService.resetPassword({
         email: this.email(),
         newPassword: this.resetPasswordForm.get('password')?.value,
-      }).subscribe({
+      }).pipe(takeUntilDestroyed()).subscribe({
         next: (res)=>{
             this.currentStep.set(1);
             //add success alert later
