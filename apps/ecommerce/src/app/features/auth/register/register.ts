@@ -1,3 +1,4 @@
+import { test } from '@playwright/test';
 import { Component, inject } from '@angular/core';
 import { FormLabel } from '../../../shared/components/form-label/form-label';
 import { FormInput } from '../../../shared/components/form-input/form-input';
@@ -17,6 +18,9 @@ import {
 import { SelectModule } from 'primeng/select';
 import { AuthLibraryService } from '@org/auth';
 import { Router } from '@angular/router';
+import { InputAlertComponent } from './components/input-alert/input-alert';
+import { REGEX } from '../../../shared/constants/regex.constants';
+import { passwordMatchValidator } from './services/password-match.validator';
 
 @Component({
   selector: 'register-form',
@@ -33,6 +37,7 @@ import { Router } from '@angular/router';
     AlertComponent,
     SelectModule,
     ReactiveFormsModule,
+    InputAlertComponent,
   ],
 })
 export class RegisterComponent {
@@ -43,66 +48,79 @@ export class RegisterComponent {
   private readonly route = inject(Router);
   // Global Properties
   disableButton: boolean = false;
-
+  icon: string = '';
+  internalPhoneData: string = '';
   // Validation Regex
-  passwordRegex: RegExp =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-  phoneRegex: RegExp = /^(\+2)?01[0125][0-9]{8}$/;
-  nameRegex: RegExp = /^[a-zA-Z\s]{3,}$/;
-  emailRegex: RegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+  readonly regexCollection = REGEX;
   // Select Input
   genders = [
     { name: 'Male', code: 'male' },
     { name: 'Female', code: 'female' },
   ];
 
-  registerForm = this.formBuilder.nonNullable.group({
-    firstName: ['', [Validators.required, Validators.pattern(this.nameRegex)]],
-    lastName: ['', [Validators.required, Validators.pattern(this.nameRegex)]],
-    email: ['', [Validators.required, Validators.pattern(this.emailRegex)]],
-    password: [
-      '',
-      [Validators.required, Validators.pattern(this.passwordRegex)],
-    ],
-    rePassword: ['', [Validators.required]],
-    phone: ['', [Validators.required, Validators.pattern(this.phoneRegex)]],
-    gender: ['', [Validators.required]],
-  });
+  registerForm = this.formBuilder.nonNullable.group(
+    {
+      firstName: [
+        '',
+        [Validators.required, Validators.pattern(this.regexCollection.name)],
+      ],
+      lastName: [
+        '',
+        [Validators.required, Validators.pattern(this.regexCollection.name)],
+      ],
+      email: [
+        '',
+        [Validators.required, Validators.pattern(this.regexCollection.email)],
+      ],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(this.regexCollection.password),
+        ],
+      ],
+      rePassword: ['', [Validators.required]],
+      phone: [
+        '',
+        [Validators.required, Validators.pattern(this.regexCollection.phone)],
+      ],
+      gender: ['', [Validators.required]],
+    },
+    {
+      validators: passwordMatchValidator,
+    },
+  );
 
   // Methods
-  rePasswordVaildator() {
-    const password = this.registerForm.get('password')?.value;
-    const rePassword = this.registerForm.get('rePassword')?.value;
-
-    if (password !== rePassword) {
-      this.registerForm.get('rePassword')?.setErrors({ mismatch: true });
-      return { mismatch: true };
-    } else {
-      return null;
-    }
-  }
-
-  submitRegister() {
-    if (this.registerForm.invalid) {
-      this.alertService.showError(
-        'Please fill in all required fields correctly.',
-      );
-    } else {
+  submit() {
+    if (this.registerForm.valid) {
       this.disableButton = true;
+      this.icon = 'pi pi-spin pi-spinner';
 
-      this.authLibraryService
-        .register(this.registerForm.getRawValue())
-        .subscribe({
-          next: (response) => {
-            this.disableButton = false;
-            this.alertService.showSuccess('Registration successful!');
-            this.route.navigate(['/login']);
-          },
-          error: (error) => {
-            this.disableButton = false;
-          },
-        });
+      this.internalPhoneData = this.registerForm.get('phone')?.value || '';
+
+      const newData = {
+        ...this.registerForm.getRawValue(),
+        phone: `+20${this.internalPhoneData}`,
+      };
+
+      this.authLibraryService.register(newData).subscribe({
+        next: (re) => {
+          this.disableButton = false;
+          this.icon = '';
+          this.alertService.showSuccess('Account created successfully');
+
+          console.log(re);
+        },
+        error: (err) => {
+          this.disableButton = false;
+          this.icon = '';
+
+          console.log(err);
+        },
+      });
+    } else {
+      this.alertService.showError('Please fill all required fields correctly');
     }
   }
 }

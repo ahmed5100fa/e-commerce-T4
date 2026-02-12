@@ -1,9 +1,9 @@
 <div>
   <form-label [label]="'Become part of our family!'"></form-label>
   <form
-    class="w-full flex flex-col gap-2"
+    class="w-full flex flex-col gap-1"
     [formGroup]="registerForm"
-    (ngSubmit)="submitRegister()"
+    (ngSubmit)="submit()"
   >
     <!-- first and last name -->
 
@@ -19,11 +19,9 @@
         />
         @if (this.registerForm.get('firstName')?.value) { @if
         (this.registerForm.hasError('pattern', 'firstName')) {
-        <p class="text-red-400 text-xs">
-          First name must be at least 3 characters
-        </p>
+        <input-alert [message]="'First name must be at least 3 characters'" />
         } @else if (this.registerForm.hasError("required","firstName")) {
-        <p class="text-red-400 text-xs">this field is required</p>
+        <input-alert [message]="'This field is required'" />
         } }
       </div>
 
@@ -38,11 +36,9 @@
 
         @if (this.registerForm.get('lastName')?.value) { @if
         (this.registerForm.hasError('pattern', 'lastName')) {
-        <p class="text-red-400 text-xs">
-          Last name must be at least 3 characters
-        </p>
+        <input-alert [message]="'Last name must be at least 3 characters'" />
         } @else if (this.registerForm.hasError("required","lastName")) {
-        <p class="text-red-400 text-xs">this field is required</p>
+        <input-alert [message]="'This field is required'" />
         } }
       </div>
     </div>
@@ -62,9 +58,9 @@
 
       @if (this.registerForm.get('email')?.value) { @if
       (this.registerForm.hasError('pattern', 'email')) {
-      <p class="text-red-400 text-xs">Please enter a valid email address</p>
+      <input-alert [message]="'Please enter a valid email address'" />
       } @else if (this.registerForm.hasError("required","email")) {
-      <p class="text-red-400 text-xs">this field is required</p>
+      <input-alert [message]="'This field is required'" />
       } }
     </div>
     <!-- =================== -->
@@ -75,9 +71,9 @@
 
       @if (this.registerForm.get('phone')?.value) { @if
       (this.registerForm.hasError('pattern', 'phone')) {
-      <p class="text-red-400 text-xs">Please enter a valid phone number</p>
+      <input-alert [message]="'Please enter a valid phone number'" />
       } @else if (this.registerForm.hasError("required","phone")) {
-      <p class="text-red-400 text-xs">this field is required</p>
+      <input-alert [message]="'This field is required'" />
       } }
     </div>
     <!-- =================== -->
@@ -99,7 +95,7 @@
       ></p-select>
       @if (this.registerForm.get('gender')?.value) {@if
       (this.registerForm.hasError("required","gender")) {
-      <p class="text-red-400 text-xs">this field is required</p>
+      <input-alert [message]="'This field is required'" />
       } }
     </div>
     <!-- =================== -->
@@ -116,12 +112,11 @@
 
       @if (this.registerForm.get('password')?.value) { @if
       (this.registerForm.hasError('pattern', 'password')) {
-      <p class="text-red-400 text-xs">
-        Password must be at least 8 characters <br />
-        and include uppercase, lowercase, number, and special character
-      </p>
+      <input-alert
+        [message]="'Password must be at least 8 characters, \n include uppercase, lowercase, number, and special character'"
+      />
       } @else if (this.registerForm.hasError("required","password")) {
-      <p class="text-red-400 text-xs">this field is required</p>
+      <input-alert [message]="'This field is required'" />
       } }
     </div>
     <!-- =================== -->
@@ -134,14 +129,13 @@
         [type]="'password'"
         [id]="'userConfirmPassword'"
         [placeholder]="'*********'"
-        (input)="rePasswordVaildator()"
       />
 
       @if (this.registerForm.get('rePassword')?.value) { @if
       (this.registerForm.hasError('mismatch', 'rePassword')) {
-      <p class="text-red-400 text-xs">Passwords do not match</p>
+      <input-alert [message]="'Passwords do not match'" />
       } @else if (this.registerForm.hasError("required","rePassword")) {
-      <p class="text-red-400 text-xs">this field is required</p>
+      <input-alert [message]="'This field is required'" />
       } }
     </div>
     <!-- =================== -->
@@ -150,10 +144,11 @@
 
     <div class="">
       <custom-button
-        (click)="submitRegister()"
         [label]="'Create Account'"
         [buttonStyle]="'primary'"
         [disabledState]="disableButton"
+        [icon]="icon"
+        [buttonType]="'submit'"
       ></custom-button>
     </div>
   </form>
@@ -165,19 +160,3 @@
 
   <custom-alert></custom-alert>
 </div>
-
-<!-- 
-password regex:
-/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/
-
-
-phone regex:
-^(+2)?01[0125][0-9]{8}$
-
-
-name regex:
-^[a-zA-Z\s]{3,}$
-
-email regex:
-^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
--->

@@ -1,9 +1,9 @@
-<button type="button" [class]="buttonClasses" [disabled]="disabledState">
+<button [type]="buttonType" [class]="buttonClasses" [disabled]="disabledState">
   @if(icon && dir == "rtl" ){
-  <span>{{icon}}&nbsp;</span>
+  <span>&nbsp;<i [class]="icon"></i></span>
   }
-  <span class="">{{label}}</span>
+  <span class="">{{label}} </span>
   @if (icon && dir == "ltr" ) {
-  <span>&nbsp;{{icon}}</span>
+  <i [class]="icon"></i>
   }
 </button>

@@ -10,7 +10,3 @@ export class AuthEndPoint {
   static readonly LOGOUT = 'auth/logout';
   static readonly USERINFO = 'auth/profileData';
 }
-
-// const endPoint  ={} as const
-
-// enum Endpoint{}
