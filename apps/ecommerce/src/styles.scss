@@ -1,3 +1,17 @@
 @use './tailwind.css' as *;
 @import '../../../libs/shared-styles/src/lib/main.scss';
 
+:root {
+  // Toaster blur
+  --p-toast-blur: 0px;
+  // Message Success PrimeNg Tostaer
+  --p-toast-success-background: #ecfdf5 !important;
+  --p-toast-success-border-color: #007a55 !important;
+  --p-toast-success-detail-color: #27272a !important;
+  // Message Error PrimeNg Tostaer
+  --p-toast-error-background: #fef2f2 !important;
+  --p-toast-error-border-color: #b91c1c !important;
+  --p-toast-error-detail-color: #27272a !important;
+  // ==========
+  // primeNg Inputs styling
+}
