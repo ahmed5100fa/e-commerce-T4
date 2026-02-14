@@ -6,13 +6,9 @@ import { AuthLibraryService } from '@org/auth';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-verify-opt',
+  selector: 'app-verify-otp',
   imports: [ReactiveFormsModule,InputOtpModule, FormsModule],
-template: `
-        <div class="card flex justify-center">
-            <p-inputotp [(ngModel)]="value" [(length)]="6" />
-        </div>
-    `,
+
     standalone: true,
 
   templateUrl: './verify-otp.html',
@@ -48,14 +44,16 @@ c6:[null , [Validators.required]],
 }
 
 
-formTow():void{
+formSubmit():void{
+ 
 if(this.verifyCode.valid){
   
 const paylod ={
   resetCode: this.verifyCode.value.c1+this.verifyCode.value.c2+this.verifyCode.value.c3+this.verifyCode.value.c4+this.verifyCode.value.c5+this.verifyCode.value.c6,
 }
 
-  this._authService.verifyResetCode(paylod).subscribe({
+
+   this._authService.verifyResetCode(paylod).subscribe({
 next:(response)=>{
   console.log(response);
   
@@ -65,10 +63,14 @@ error:(err)=>{
    this.msgError= err.error.message
   
 }
-})
+}) 
 }
 
 
+
+
 }
+
+
 
 }

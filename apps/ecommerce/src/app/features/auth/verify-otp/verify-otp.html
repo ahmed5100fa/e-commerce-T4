@@ -15,9 +15,11 @@
 
     <!-- OTP Form -->
     <div class="w-full max-w-xs">
-      <form [formGroup]="verifyCode" class="flex flex-col gap-4">
-        <p-input-otp class="mx-auto" [length]="6" name="otp"></p-input-otp>
-        <button class="bg-red-950 text-white w-full py-2 rounded-md border border-gray-50 hover:bg-red-800 transition">
+      <form  [formGroup]="verifyCode" (ngSubmit)="formSubmit()" class="flex flex-col gap-4">
+         <div class="card flex justify-center">
+            <p-inputotp  name="otp" [length]="6" />
+        </div>
+        <button   class="bg-red-950 text-white w-full py-2 rounded-md border border-gray-50 hover:bg-red-800 transition">
           Verify OTP
         </button>
       </form>
