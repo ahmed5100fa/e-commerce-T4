@@ -7,11 +7,7 @@ import { RouterModule } from "@angular/router";
 @Component({
   selector: 'app-authlayout',
   standalone: true,
-<<<<<<< HEAD
-  imports: [AuthRightImage, LoginComponent, DicorImage, RouterModule],
-=======
-  imports: [AuthRightImage, DicorImage, RouterModule],  
->>>>>>> 27182e56591d6cc9535cb24ac33f727ca124df48
+  imports: [AuthRightImage, DicorImage, RouterModule],
   templateUrl: './authlayout.html',
   styleUrls: ['./authlayout.css'],
 })
