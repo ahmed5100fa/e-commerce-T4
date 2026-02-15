@@ -18,7 +18,8 @@
     "paths": {
       "@org/shared-translations": ["./libs/shared-translations/src/index.ts"],
       "@org/auth": ["./libs/auth/src/public-api.ts"],
-      "@org/shared-styles": ["libs/shared-styles/src/index.ts"]
+      "@org/shared-styles": ["libs/shared-styles/src/index.ts"],
+      "@Ui-components": ["libs/Ui-Components/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

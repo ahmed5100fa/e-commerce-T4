@@ -1,0 +1,13 @@
+<button
+  [class]="buttonClasses"
+  (click)="onHandleClick()"
+  [disabled]="disabledState"
+>
+  @if(icon && dir == "rtl" ){
+  <span>{{icon}}&nbsp;</span>
+  }
+  <span class="">{{label}}</span>
+  @if (icon && dir == "ltr" ) {
+  <span>&nbsp;{{icon}}</span>
+  }
+</button>

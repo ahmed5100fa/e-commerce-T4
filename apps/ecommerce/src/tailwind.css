@@ -13,4 +13,5 @@
   --color-icon-primary: var(--icon-primary);
   --color-success: var(--success);
   --color-link-primary: var(--link-primary);
+  --color-border-primary: var(--border-primary);
 }
