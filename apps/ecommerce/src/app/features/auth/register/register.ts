@@ -1,4 +1,3 @@
-import { test } from '@playwright/test';
 import { Component, inject } from '@angular/core';
 import { FormLabel } from '../../../shared/components/form-label/form-label';
 import { FormInput } from '../../../shared/components/form-input/form-input';
@@ -21,6 +20,7 @@ import { Router } from '@angular/router';
 import { InputAlertComponent } from './components/input-alert/input-alert';
 import { REGEX } from '../../../shared/constants/regex.constants';
 import { passwordMatchValidator } from './services/password-match.validator';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'register-form',
@@ -50,6 +50,7 @@ export class RegisterComponent {
   disableButton: boolean = false;
   icon: string = '';
   internalPhoneData: string = '';
+  subscription!: Subscription;
   // Validation Regex
   readonly regexCollection = REGEX;
   // Select Input
@@ -104,23 +105,28 @@ export class RegisterComponent {
         phone: `+20${this.internalPhoneData}`,
       };
 
-      this.authLibraryService.register(newData).subscribe({
+      this.subscription = this.authLibraryService.register(newData).subscribe({
         next: (re) => {
           this.disableButton = false;
           this.icon = '';
           this.alertService.showSuccess('Account created successfully');
 
-          console.log(re);
+          this.registerForm.reset();
+          setTimeout(() => {
+            this.route.navigate(['/login']);
+          }, 2500);
         },
         error: (err) => {
           this.disableButton = false;
           this.icon = '';
-
-          console.log(err);
         },
       });
     } else {
       this.alertService.showError('Please fill all required fields correctly');
     }
+  }
+  // Life Cycle Hooks
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

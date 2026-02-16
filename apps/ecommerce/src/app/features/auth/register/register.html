@@ -17,12 +17,18 @@
           [id]="'firstName'"
           [placeholder]="'Jonathan'"
         />
-        @if (this.registerForm.get('firstName')?.value) { @if
-        (this.registerForm.hasError('pattern', 'firstName')) {
-        <input-alert [message]="'First name must be at least 3 characters'" />
-        } @else if (this.registerForm.hasError("required","firstName")) {
-        <input-alert [message]="'This field is required'" />
-        } }
+
+        <!-- First name alerts -->
+        <input-alert
+          [control]="this.registerForm.get('firstName') "
+          [error]="'pattern'"
+          [message]="'First name must be at least 3 characters'"
+        />
+        <input-alert
+          [control]="this.registerForm.get('firstName') "
+          [error]="'required'"
+          [message]="'This field is required'"
+        />
       </div>
 
       <!-- last name -->
@@ -34,12 +40,17 @@
           [placeholder]="'Adrian'"
         />
 
-        @if (this.registerForm.get('lastName')?.value) { @if
-        (this.registerForm.hasError('pattern', 'lastName')) {
-        <input-alert [message]="'Last name must be at least 3 characters'" />
-        } @else if (this.registerForm.hasError("required","lastName")) {
-        <input-alert [message]="'This field is required'" />
-        } }
+        <!-- Last name alerts -->
+        <input-alert
+          [control]="this.registerForm.get('lastName') "
+          [error]="'pattern'"
+          [message]="'First name must be at least 3 characters'"
+        />
+        <input-alert
+          [control]="this.registerForm.get('lastName') "
+          [error]="'required'"
+          [message]="'This field is required'"
+        />
       </div>
     </div>
 
@@ -56,12 +67,16 @@
         [id]="'userEmail'"
       />
 
-      @if (this.registerForm.get('email')?.value) { @if
-      (this.registerForm.hasError('pattern', 'email')) {
-      <input-alert [message]="'Please enter a valid email address'" />
-      } @else if (this.registerForm.hasError("required","email")) {
-      <input-alert [message]="'This field is required'" />
-      } }
+      <input-alert
+        [control]="this.registerForm.get('email') "
+        [error]="'pattern'"
+        [message]="'Please enter a valid email address'"
+      />
+      <input-alert
+        [control]="this.registerForm.get('email') "
+        [error]="'required'"
+        [message]="'This field is required'"
+      />
     </div>
     <!-- =================== -->
 
@@ -69,15 +84,19 @@
     <div>
       <app-phone-input formControlName="phone" />
 
-      @if (this.registerForm.get('phone')?.value) { @if
-      (this.registerForm.hasError('pattern', 'phone')) {
-      <input-alert [message]="'Please enter a valid phone number'" />
-      } @else if (this.registerForm.hasError("required","phone")) {
-      <input-alert [message]="'This field is required'" />
-      } }
+      <!-- User Phone alerts -->
+      <input-alert
+        [control]="this.registerForm.get('phone') "
+        [error]="'pattern'"
+        [message]="'Please enter a valid phone address'"
+      />
+      <input-alert
+        [control]="this.registerForm.get('phone') "
+        [error]="'required'"
+        [message]="'This field is required'"
+      />
     </div>
     <!-- =================== -->
-
     <!-- user Gender -->
     <div>
       <label for="userGender" class="font-medium">Gender</label>
@@ -99,7 +118,6 @@
       } }
     </div>
     <!-- =================== -->
-
     <!-- user password -->
     <div>
       <app-form-input
@@ -109,15 +127,17 @@
         [id]="'userPassword'"
         [placeholder]="'*********'"
       />
-
-      @if (this.registerForm.get('password')?.value) { @if
-      (this.registerForm.hasError('pattern', 'password')) {
+      <!-- User Password alerts -->
       <input-alert
+        [control]="this.registerForm.get('password') "
+        [error]="'pattern'"
         [message]="'Password must be at least 8 characters, \n include uppercase, lowercase, number, and special character'"
       />
-      } @else if (this.registerForm.hasError("required","password")) {
-      <input-alert [message]="'This field is required'" />
-      } }
+      <input-alert
+        [control]="this.registerForm.get('password') "
+        [error]="'required'"
+        [message]="'This field is required'"
+      />
     </div>
     <!-- =================== -->
 
@@ -130,13 +150,17 @@
         [id]="'userConfirmPassword'"
         [placeholder]="'*********'"
       />
-
-      @if (this.registerForm.get('rePassword')?.value) { @if
-      (this.registerForm.hasError('mismatch', 'rePassword')) {
-      <input-alert [message]="'Passwords do not match'" />
-      } @else if (this.registerForm.hasError("required","rePassword")) {
-      <input-alert [message]="'This field is required'" />
-      } }
+      <!-- User Password alerts -->
+      <input-alert
+        [control]="this.registerForm.get('rePassword') "
+        [error]="'mismatch'"
+        [message]="'Passwords do not match'"
+      />
+      <input-alert
+        [control]="this.registerForm.get('rePassword') "
+        [error]="'required'"
+        [message]="'This field is required'"
+      />
     </div>
     <!-- =================== -->
 
