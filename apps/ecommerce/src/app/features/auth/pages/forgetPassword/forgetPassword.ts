@@ -6,9 +6,10 @@ import { CommonModule } from '@angular/common';
 import { AuthLibraryService } from '@org/auth'
 import { ResetPassword } from '../../components/reset-password/reset-password';
 import { takeUntil } from 'rxjs';
+import { VerifyOtp } from "../../components/verify-otp/verify-otp";
 @Component({
   selector: 'app-forget-password',
-  imports: [FormInput, ReactiveFormsModule, CommonModule, ResetPassword],
+  imports: [FormInput, ReactiveFormsModule, CommonModule, ResetPassword, VerifyOtp],
   templateUrl: './forgetPassword.html',
   styleUrls: ['./forgetPassword.scss'],
 })

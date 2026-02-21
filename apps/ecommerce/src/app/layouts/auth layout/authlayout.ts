@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthRightImage } from '../../shared/components/auth-right-image/auth-right-image';
+import { AuthRightImage } from '../../features/auth/components/auth-right-image/auth-right-image';
 import { LoginComponent } from '../../features/auth/pages/logincomponent/logincomponent';
-import { DicorImage } from '../../shared/components/image-dicoriton/dicor-image';
+import { DicorImage } from '../../features/auth/components/image-dicoriton/dicor-image';
 import { RouterModule } from "@angular/router";
 
 @Component({
