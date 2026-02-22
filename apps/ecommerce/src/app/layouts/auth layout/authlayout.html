@@ -1,13 +1,16 @@
-<div class="flex min-h-screen flex-col md:flex-row">
+<div class="flex min-h-screen flex-col md:flex-row ">
   <!-- left side -->
   <div
-    class="flex flex-1 flex-col justify-center items-center px-6 py-10 md:px-10"
+    class="flex flex-1 flex-col justify-center items-center px-6 py-10 md:px-10 gap-5"
   >
-    <app-dicor-image></app-dicor-image>
 
+
+    <app-dicor-image></app-dicor-image>
+<p>Here is the paragraph section</p>
     <!-- form container -->
     <div class="w-full max-w-md flex justify-center items-center my-6">
       <router-outlet></router-outlet>
+      
     </div>
 
     <app-dicor-image [rotate]="180"></app-dicor-image>
