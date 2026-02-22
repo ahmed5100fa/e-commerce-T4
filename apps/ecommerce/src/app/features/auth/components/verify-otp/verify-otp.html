@@ -1,0 +1,15 @@
+<p class="text-gray-600 mb-4">
+  @if (!canResend) {
+    You can request another code in:
+    <strong>{{ timer() }}s</strong>
+  } @else {
+    Didn’t receive the code?
+    <a
+      (click)="resendCode()"
+      class="text-blue-500 font-medium ml-1"
+      style="cursor: pointer;"
+    >
+      Resend Code
+    </a>
+  }
+</p>

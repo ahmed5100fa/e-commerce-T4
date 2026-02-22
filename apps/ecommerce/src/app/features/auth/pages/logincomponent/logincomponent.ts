@@ -39,7 +39,7 @@ export class LoginComponent {
     ]),
   });
 
- 
+
 
 
 
@@ -57,7 +57,7 @@ export class LoginComponent {
 
           setTimeout(() => {
             
-            // inject(Router).navigate(['/home']);
+            inject(Router).navigate(['/home']);
           }, 2000);
         }
       },
@@ -65,7 +65,6 @@ export class LoginComponent {
       error: (err: AuthApiAdaptor) => {
         console.log(err);
         this.msgError = err.message || 'Login failed';
-        
        
       },
     });

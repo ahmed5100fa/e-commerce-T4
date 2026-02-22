@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig(() => ({
   root: __dirname,
   cacheDir: '../node_modules/.vite/ecommerce',
-  plugins: [angular(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md']), tailwindcss()],
+  plugins: [angular(), nxViteTsPaths(), nxCopyAssetsPlugin(['*.md']), tailwindcss({})],
   // Uncomment this if you are using workers.
   // worker: {
   //   plugins: () => [ nxViteTsPaths() ],
