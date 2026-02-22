@@ -6,6 +6,9 @@ import { Adaptor, AuthAdapted, AuthApiAdaptor } from '../interfaces/adaptor';
   providedIn: 'root',
 })
 export class AuthApiAdaptorService implements Adaptor {
+  static getItem(arg0: string): string {
+    throw new Error('Method not implemented.');
+  }
   adapt(data: AuthAdapted): AuthApiAdaptor {
     return {
       message: data.message,
