@@ -10,15 +10,23 @@ export class HandleError {
   handle(err: HttpErrorResponse): void {
     switch (err.status) {
       case 401:
-        this._toasterOptions.showError(err.message);
+        this._toasterOptions.showError(
+          err.error?.message || 'Unauthorized access.',
+        );
         break;
 
       case 404:
-        this._toasterOptions.showError(err.message);
+        this._toasterOptions.showError(
+          err.error.message || 'Resource not found.',
+        );
         break;
 
+      case 409:
+        this._toasterOptions.showError('user already exists.');
+        break;
       default:
-        this._toasterOptions.showError(err.message);
+        this._toasterOptions.showError('An unexpected error occurred.');
+        break;
     }
   }
 }
