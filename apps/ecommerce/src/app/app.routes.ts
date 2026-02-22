@@ -8,7 +8,6 @@ export const appRoutes: Route[] = [
 {path: '',component:Authlayout,
     children:[
     {path: 'login',component:LoginComponent},
-    {path:'verify-otp',component:VerifyOpt},
     {path: '',redirectTo:'login',pathMatch:'full'},
 ] },
 
