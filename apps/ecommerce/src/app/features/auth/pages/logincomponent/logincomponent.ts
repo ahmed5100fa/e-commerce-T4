@@ -4,6 +4,8 @@ import { loginData } from '../../../../../../../../libs/auth/src/lib/interfaces/
 import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { FormInput } from '../../../../shared/components/form-input/form-input';
+
+
 import {
   FormControl,
   FormGroup,
@@ -14,13 +16,14 @@ import {
 import { AuthApiAdaptorService } from 'libs/auth/src/lib/adaptor/auth-api.adaptor';
 import { AuthLibraryService } from '@org/auth';
 import { AuthApiAdaptor } from 'libs/auth/src/lib/interfaces/adaptor';
+import { CustomButton } from '@Ui-components';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  imports: [RouterModule, FormInput, FormsModule, ReactiveFormsModule],
+  imports: [RouterModule, FormInput, FormsModule, ReactiveFormsModule,CustomButton],
 })
 export class LoginComponent {
   private readonly _authLibraryService = inject(AuthLibraryService);
@@ -55,7 +58,7 @@ export class LoginComponent {
           this.msgError = '';
 
           setTimeout(() => {
-
+            
             inject(Router).navigate(['/home']);
           }, 2000);
         }
@@ -64,12 +67,19 @@ export class LoginComponent {
       error: (err: AuthApiAdaptor) => {
         console.log(err);
         this.msgError = err.message || 'Login failed';
-
+       
       },
     });
 
+
+
   }
+  
+  
+ 
+ 
 }
+
 
 
 }

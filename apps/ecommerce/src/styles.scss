@@ -1,6 +1,6 @@
 @use './tailwind.css' as *;
 @import '../../../libs/shared-styles/src/lib/main.scss';
-
+@import 'primeicons/primeicons.css';
 :root {
   // Toaster blur
   --p-toast-blur: 0px;
@@ -14,4 +14,14 @@
   --p-toast-error-detail-color: #27272a !important;
   // ==========
   // primeNg Inputs styling
+  --p-inputtext-focus-border-color: #741c21 !important;
+  // PrimeNg selected input styling
+  --p-select-hover-border-color: #741c21 !important ;
+  --p-select-focus-border-color: #741c21 !important;
+  --p-select-option-focus-background: #fbeaea !important;
+  --p-select-option-focus-color: #741c21 !important;
+  --p-select-option-selected-color: #741c21 !important;
+  --p-select-option-selected-focus-color: #741c21 !important;
+  --p-select-option-selected-background: #f3c5c7 !important;
+  --p-select-option-selected-focus-background: #f3c5c7 !important;
 }

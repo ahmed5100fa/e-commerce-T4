@@ -1,0 +1,186 @@
+<div>
+  <form-label [label]="'Become part of our family!'"></form-label>
+  <form
+    class="w-full flex flex-col gap-1"
+    [formGroup]="registerForm"
+    (ngSubmit)="submit()"
+  >
+    <!-- first and last name -->
+
+    <div class="grid gap-2 grid-cols-2">
+      <!-- first name -->
+
+      <div class="">
+        <app-form-input
+          formControlName="firstName"
+          [label]="'First name'"
+          [id]="'firstName'"
+          [placeholder]="'Jonathan'"
+        />
+
+        <!-- First name alerts -->
+        <input-alert
+          [control]="this.registerForm.get('firstName') "
+          [error]="'pattern'"
+          [message]="'First name must be at least 3 characters'"
+        />
+        <input-alert
+          [control]="this.registerForm.get('firstName') "
+          [error]="'required'"
+          [message]="'This field is required'"
+        />
+      </div>
+
+      <!-- last name -->
+      <div class="">
+        <app-form-input
+          formControlName="lastName"
+          [label]="'Last name'"
+          [id]="'lastName'"
+          [placeholder]="'Adrian'"
+        />
+
+        <!-- Last name alerts -->
+        <input-alert
+          [control]="this.registerForm.get('lastName') "
+          [error]="'pattern'"
+          [message]="'First name must be at least 3 characters'"
+        />
+        <input-alert
+          [control]="this.registerForm.get('lastName') "
+          [error]="'required'"
+          [message]="'This field is required'"
+        />
+      </div>
+    </div>
+
+    <!-- =================== -->
+
+    <!-- user E-mail Address -->
+
+    <div>
+      <app-form-input
+        formControlName="email"
+        [label]="'Email'"
+        [type]="'email'"
+        [placeholder]="'user@example.com'"
+        [id]="'userEmail'"
+      />
+
+      <input-alert
+        [control]="this.registerForm.get('email') "
+        [error]="'pattern'"
+        [message]="'Please enter a valid email address'"
+      />
+      <input-alert
+        [control]="this.registerForm.get('email') "
+        [error]="'required'"
+        [message]="'This field is required'"
+      />
+    </div>
+    <!-- =================== -->
+
+    <!-- user phone -->
+    <div>
+      <app-phone-input formControlName="phone" />
+
+      <!-- User Phone alerts -->
+      <input-alert
+        [control]="this.registerForm.get('phone') "
+        [error]="'pattern'"
+        [message]="'Please enter a valid phone address'"
+      />
+      <input-alert
+        [control]="this.registerForm.get('phone') "
+        [error]="'required'"
+        [message]="'This field is required'"
+      />
+    </div>
+    <!-- =================== -->
+    <!-- user Gender -->
+    <div>
+      <label for="userGender" class="font-medium">Gender</label>
+      <p-select
+        formControlName="gender"
+        [id]="'userGender'"
+        [options]="genders"
+        optionLabel="name"
+        optionValue="code"
+        placeholder="Select a Gender"
+        class="w-full"
+        name="selectGender"
+        required="true"
+        autofocus="false"
+      ></p-select>
+      @if (this.registerForm.get('gender')?.value) {@if
+      (this.registerForm.hasError("required","gender")) {
+      <input-alert [message]="'This field is required'" />
+      } }
+    </div>
+    <!-- =================== -->
+    <!-- user password -->
+    <div>
+      <app-form-input
+        formControlName="password"
+        [label]="'Password'"
+        [type]="'password'"
+        [id]="'userPassword'"
+        [placeholder]="'*********'"
+      />
+      <!-- User Password alerts -->
+      <input-alert
+        [control]="this.registerForm.get('password') "
+        [error]="'pattern'"
+        [message]="'Password must be at least 8 characters, \n include uppercase, lowercase, number, and special character'"
+      />
+      <input-alert
+        [control]="this.registerForm.get('password') "
+        [error]="'required'"
+        [message]="'This field is required'"
+      />
+    </div>
+    <!-- =================== -->
+
+    <!-- user confirm password -->
+    <div>
+      <app-form-input
+        formControlName="rePassword"
+        [label]="'Confirm Password'"
+        [type]="'password'"
+        [id]="'userConfirmPassword'"
+        [placeholder]="'*********'"
+      />
+      <!-- User Password alerts -->
+      <input-alert
+        [control]="this.registerForm.get('rePassword') "
+        [error]="'mismatch'"
+        [message]="'Passwords do not match'"
+      />
+      <input-alert
+        [control]="this.registerForm.get('rePassword') "
+        [error]="'required'"
+        [message]="'This field is required'"
+      />
+    </div>
+    <!-- =================== -->
+
+    <!-- Button -->
+
+    <div class="">
+      <custom-button
+        [label]="'Create Account'"
+        [buttonStyle]="'primary'"
+        [disabledState]="disableButton"
+        [icon]="icon"
+        [buttonType]="'submit'"
+      ></custom-button>
+    </div>
+  </form>
+  <form-link
+    [routerLink]="'/login'"
+    [label]="'Already have an account? '"
+    [link]="'Login'"
+  ></form-link>
+
+  <custom-alert></custom-alert>
+</div>
