@@ -167,20 +167,20 @@
     <!-- Button -->
 
     <div class="">
-      <custom-button
+      <lib-custom-button
         [label]="'Create Account'"
         [buttonStyle]="'primary'"
         [disabledState]="disableButton"
         [icon]="icon"
         [buttonType]="'submit'"
-      ></custom-button>
+      ></lib-custom-button>
     </div>
   </form>
-  <form-link
+  <app-form-link
     [routerLink]="'/login'"
     [label]="'Already have an account? '"
     [link]="'Login'"
-  ></form-link>
+  ></app-form-link>
 
-  <custom-alert></custom-alert>
+  <lib-custom-alert></lib-custom-alert>
 </div>
