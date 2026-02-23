@@ -1,6 +1,8 @@
 @use './tailwind.css' as *;
 @import '../../../libs/shared-styles/src/lib/main.scss';
 @import 'primeicons/primeicons.css';
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
 :root {
   // Toaster blur
   --p-toast-blur: 0px;
