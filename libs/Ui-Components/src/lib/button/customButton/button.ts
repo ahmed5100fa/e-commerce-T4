@@ -12,7 +12,7 @@ type ButtonStyle =
   | 'sixth';
 
 @Component({
-  selector: 'custom-button',
+  selector: 'lib-custom-button',
   imports: [CommonModule],
   templateUrl: './button.html',
   styleUrl: './button.scss',
@@ -20,8 +20,8 @@ type ButtonStyle =
 export class CustomButton {
   // ==== Global Propierties for Button ======
   @Input() label!: string;
-  @Input() disabledState: boolean = false;
-  @Input() icon: string = '';
+  @Input() disabledState = false;
+  @Input() icon = '';
   @Input() dir: 'ltr' | 'rtl' = 'ltr';
   @Input() buttonStyle: ButtonStyle = 'primary';
   @Input() buttonType: 'button' | 'submit' | 'reset' = 'button';

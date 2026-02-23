@@ -1,3 +1,15 @@
+<!-- <form  class="" [formGroup]="loginForm" (ngSubmit)="submitForm()" action="">
+
+<hr>
+
+    <app-form-input formControlName="email" [label]="'Email'" [Id]="'email'" [placeholder]="'Enter your email'" [type]="'text'" ></app-form-input>
+<app-form-input formControlName="password" [label]="'Password'" [Id]="'password'" [placeholder]="'Enter your password'" [type]="'password'"></app-form-input>
+
+
+<button  class="bg-button-primary mb-8">Login</button>
+
+<hr class="">
+</form> -->
 
 <form
   class="w-full max-w-md flex flex-col gap-1"
@@ -28,28 +40,21 @@
     class="w-full bg-button-primary py-2.5 rounded-md text-white font-medium mt-2">
     Login
   </button>
-<div class="flex flex-col gap-2 w-full">
+<div>
+    <a [routerLink]="'/forgot-password'" class="text-red-950 hover:underline justify-end">Forgot Password?</a>
 
-  
-  <div class="w-full flex justify-end">
-    <a [routerLink]="'/forgot-password'" class="text-red-950 hover:underline">
-      Forgot Password?
-    </a>
-  </div>
+    <br>
 
- 
-  <div class="w-full flex items-center">
-    <input id="remember-me" type="checkbox" class="mr-2">
-    <label for="remember-me" class="text-sm text-red-950">Remember me</label>
-  </div>
-
+    <input class="bg-red-950" id="remember-me" type="checkbox">    
+<label for="remember-me" class="text-sm text-red-950">Remember me</label>
 </div>
 
   <hr class="w-full border-gray-300" />
 
   <p>
-    Don,t have an account yet
-    <a routerLink="'/register'" class="text-red-950 hover:underline m-5"
+    Don,t have an account yet?<a
+      routerLink="'/register'"
+      class="text-red-950 hover:underline m-5"
       >create one now!</a
     >
   </p>

@@ -38,6 +38,7 @@ import { Subscription } from 'rxjs';
     SelectModule,
     ReactiveFormsModule,
     InputAlertComponent,
+    AlertComponent,
   ],
 })
 export class RegisterComponent {

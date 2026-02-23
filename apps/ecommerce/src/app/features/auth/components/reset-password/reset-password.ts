@@ -1,4 +1,4 @@
-import { Component, DestroyRef, input, signal } from '@angular/core';
+import { Component, DestroyRef, input, output, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormInput } from "../../../../shared/components/form-input/form-input";
 import { ReactiveFormsModule } from '@angular/forms';
@@ -6,17 +6,24 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthLibraryService } from '@org/auth'
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { inject } from '@angular/core';
+import { FormLink } from "apps/ecommerce/src/app/shared/components/form-link/form-link";
+import { AlertComponent, CustomButton, NotificationService } from "@Ui-components";
+import { Toast } from 'primeng/toast';
+
 @Component({
   selector: 'app-reset-password',
-  imports: [CommonModule, FormInput, ReactiveFormsModule],
+  imports: [CommonModule, FormInput, ReactiveFormsModule, FormLink, AlertComponent, CustomButton, Toast],
   templateUrl: './reset-password.html',
   styleUrls: ['./reset-password.scss'],
+  providers: [AlertComponent]
 })
 export class ResetPassword {
+  _notificationService = inject(NotificationService)
+  _destroyRef = inject(DestroyRef);
   resetPasswordForm! : FormGroup;
  _formBuilder = inject(FormBuilder);
-  currentStep = signal<1|2|3>(1);
   _AuthLibraryService = inject(AuthLibraryService);
+  _currentstep = output<1|2|3>();
   email = input('');
   ngOnInit(){
     this.resetPasswordForm = this._formBuilder.group({
@@ -29,25 +36,25 @@ export class ResetPassword {
     if(this.resetPasswordForm.valid){
       if(this.resetPasswordForm.get('password')?.value !== this.resetPasswordForm.get('confirmPassword')?.value){
         // add alert later
+        this._notificationService.showError("Passwords do not match.");
         return;
       }
 
       this._AuthLibraryService.resetPassword({
         email: this.email(),
         newPassword: this.resetPasswordForm.get('password')?.value,
-      }).pipe(takeUntilDestroyed()).subscribe({
+      }).pipe(takeUntilDestroyed(this._destroyRef)).subscribe({
         next: (res)=>{
-            this.currentStep.set(1);
-            //add success alert later
+            this._currentstep.emit(1);
+            this._notificationService.showSuccess("Password reset successfully!");
         },
         error: (err)=>{
-            //add error alert later
         }
       })
     }
     else{
       this.resetPasswordForm.markAllAsTouched();
-      //add alert later
+        this._notificationService.showError("Please fill in all required fields.");
     }
   }
 

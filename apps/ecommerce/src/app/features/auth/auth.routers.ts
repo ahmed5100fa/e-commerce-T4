@@ -1,5 +1,4 @@
 import { Route } from "@angular/router";
-import { LoginComponent } from "./pages/logincomponent/logincomponent";
 export const authRouters : Route[]=
 [
 {path: '',loadComponent:()=>import('../../layouts/auth layout/authlayout').then(m=>m.Authlayout),

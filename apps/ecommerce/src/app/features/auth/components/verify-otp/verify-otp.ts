@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, inject, Input, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, input, Input, output, signal, ViewChild } from '@angular/core';
 import { AuthLibraryService } from '@org/auth';
+import { CustomButton } from "@Ui-components";
 
 /**
  * VerifyOtp Component
@@ -23,13 +24,15 @@ import { AuthLibraryService } from '@org/auth';
 
 @Component({
   selector: 'app-verify-otp',
-  imports: [CommonModule],
+  imports: [CommonModule, CustomButton],
   templateUrl: './verify-otp.html',
   styleUrl: './verify-otp.css',
 })
 export class VerifyOtp {
   private timerInterval: any;
   private _AuthService = inject(AuthLibraryService);
+
+  _currentStep = output<1|2|3>();
 
   timer = signal(60);
   canResend: boolean = false;
@@ -104,6 +107,8 @@ export class VerifyOtp {
       this.firstInput?.nativeElement.focus();
     }, 100);
   }
-
+  submitCode() {
+    this._currentStep.emit(3);
+  }
 
 }
