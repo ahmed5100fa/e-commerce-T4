@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'form-link',
+  selector: 'app-form-link',
   imports: [RouterLink],
   templateUrl: './form-link.html',
   styleUrl: './form-link.scss',
