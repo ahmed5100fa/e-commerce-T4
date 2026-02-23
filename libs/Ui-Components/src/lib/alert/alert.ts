@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ToastModule } from 'primeng/toast';
 
 @Component({
-  selector: 'custom-alert',
+  selector: 'lib-custom-alert',
   imports: [ToastModule],
   templateUrl: './alert.html',
   styleUrl: './alert.css',

@@ -19,7 +19,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(appRoutes),
     provideHttpClient(withFetch()),
-    { provide: BaseUrl, useValue: 'https://flower.elevateegy.com/api/v1/' },
+    { provide: BaseUrl, useValue: 'https://flower.elevateegy.com/api/v1' },
     providePrimeNG({
       theme: {
         preset: Aura,
