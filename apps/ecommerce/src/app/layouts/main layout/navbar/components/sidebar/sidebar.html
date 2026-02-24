@@ -1,0 +1,111 @@
+@if (isOpen) {
+  <!-- Overlay -->
+  <div class="fixed inset-0 bg-opacity-50 z-40 lg:hidden" (click)="onClose()"></div>
+
+  <!-- Sidebar -->
+  <div class="fixed top-0 left-0 h-full w-80 bg-border-primary  shadow-xl z-50 transform transition-transform duration-300 lg:hidden overflow-y-auto">
+
+    <!-- Header Sidebar -->
+    <div class="p-4 bg-header-second-background sticky top-0 z-10">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <!-- Heart -->
+          <button class="text-text-primary hover:text-rose-500 transition relative">
+            <i class="fa-regular fa-heart text-xl"></i>
+          </button>
+
+          <button class="relative text-text-primary hover:text-rose-500 transition">
+            <i class="fa-solid fa-cart-shopping text-xl"></i>
+            @if (isLoggedIn) {
+              <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">8</span>
+            }
+          </button>
+
+          <button class="relative text-text-primary hover:text-rose-500 transition">
+            <i class="fa-regular fa-bell text-xl"></i>
+            @if (isLoggedIn) {
+              <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">8</span>
+            }
+          </button>
+        </div>
+
+        <button (click)="onClose()" class="text-text-primary hover:text-rose-500">
+          <i class="fa-solid fa-times text-xl"></i>
+        </button>
+      </div>
+      @if (isLoggedIn) {
+      <div class="mt-2 text-xs text-gray-500">
+        <span>Hello, </span>
+        <span class="font-semibold text-header-second-primary">Jonathan</span>
+      </div>
+      }
+
+    </div>
+    @if (isLoggedIn) {
+    <div class="px-4 py-3 border-b border-gray-200 bg-border-primary ">
+      <div class="flex items-center gap-2 text-sm">
+        <i class="fa-solid fa-location-dot text-rose-500"></i>
+        <div class="flex flex-col leading-tight">
+          <span class="text-gray-500 text-xs">Deliver to:</span>
+          <span class="font-semibold text-header-second-primary">Cairo, Egypt</span>
+        </div>
+      </div>
+    </div>
+    }
+    <div class="flex flex-col p-4 border-b border-gray-200">
+      <a class="flex items-center gap-3 py-3 text-text-primary cursor-pointer hover:text-sidebar-link-hover border-b border-gray-200" routerLink="/home">
+        <i class="fa-solid fa-house w-6"></i>
+        <span>Home</span>
+      </a>
+      <a class="flex items-center gap-3 py-3 text-text-primary cursor-pointer hover:text-sidebar-link-hover border-b border-gray-200" routerLink="/products">
+        <i class="fa-solid fa-gift w-6"></i>
+        <span>Products</span>
+      </a>
+      <a class="flex items-center gap-3 py-3 text-text-primary cursor-pointer hover:text-sidebar-link-hover border-b border-gray-200" routerLink="/categories">
+        <i class="fa-solid fa-clipboard-list w-6"></i>
+        <span>Categories</span>
+      </a>
+      <a class="flex items-center gap-3 py-3 text-text-primary cursor-pointer hover:text-sidebar-link-hover border-b border-gray-200" routerLink="/occasions">
+        <i class="fa-solid fa-gifts w-6"></i>
+        <span>Occasions</span>
+      </a>
+      <a class="flex items-center gap-3 py-3 text-text-primary cursor-pointer hover:text-sidebar-link-hover border-b border-gray-200" routerLink="/contact">
+        <i class="fa-solid fa-headset w-6"></i>
+        <span>Contact</span>
+      </a>
+      <a class="flex items-center gap-3 py-3 text-text-primary cursor-pointer hover:text-sidebar-link-hover" routerLink="/about">
+        <i class="fa-solid fa-circle-info w-6"></i>
+        <span>About</span>
+      </a>
+    </div>
+    @if(isLoggedIn){
+    <div class="p-4">
+      <button (click)="onToggleAccountDropdown()" class="flex items-center justify-between w-full py-2 text-navbar-link hover:text-navbar-link-hover">
+        <div class="flex items-center gap-3 text-text-primary">
+          <i class="fa-solid fa-user-circle text-xl w-6"></i>
+          <span class="font-medium ">My Account</span>
+        </div>
+        <i class="fa-solid fa-chevron-down text-sm transition-transform duration-200" [class.rotate-180]="isAccountDropdownOpen"></i>
+      </button>
+
+      <!-- Dropdown -->
+      @if (isAccountDropdownOpen) {
+        <app-dropdown-content></app-dropdown-content>
+      }
+    </div>
+    }@else {
+      <a class="flex items-center gap-3 py-3 ps-4 text-text-primary cursor-pointer hover:text-sidebar-link-hover" routerLink="/login">
+        <i class="fa-solid fa-user w-6"></i>
+        <span>Login</span>
+      </a>
+    }
+
+
+    <div class="p-4 border-t border-gray-200">
+      <button class="flex items-center gap-2 text-sm font-medium text-text-primary hover:text-rose-500 transition">
+        <i class="fa-solid fa-globe"></i>
+        العربية
+      </button>
+    </div>
+  </div>
+}
