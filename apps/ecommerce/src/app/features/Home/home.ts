@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { Card } from "../../shared/components/card/card";
-import { SpecialGiftsCard } from "../../shared/components/special-gifts-card/special-gifts-card";
 
 @Component({
   selector: 'home-page',
@@ -8,6 +6,4 @@ import { SpecialGiftsCard } from "../../shared/components/special-gifts-card/spe
   templateUrl: './home.html',
   styleUrls: ['./home.scss'],
 })
-export class HomePageComponent {
-
-}
+export class HomePageComponent {}

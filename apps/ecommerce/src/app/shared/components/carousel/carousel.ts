@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { CarouselModule, Carousel } from 'primeng/carousel';
 import { TagModule } from 'primeng/tag';
-import { Card, Product } from "../card/card";
+import { Card } from "../card/card";
+import { Product } from '../../interfaces/card-product';
 
 
 @Component({
