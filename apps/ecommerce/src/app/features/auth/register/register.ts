@@ -38,6 +38,7 @@ import { Subscription } from 'rxjs';
     SelectModule,
     ReactiveFormsModule,
     InputAlertComponent,
+    AlertComponent,
   ],
 })
 export class RegisterComponent {
@@ -127,6 +128,6 @@ export class RegisterComponent {
   }
   // Life Cycle Hooks
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 }

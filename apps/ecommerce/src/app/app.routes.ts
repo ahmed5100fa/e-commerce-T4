@@ -1,5 +1,9 @@
 import { Route } from '@angular/router';
 import { authRouters } from './features/auth/auth.routers';
+import { LoginComponent } from './features/auth/pages/logincomponent/logincomponent';
+import { Authlayout } from './layouts/auth layout/authlayout';
+import { HomePageComponent } from './features/Home/home';
+import { ForgetPassword } from './features/auth/pages/forgetPassword/forgetPassword';
 export const appRoutes: Route[] = [
   {
     path: '',
@@ -13,7 +17,9 @@ export const appRoutes: Route[] = [
             (m) => m.RegisterComponent,
           ),
       },
+
       { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],
   },
+  { path: 'home', component: HomePageComponent },
 ];
