@@ -57,8 +57,10 @@ export class LoginComponent {
             this.msgSuccess = 'Logged in successfully';
             this.msgError = '';
 
+            localStorage.setItem('token', res.token);
+
             setTimeout(() => {
-              inject(Router).navigate(['/home']);
+              this._router.navigate(['/home']);
             }, 2000);
           }
         },
