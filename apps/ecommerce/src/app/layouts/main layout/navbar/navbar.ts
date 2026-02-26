@@ -12,7 +12,7 @@ import { RouterLink } from "@angular/router";
 })
 export class Navbar {
   @Output() toggleSidebar = new EventEmitter<void>();
-  isLoggedIn: boolean = false;
+  isLoggedIn = signal<boolean>(false);
 
   isSidebarOpen = signal(false);
   isAccountDropdownOpen = signal(false);
@@ -42,6 +42,6 @@ export class Navbar {
   }
 
   checkLoginStatus() {
-    this.isLoggedIn = !!localStorage.getItem('token');
+    this.isLoggedIn.set(!!localStorage.getItem('token'));
   }
 }

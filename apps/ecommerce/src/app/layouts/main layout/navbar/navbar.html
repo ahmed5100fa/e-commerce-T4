@@ -8,7 +8,7 @@
         <img src="Assets/image/logo.png" class="w-16" alt="Rose Logo" />
       </div>
 
-      @if (isLoggedIn) {
+      @if (isLoggedIn()) {
       <!-- Location -->
       <div class="hidden lg:flex items-center gap-2 text-sm">
         <i class="fa-solid fa-location-dot text-rose-500"></i>
@@ -30,7 +30,7 @@
 
     <!-- Right Section -->
     <div class="flex items-center gap-6">
-    @if(isLoggedIn){
+    @if(isLoggedIn()){
       <!-- User Menu -->
       <div class="relative hidden lg:flex items-center">
         <button (click)="toggleUserMenu()" class="flex items-center gap-1 text-sm border-l border-gray-200 pl-6">
@@ -92,13 +92,13 @@
         <button class="text-text-primary hover:text-rose-500 transition"><i class="fa-regular fa-heart text-lg"></i></button>
         <button class="relative text-text-primary hover:text-rose-500 transition">
           <i class="fa-solid fa-cart-shopping text-lg"></i>
-          @if (isLoggedIn) {
+          @if (isLoggedIn()) {
           <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">8</span>
           }
         </button>
         <button class="relative text-text-primary hover:text-rose-500 transition">
           <i class="fa-regular fa-bell text-lg"></i>
-          @if (isLoggedIn) {
+          @if (isLoggedIn()) {
           <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">8</span>
           }
         </button>
