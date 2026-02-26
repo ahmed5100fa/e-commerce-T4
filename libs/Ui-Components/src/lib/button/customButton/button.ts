@@ -29,7 +29,7 @@ export class CustomButton {
   // Accessor for Button Classes
   get buttonClasses(): string {
     let classes =
-      'w-full spacing-custom-button rounded-2xl transition-all text-lg border-2 flex items-center justify-center gap-2 ';
+      'spacing-custom-button rounded-2xl transition-all text-lg border-2 flex items-center justify-center gap-2 ';
 
     if (!this.disabledState) {
       if (this.buttonStyle === 'primary')
