@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 import { DropdownContent } from "../dropdown-content/dropdown-content";
 import { RouterLink } from "@angular/router";
 
@@ -13,14 +13,14 @@ export class Sidebar {
     @Input() isAccountDropdownOpen = false;
     @Output() closeSidebar = new EventEmitter<void>();
     @Output() toggleAccountDropdown = new EventEmitter<void>();
-    isLoggedIn: boolean = false;
+    isLoggedIn = signal<boolean>(false);
 
     ngOnInit() {
       this.checkLoginStatus();
     }
 
     checkLoginStatus() {
-      this.isLoggedIn = !!localStorage.getItem('token');
+      this.isLoggedIn.set(!!localStorage.getItem('token'));
     }
 
   onClose() {
