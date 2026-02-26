@@ -5,7 +5,14 @@ export const authRouters : Route[]=
     children:[
     {path: 'login',loadComponent:()=>import('./pages/logincomponent/logincomponent').then(m=>m.LoginComponent)},
     {path:'forget-password', loadComponent:()=>import('./pages/forgetPassword/forgetPassword').then(m=>m.ForgetPassword)},
-    {path: '',redirectTo:'login',pathMatch:'full'}
+     {
+        path: 'register',
+        loadComponent: () =>
+          import('../auth/register/register').then(
+            (m) => m.RegisterComponent,
+          ),
+      },
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
 ]
 }
 ];
