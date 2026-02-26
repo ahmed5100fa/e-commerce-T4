@@ -1,0 +1,8 @@
+:host {
+  display: inline !important;      /* عشان ياخد المساحة المخصصة من flex */
+  width: 100% !important;         /* مهم جدًا */
+}
+
+*{
+  box-sizing: border-box;
+}

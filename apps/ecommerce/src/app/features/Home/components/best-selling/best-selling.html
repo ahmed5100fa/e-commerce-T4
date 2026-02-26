@@ -1,0 +1,27 @@
+<section class="w-11/12 mx-auto flex flex-col lg:flex-row flex-wrap items-stretch py-3 lg:px-0">
+  <!-- left section -->
+  <div class="left-section lg:w-1/4 sm:w-full px-5 py-3 flex justify-center items-start ">
+    <section class="bg-background-primary text-gray-300 py-5 px-3  rounded-lg ">
+      <app-main-header [text]="'Best Selling'"></app-main-header>
+      <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-header-main-primary mb-4">
+        Check Out <span class="text-header-second-primary">What Everyone’s</span> Buying <span class="text-header-second-primary"> Right Now</span>
+      </h1>
+      <p class="text-sm lg:text-base text-gray-400 mb-16">
+        Not sure what to choose? Start with our best sellers, these are the gifts our customers keep coming back for.
+        Whether you're celebrating a birthday, anniversary or wedding, our top picks are guaranteed to leave a lasting impression.
+      </p>
+      <a
+         class="inline-block bg-header-second-primary mb-4 text-border-primary font-semibold py-2 px-4 lg:px-6 rounded-lg hover:bg-sidebar-link-hover cursor-pointer transition-colors text-sm lg:text-base">
+        Explore gifts &rarr;
+      </a>
+    </section>
+  </div>
+
+  <!-- right section -->
+  <div class="right-section lg:w-3/4 sm:w-full ">
+    <app-carousel
+      [productsNum]="3">
+    </app-carousel>
+  </div>
+</section>
+
