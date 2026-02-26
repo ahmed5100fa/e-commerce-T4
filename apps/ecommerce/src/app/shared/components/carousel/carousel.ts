@@ -20,7 +20,7 @@ export class CarouselComponent {
 
   private productService = inject(ProductService);
 
-  products: Product[] = [];
+  @Input() products: Product[] = [];
 
   @Input() productsNum: number = 3;
 
@@ -34,18 +34,4 @@ export class CarouselComponent {
   prev(e: MouseEvent) { this.carousel.navBackward(e); }
   next(e: MouseEvent) { this.carousel.navForward(e); }
 
-
-getProducts() {
-  this.productService.getProducts().subscribe((res: gatAllProducts) => {
-    this.products = [...res.products];
-
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'));
-    }, 0);
-  });
-}
-
-  ngOnInit() {
-    this.getProducts();
-  }
 }
