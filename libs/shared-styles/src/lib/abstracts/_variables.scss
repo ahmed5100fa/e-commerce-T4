@@ -35,7 +35,7 @@ $link-primary-light: #1447E6;
 $link-primary-dark: #50A2FF;
 
 //borders
-$border-primary-light: #E4E4E7;
+$border-primary-light: #fff;
 $border-primary-dark: #52525B;
 
 //headers
@@ -49,8 +49,15 @@ $header-second-line-light: #E65073;
 $header-second-line-dark: #FF668B;
 
 
+$navbar-link-light: #FFF;
+$navbar-link-dark: #27272A;
+$navbar-link-hover-light: #FFC2D0;
+$navbar-link-hover-dark: #501419;
 
-
+$sidebar-link-light: #27272A;
+$sidebar-link-dark: #ffffff;
+$sidebar-link-hover-light: #A6252A;
+$sidebar-link-hover-dark: #FFA3B9;
 //font size
 $font-size-7xl: 72px;
 $font-size-6xl: 60px;

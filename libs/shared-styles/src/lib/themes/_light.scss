@@ -29,4 +29,13 @@
     --header-second-primary: #{$header-second-primary-light};
     --header-second-background: #{$header-second-background-light};
     --header-second-line: #{$header-second-line-light};
+
+    //navbar
+    --navbar-link: #{$navbar-link-light};
+    --navbar-link-hover: #{$navbar-link-hover-light};
+
+    //sidebar
+    --sidebar-link: #{$sidebar-link-light};
+    --sidebar-link-hover: #{$sidebar-link-hover-light};
+
 }
