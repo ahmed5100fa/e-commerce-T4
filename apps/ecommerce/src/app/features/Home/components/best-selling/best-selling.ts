@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { CarouselComponent } from "apps/ecommerce/src/app/shared/components/carousel/carousel";
-import { gatAllProducts, Product } from 'apps/ecommerce/src/app/shared/interfaces/card-product';
+import { Product } from 'apps/ecommerce/src/app/shared/interfaces/card-product';
 import { MainHeader } from "apps/ecommerce/src/app/shared/components/mainHeader/mainHeader";
 import { CustomButton } from "@Ui-components";
 import { ProductService } from '../../services/ProductService/product-service';
@@ -12,5 +12,5 @@ import { ProductService } from '../../services/ProductService/product-service';
   styleUrl: './best-selling.css',
 })
 export class BestSelling {
-
+  @Input() products: Product[] = [];
 }
