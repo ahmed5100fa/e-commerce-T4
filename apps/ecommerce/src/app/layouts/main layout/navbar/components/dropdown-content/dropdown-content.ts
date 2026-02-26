@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from "@angular/router";
+import { AuthLibraryService } from '@org/auth';
 
 @Component({
   selector: 'app-dropdown-content',
@@ -7,4 +8,14 @@ import { RouterLink } from "@angular/router";
   templateUrl: './dropdown-content.html',
   styleUrl: './dropdown-content.css',
 })
-export class DropdownContent {}
+export class DropdownContent {
+    private AuthService = inject(AuthLibraryService)
+
+    logout() {
+    this.AuthService.logout().subscribe({
+      next : () => {
+        localStorage.removeItem('token');
+      }
+    })
+  }
+}
