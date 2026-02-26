@@ -1,0 +1,104 @@
+
+<section  class=" py-16 px-6 lg:px-20">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+
+   
+   <!-- LEFT SIDE (IMAGES) -->
+<div class="flex flex-col lg:flex-row gap-6 items-center lg:items-start">
+
+
+  <!-- Big Image With Custom Border Frame -->
+  <div class="relative w-[230px] sm:w-[260px] lg:w-[300px] ">
+
+    <!-- Frame -->
+    <div class="absolute -top-2  w-[150px] h-full border-4 border-[#8B1E1E] rounded-[50px_100px_50px_100px]"></div>
+
+    <!-- Image -->
+    <img
+    ngSrc="Assets/image/951.png"
+       width="200"
+    height="200"
+      class="relative -right-5 rounded-[50px_100px_50px_100px] object-cover "  
+      alt="gift-1"
+    />
+  </div>
+
+  <!-- Small Images -->
+  <div class="flex flex-col gap-5">
+
+    <img
+      ngSrc="Assets/image/954.png"
+           width="130"
+    height="130"
+      class=" object-cover rounded-full"
+      alt="gift-2"
+    />
+
+    <img
+      ngSrc="Assets/image/953.png"  
+           width="160"
+    height="130"
+      class=" object-cover rounded-[30px]"
+      alt=""
+    />
+
+  </div>
+
+</div>
+
+    <!-- RIGHT SIDE (TEXT) -->
+    <div class="space-y-6 text-center lg:text-left">
+
+      <p class="text-sm tracking-[4px] text-pink-500 font-semibold">
+        ABOUT
+      </p>
+
+      <h2 class="text-3xl lg:text-4xl font-bold text-[#7A1E1E] leading-snug">
+        Delivering the <span class="text-pink-500">Finest</span> Gift Boxes for Your
+        <span class="text-pink-500">Special Moments</span>
+      </h2>
+
+      <p class="text-gray-600 text-sm lg:text-base leading-relaxed">
+        Make every moment memorable with our premium gift boxes. Carefully curated
+        and beautifully packaged, each box is filled with handpicked items designed
+        to impress.
+      </p>
+
+      <!-- Button -->
+  
+ <div class="w-full lg:w-[200px] mx-auto lg:mx-0">
+ <lib-custom-button
+  [label]="'Discover'"
+  [icon]="'pi pi-arrow-right'"
+></lib-custom-button>
+</div>
+
+      <!-- Features -->
+      <div class="grid sm:grid-cols-2 gap-4 pt-6 text-sm text-gray-700">
+
+        <div class="flex items-center gap-2">
+          <span class="text-[#8B1E1E]">✔</span>
+          Competitive Prices & Easy Shopping
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span class="text-[#8B1E1E]">✔</span>
+          Premium Quality & Elegant Packaging
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span class="text-[#8B1E1E]">✔</span>
+          Perfect for Every Occasion
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span class="text-[#8B1E1E]">✔</span>
+          Fast & Reliable Delivery
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
