@@ -47,11 +47,14 @@ export class ForgetPassword implements OnInit {
 
         }
       })
+
     }
       else{
     this.forgetPasswordForm.markAllAsTouched();
     this._notifyService.showError("Please fill in all required fields.");
   }
+
+
   }
 
 

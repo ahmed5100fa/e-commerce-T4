@@ -1,0 +1,32 @@
+<div class="relative w-3/4 max-w-6xl mx-auto">
+  <p-carousel
+    #carousel
+    [value]="products"
+    [numVisible]="productsNum"
+    [numScroll]="1"
+    [circular]="true"
+    [autoplayInterval]="3000"
+    [responsiveOptions]="responsiveOptions"
+    [showIndicators]="false"
+    [showNavigators]="false"
+    class="relative"
+
+  >
+    <ng-template pTemplate="item" let-product>
+  <div class="m-2">
+    <app-card [product]="product"></app-card>
+  </div>
+</ng-template>
+  </p-carousel>
+
+  <!-- Arrows -->
+<button (click)="prev($event)"
+    class="absolute left-[-15px] top-1/2 -translate-y-1/2 bg-icon-primary text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 z-20">
+    <i class="fa-solid fa-angle-left text-sm md:text-xl"></i>
+</button>
+
+<button (click)="next($event)"
+    class="absolute right-[-15px] top-1/2 -translate-y-1/2 bg-icon-primary text-white w-10 h-10 md:w-12 md:h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 z-20">
+    <i class="fa-solid fa-angle-right text-sm md:text-xl"></i>
+</button>
+</div>
