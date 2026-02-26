@@ -1,0 +1,81 @@
+<p-card class="m-2 border-0 shadow-none relative overflow-hidden group">
+  <!-- Card header -->
+  <ng-template pTemplate="header">
+    <div class="relative w-full">
+
+      <!-- Product Image -->
+      <img
+        [src]="image"
+        [alt]="name"
+        class="w-full h-48 object-cover rounded-lg"
+      />
+
+      <!-- Overlay on hover with eye icon -->
+      <div
+        class="absolute inset-0 bg-[#E6507380] bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"
+      >
+        <!-- Eye icon to view product details -->
+        <span class="bg-white eye flex justify-center items-center rounded-full">
+          <i class="fa text-icon-primary fa-eye"></i>
+        </span>
+      </div>
+
+      <!-- Product Tags -->
+      <div class="absolute right-2 top-2 flex gap-1">
+        @for (tag of tags; track tag.label) {
+          <p-tag [value]="tag.label" [severity]="tag.severity"></p-tag>
+        }
+      </div>
+    </div>
+  </ng-template>
+
+  <!-- Product Name -->
+  <p class="font-semibold text-header-second-primary">
+    {{ shortName }}
+  </p>
+
+  <!-- Price and Rating Section -->
+  <div class="flex justify-between items-center">
+
+    <div class="flex flex-col">
+      <!-- Star Rating -->
+      <div class="flex gap-1">
+        @for (i of [1,2,3,4,5]; track $index) {
+          @if (i <= fullStars) {
+            <!-- Full Star -->
+            <i class="fa fa-star text-yellow-400"></i>
+          }
+          @else if (i === fullStars + 1 && hasHalfStar) {
+            <!-- Half Star -->
+            <i class="fa fa-star-half-alt text-yellow-400"></i>
+          }
+          @else {
+            <!-- Empty Star -->
+            <i class="fa fa-star text-gray-300"></i>
+          }
+        }
+      </div>
+
+      <!-- Product Price -->
+      <p class="font-medium price">
+        <!-- Current Price -->
+        <span class="text-header-second-primary me-1">
+          {{ price }} <span>EGP</span>
+        </span>
+
+        <!-- Old Price (if exists) -->
+        @if (oldPrice) {
+          <span class="text-text-placeholder line-through text-sm">
+            {{ oldPrice }} <span>EGP</span>
+          </span>
+        }
+      </p>
+    </div>
+
+    <!-- Add to Cart Button -->
+    <button
+      class="w-8 h-8 md:w-10 md:h-10 border text-white bg-icon-primary rounded-full flex items-center justify-center">
+      <i class="fa fa-shopping-cart"></i>
+    </button>
+  </div>
+</p-card>

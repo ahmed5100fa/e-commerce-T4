@@ -3,24 +3,30 @@
     // Background colors
     --background-primary: #{$background-primary-light};
     --background-secondary: #{$background-secondary-light};
-    
+
     // Text colors
     --text-primary: #{$text-primary-light};
     --text-secondary: #{$text-secondary-light};
     --text-placeholder: #{$text-placeholder-light};
-    
+
     // Button background colors
     --button-primary: #{$button-primary-light};
     --button-secondary: #{$button-secondary-light};
-    
+
     // Icon background colors
     --icon-primary: #{$icon-primary-light};
-    
+
     // Modal colors
     --success: #{$success-light};
-    
+
     // Link colors
     --link-primary: #{$link-primary-light};
     //borders
     --border-primary: #{$border-primary-light};
+
+    //headers
+    --header-main-primary: #{$header-main-primary-light};
+    --header-second-primary: #{$header-second-primary-light};
+    --header-second-background: #{$header-second-background-light};
+    --header-second-line: #{$header-second-line-light};
 }
