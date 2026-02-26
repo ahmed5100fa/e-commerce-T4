@@ -1,0 +1,22 @@
+div{
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+}
+
+@media (max-width: 640px) {
+  .left-section,
+  .right-section {
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .left-section,
+  .right-section {
+    width: 100% !important;
+  }
+}
+

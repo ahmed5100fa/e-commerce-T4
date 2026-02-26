@@ -1,0 +1,19 @@
+<!-- trusted by section -->
+<section class="w-full bg-background-secondary p-6">
+  <!-- header -->
+  <h2 class="text-center text-2xl sm:text-3xl lg:text-4xl font-bold text-header-main-primary">
+    Trusted by over <span class="text-header-second-primary">4.5k+</span> companies
+  </h2>
+
+  <!-- images -->
+  <div class="flex justify-center flex-wrap gap-4">
+    @for (item of images; track $index) {
+      <img
+        [src]="item"
+        alt="Trusted Company Logo"
+        class=" w-50 object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition duration-300"
+      />
+    }
+  </div>
+
+</section>
