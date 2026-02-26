@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { Navbar } from "../../layouts/main layout/navbar/navbar";
-import { BestSelling } from "./components/best-selling/best-selling";
-import { TrustedBy } from "./components/trusted-by/trusted-by";
+import { Component, Input, OnInit } from '@angular/core';
+import { AboutUs } from './components/about-us/about-us';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'home-page',
-  imports: [Navbar, BestSelling, TrustedBy],
+  standalone: true,
+  imports: [AboutUs,],
   templateUrl: './home.html',
   styleUrls: ['./home.scss'],
 })

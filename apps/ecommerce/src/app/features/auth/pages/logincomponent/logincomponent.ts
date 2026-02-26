@@ -17,13 +17,15 @@ import { AuthApiAdaptorService } from 'libs/auth/src/lib/adaptor/auth-api.adapto
 import { AuthLibraryService } from '@org/auth';
 import { AuthApiAdaptor } from 'libs/auth/src/lib/interfaces/adaptor';
 import { CustomButton } from '@Ui-components';
+import { FormLabel } from "apps/ecommerce/src/app/shared/components/form-label/form-label";
+import { FormLink } from "apps/ecommerce/src/app/shared/components/form-link/form-link";
 
 @Component({
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  imports: [RouterModule, FormInput, FormsModule, ReactiveFormsModule,CustomButton],
+  imports: [RouterModule, FormInput, FormsModule, ReactiveFormsModule, CustomButton, FormLabel, FormLink],
 })
 export class LoginComponent {
   private readonly _authLibraryService = inject(AuthLibraryService);
@@ -45,7 +47,6 @@ export class LoginComponent {
 
 
 
-
  submitForm(): void {
   if (this.loginForm.valid) {
 
@@ -57,9 +58,12 @@ export class LoginComponent {
           this.msgSuccess = 'Logged in successfully';
           this.msgError = '';
 
+localStorage.setItem('token', res.token);
+
+
           setTimeout(() => {
             
-            inject(Router).navigate(['/home']);
+            this._router.navigate(['/home']);
           }, 2000);
         }
       },
@@ -74,6 +78,7 @@ export class LoginComponent {
 
 
   }
+  
   
   
  
