@@ -9,8 +9,7 @@ export const appRoutes: Route[] = [
     path: '',
     component: Authlayout,
     children: [
-      { path: 'login', component:LoginComponent },
-      { path: 'verify-otp', component:VerifyOtp },
+      { path: 'login', component: LoginComponent },
       {
         path: 'register',
         loadComponent: () =>
@@ -21,8 +20,5 @@ export const appRoutes: Route[] = [
 
       { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],
-
-
-
   },
 ];
