@@ -1,7 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, inject, input, Input, output, signal, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, input, Input, OnDestroy, OnInit, output, signal, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthLibraryService } from '@org/auth';
 import { CustomButton } from "@Ui-components";
+import { Router, RouterLink } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { InputOtp } from "primeng/inputotp";
 
 /**
  * VerifyOtp Component
@@ -24,13 +28,20 @@ import { CustomButton } from "@Ui-components";
 
 @Component({
   selector: 'app-verify-otp',
-  imports: [CommonModule, CustomButton],
+  imports: [CommonModule, CustomButton, InputOtp, ReactiveFormsModule, RouterLink],
   templateUrl: './verify-otp.html',
   styleUrl: './verify-otp.css',
 })
-export class VerifyOtp {
+export class VerifyOtp implements OnInit, OnDestroy {
   private timerInterval: any;
   private _AuthService = inject(AuthLibraryService);
+  private subscriptions: Subscription[] = [];
+  value: any;
+  private readonly _fb = inject(FormBuilder);
+  private readonly _authService = inject(AuthLibraryService);
+  private readonly _router = inject(Router);
+  msgError: string = '';
+
 
   _currentStep = output<1|2|3>();
 
@@ -45,6 +56,8 @@ export class VerifyOtp {
 
   ngOnInit() {
     this.startTimer();
+    this.initForm(); //yous
+
   }
 
   ngAfterViewInit() {
@@ -53,6 +66,8 @@ export class VerifyOtp {
 
   ngOnDestroy() {
     this.clearTimer();
+    this.subscriptions.forEach(sub => sub.unsubscribe()); //yous
+
   }
 
   clearTimer() {
@@ -108,7 +123,61 @@ export class VerifyOtp {
     }, 100);
   }
   submitCode() {
+    console.log("submit code");
+    this.formSubmit();
     this._currentStep.emit(3);
   }
+
+
+/* ================= code=>Yous =============== */
+
+
+  // private readonly router=inject(Router); >> reset password page not ready yet
+
+  verifyCode!: FormGroup;
+userEmail: string = '';
+  step: number = 1;
+
+  initForm(): void {
+    this.verifyCode = this._fb.group({
+      otp: [null, [Validators.required]],
+      // c2: [null, [Validators.required]],
+      // c3: [null, [Validators.required]],
+      // c4: [null, [Validators.required]],
+      // c5: [null, [Validators.required]],
+      // c6: [null, [Validators.required]],
+    });
+
+  }
+
+  formSubmit(): void {
+    if (this.verifyCode.valid) {
+      const paylod = {
+        resetCode:this.verifyCode.value.otp
+      };
+
+   const sub = this._authService.verifyResetCode(paylod).subscribe({
+  next: (response) => {
+    console.log(response);
+   
+  },
+  error: (err) => {
+    this.msgError = err.error.message;
+  }
+});
+
+this.subscriptions.push(sub);
+
+      
+    }else{
+      console.log("invalid form");
+      console.log(this.verifyCode);
+    }
+  }
+
+
+
+
+
 
 }
