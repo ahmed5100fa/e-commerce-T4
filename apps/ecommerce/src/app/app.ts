@@ -6,6 +6,7 @@ import { SliderModule } from 'primeng/slider';
 import { AuthLibraryService } from '@org/auth';
 import { PhoneInput } from './shared/components/phone-input/phone-input';
 import { FormInput } from './shared/components/form-input/form-input';
+import { Navbar } from "./layouts/main layout/navbar/navbar";
 @Component({
   imports: [
     RouterModule,
@@ -14,7 +15,8 @@ import { FormInput } from './shared/components/form-input/form-input';
     PhoneInput,
     NxWelcome,
     FormInput,
-  ],
+    Navbar
+],
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],
