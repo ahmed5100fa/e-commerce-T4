@@ -21,4 +21,6 @@ export const appRoutes: Route[] = [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],
   },
+
+  {path: 'verify-otp', component:VerifyOtp}
 ];
