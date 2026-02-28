@@ -1,8 +1,10 @@
 @use './tailwind.css' as *;
-@import "flowbite/dist/flowbite.min.css";
+@import '../../../node_modules/flowbite/dist/flowbite.min.css';
 @import '../../../libs/shared-styles/src/lib/main.scss';
 @import 'primeicons/primeicons.css';
-@import '@fortawesome/fontawesome-free/css/all.min.css';
+// Temporarily removed Font Awesome import because Angular CSS resource plugin
+// cannot resolve its webfont URLs correctly. Re-add later via CDN <link>
+// or a custom asset configuration if needed.
 
 :root {
   // Toaster blur
