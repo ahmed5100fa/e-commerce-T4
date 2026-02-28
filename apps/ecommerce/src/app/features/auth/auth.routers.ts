@@ -6,11 +6,6 @@ export const authRouters: Route[] = [
       import('../../layouts/auth layout/authlayout').then((m) => m.Authlayout),
     children: [
       {
-        path: 'register',
-        loadComponent: () =>
-          import('./register/register').then((m) => m.RegisterComponent),
-      },
-      {
         path: 'login',
         loadComponent: () =>
           import('./pages/logincomponent/logincomponent').then(
@@ -23,6 +18,11 @@ export const authRouters: Route[] = [
           import('./pages/forgetPassword/forgetPassword').then(
             (m) => m.ForgetPassword,
           ),
+      },
+      {
+        path: 'register',
+        loadComponent: () =>
+          import('../auth/register/register').then((m) => m.RegisterComponent),
       },
       { path: '', redirectTo: 'login', pathMatch: 'full' },
     ],

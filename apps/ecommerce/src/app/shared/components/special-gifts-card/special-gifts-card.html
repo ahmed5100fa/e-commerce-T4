@@ -1,0 +1,25 @@
+<div class="relative rounded-lg overflow-hidden shadow-lg group cursor-pointer h-[300px]">
+  <!-- Image -->
+  <img
+    [src]="image"
+    alt="{{ title }}"
+    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+  />
+
+  <div class="absolute bottom-4 left-4 right-4">
+      <!-- Tag -->
+  <div class="mb-3 left-4">
+    @if (label) {
+    <span
+      class="bg-red-200 text-red-800 text-xs font-medium px-2 py-1 rounded">
+      {{ label }}
+    </span>
+  }
+  </div>
+
+  <!-- Title -->
+  <div class=" text-white text-lg font-semibold drop-shadow-lg">
+    {{ title }}
+  </div>
+  </div>
+</div>

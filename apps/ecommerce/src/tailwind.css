@@ -14,4 +14,10 @@
   --color-success: var(--success);
   --color-link-primary: var(--link-primary);
   --color-border-primary: var(--border-primary);
+  --color-header-main-primary: var(--header-main-primary);
+  --color-header-second-primary: var(--header-second-primary);
+  --color-header-second-background: var(--header-second-background);
+  --color-header-second-line: var(--header-second-line);
+  --color-navbar-link: var(--navbar-link);
+  --color-navbar-link-hover: var(--navbar-link-hover);
 }

@@ -21,6 +21,7 @@ import { InputAlertComponent } from './components/input-alert/input-alert';
 import { REGEX } from '../../../shared/constants/regex.constants';
 import { passwordMatchValidator } from './services/password-match.validator';
 import { Subscription } from 'rxjs';
+import { LucideAngularModule, FileIcon } from 'lucide-angular';
 
 @Component({
   selector: 'register-form',
@@ -39,6 +40,7 @@ import { Subscription } from 'rxjs';
     ReactiveFormsModule,
     InputAlertComponent,
     AlertComponent,
+    LucideAngularModule,
   ],
 })
 export class RegisterComponent {
@@ -47,6 +49,7 @@ export class RegisterComponent {
   private readonly authLibraryService = inject(AuthLibraryService);
   private readonly formBuilder = inject(FormBuilder);
   private readonly route = inject(Router);
+  readonly filesName = FileIcon;
   // Global Properties
   disableButton: boolean = false;
   icon: string = '';

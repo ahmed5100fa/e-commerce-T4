@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LucideAngularModule, LucideIconNode } from 'lucide-angular';
 
 // import{createIcons} from ""
 
@@ -13,7 +14,7 @@ type ButtonStyle =
 
 @Component({
   selector: 'lib-custom-button',
-  imports: [CommonModule],
+  imports: [CommonModule, LucideAngularModule],
   templateUrl: './button.html',
   styleUrl: './button.scss',
 })
@@ -21,7 +22,7 @@ export class CustomButton {
   // ==== Global Propierties for Button ======
   @Input() label!: string;
   @Input() disabledState = false;
-  @Input() icon = '';
+  @Input() icon!: readonly LucideIconNode[];
   @Input() dir: 'ltr' | 'rtl' = 'ltr';
   @Input() buttonStyle: ButtonStyle = 'primary';
   @Input() buttonType: 'button' | 'submit' | 'reset' = 'button';
