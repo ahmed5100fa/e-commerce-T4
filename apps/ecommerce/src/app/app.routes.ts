@@ -1,6 +1,7 @@
 import { VerifyOtp } from './features/auth/components/verify-otp/verify-otp';
 import { Route } from '@angular/router';
 import { authRouters } from './features/auth/auth.routers';
+
 import { LoginComponent } from './features/auth/pages/logincomponent/logincomponent';
 import { Authlayout } from './layouts/auth layout/authlayout';
 
@@ -23,4 +24,10 @@ export const appRoutes: Route[] = [
   },
 
   {path: 'verify-otp', component:VerifyOtp}
+
+import { mainRouter } from './layouts/main-layout/main.routes';
+export const appRoutes: Route[] = [
+  ...authRouters,
+  ...mainRouter,
+
 ];

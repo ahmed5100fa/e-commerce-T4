@@ -128,6 +128,6 @@ export class RegisterComponent {
   }
   // Life Cycle Hooks
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 }
