@@ -1,0 +1,65 @@
+<section class="container mx-auto md:w-[80%]">
+  <div class="py-5 grid grid-cols-12 gap-3">
+    <!-- another card -->
+    <div class="hidden lg:block lg:col-span-3">
+      <special-card
+        [label]="'Staring from 10.99 EGP'"
+        [text]="'Special Gifts For The People You Love'"
+      >
+        <div class="mt-1">
+          <lib-custom-button
+            [buttonStyle]="'second'"
+            [label]="'Shop Now'"
+            [icon]="arrowIcon"
+          ></lib-custom-button>
+        </div>
+      </special-card>
+    </div>
+    <!-- Carousel -->
+    <div class="col-span-12 lg:col-span-9">
+      <owl-carousel-o [options]="customOptions">
+        @for (item of imges; track $index) {
+        <ng-template carouselSlide>
+          <div class="relative">
+            <div
+              [class]="imges[$index]"
+              class="w-full h-120 bg-center bg-cover rounded-2xl"
+            >
+              <div
+                class="bg-linear-90 from-[rgba(0,0,0,0.7)] to-transparent w-full h-full rounded-2xl p-5 flex flex-col justify-end"
+              >
+                <div class="texts">
+                  <h2 class="text-white font-semibold text-5xl pb-3">
+                    {{titles[$index]}}
+                  </h2>
+                  <p class="text-white text-xl">{{subTitle[$index]}}</p>
+                </div>
+                <div class="mt-6">
+                  <lib-custom-button
+                    [buttonStyle]="'second'"
+                    [label]="'I’m buying !'"
+                  ></lib-custom-button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+        }
+      </owl-carousel-o>
+    </div>
+  </div>
+  <div class="grid grid-cols-12 gap-5">
+    @for (img of specialCardImgs; track $index) {
+
+    <div class="col-span-4 h-50">
+      <special-card
+        [imgSrc]="img"
+        [label]="specialCardLabels[$index]"
+        [text]="specialCardTexts[$index]"
+      >
+      </special-card>
+    </div>
+
+    }
+  </div>
+</section>
