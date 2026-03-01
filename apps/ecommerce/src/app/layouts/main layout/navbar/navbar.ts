@@ -14,7 +14,7 @@ import { DropdownContent } from "./components/dropdown-content/dropdown-content"
 })
 export class Navbar {
   @Output() toggleSidebar = new EventEmitter<void>();
-  isLoggedIn = signal<boolean>(false);
+  isLoggedIn = signal<boolean>(true);
 
   isSidebarOpen = signal(false);
   isAccountDropdownOpen = signal(false);
@@ -39,13 +39,13 @@ export class Navbar {
     this.isAccountDropdownOpen.set(false);
   }
 
- ngOnInit() {
-        this.checkLoginStatus();
-  }
+//  ngOnInit() {
+//         this.checkLoginStatus();
+//   }
 
-  checkLoginStatus() {
-    this.isLoggedIn.set(!!localStorage.getItem('token'));
-  }
+//   checkLoginStatus() {
+//     this.isLoggedIn.set(!!localStorage.getItem('token'));
+//   }
 
 
 }

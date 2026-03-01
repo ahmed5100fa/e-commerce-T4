@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from "@angular/router";
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { LucideAngularModule } from 'lucide-angular';
 
 @Component({
   selector: 'app-second-nav',
-  imports: [RouterLink, RouterLinkActive],
+  standalone: true,
+  imports: [RouterLink, RouterLinkActive, LucideAngularModule], // لازم
   templateUrl: './second-nav.html',
-  styleUrl: './second-nav.css',
+  styleUrls: ['./second-nav.css'],
 })
 export class SecondNav {}
