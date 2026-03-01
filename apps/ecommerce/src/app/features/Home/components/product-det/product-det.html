@@ -1,0 +1,41 @@
+<!-- product => section -->
+<!-- [routerLink]="['/product', product.id]" -->
+
+<section>
+  <div class="container">
+    <div class="grid sm:grid-cols-12 items-center gap-4">
+      <!-- image -->
+      <div class="col-span-6">
+        <!-- image cover ! => , title!!    -->
+        <img
+          [src]="productDetails.imgCover"
+          class="w-full"
+          [alt]="productDetails.title"
+        />
+      </div>
+      <!-- content -->
+      <div class="col-span-6">
+        <!-- title !! -->
+        <h2 class="text-2xl">{{productDetails.title}}</h2>
+        <!-- description !! -->
+        <p class="text-gray-700 text-sm my-2">{{productDetails.description}}</p>
+        <!-- category name !! -->
+        <span class="">{{productDetails.category}}</span>
+
+        <div class="items-center">
+          <!-- price !! -->
+          <span>{{productDetails.price}} EGP</span>
+          <!-- rated -->
+          <br />
+          <span
+            ><i class="pi pi-star-fill text-yellow-300"></i>
+            {{productDetails.rateCount}}</span
+          >
+        </div>
+
+        <lib-custom-button [icon]=" 'pi pi-cart-minus'" [label]="'add to cart'">
+        </lib-custom-button>
+      </div>
+    </div>
+  </div>
+</section>

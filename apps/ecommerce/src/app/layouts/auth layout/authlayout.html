@@ -1,27 +1,23 @@
-<div class="flex  ">
-
+<div class="flex">
   <!-- LEFT SIDE -->
-  <div class="flex w-full md:w-1/2 flex-col justify-center items-center px-6  gap-5 ">
-
+  <div
+    class="flex w-full md:w-1/2 flex-col justify-center items-center px-6 gap-5"
+  >
     <app-dicor-image></app-dicor-image>
 
-
-
-
-
-    <div class="w-full max-w-md flex justify-center items-center ">
+    <div class="w-full max-w-md flex justify-center items-center">
       <div class="flex justify-center items-center w-full">
         <router-outlet></router-outlet>
       </div>
     </div>
 
     <app-dicor-image [rotate]="180"></app-dicor-image>
-
   </div>
 
   <!-- RIGHT SIDE -->
-  <div class=" md:flex flex-1 justify-end overflow-visible">
-    <app-auth-right-image ></app-auth-right-image>
-  </div>
+  <div class="md:flex flex-1 justify-end overflow-visible">
+   <app-auth-right-image></app-auth-right-image>
+<div class="bg-red-950 w-400px h-200px"></div>
 
+  </div>
 </div>
