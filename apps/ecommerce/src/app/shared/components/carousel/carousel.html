@@ -1,4 +1,4 @@
-<div class="relative w-3/4 max-w-6xl mx-auto">
+<div class="relative max-w-6xl mx-auto w-auto">
   <p-carousel
     #carousel
     [value]="products"
@@ -13,7 +13,7 @@
 
   >
     <ng-template pTemplate="item" let-product>
-  <div class="m-2">
+  <div class="p-2">
     <app-card [product]="product"></app-card>
   </div>
 </ng-template>

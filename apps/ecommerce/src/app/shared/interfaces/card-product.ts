@@ -1,3 +1,16 @@
+export interface gatAllProducts {
+  message: string
+  metadata: Metadata
+  products: Product[]
+}
+
+export interface Metadata {
+  currentPage: number
+  totalPages: number
+  limit: number
+  totalItems: number
+}
+
 // API Product Model
 export interface Product {
   _id: string;

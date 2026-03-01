@@ -21,6 +21,7 @@
     "@primeuix/themes": "^2.0.3",
     "@tailwindcss/postcss": "^4.1.18",
     "@tailwindcss/vite": "^4.1.18",
+    "flowbite": "^1.6.5",
     "express": "^4.21.2",
     "lucide-angular": "^0.563.0",
     "ngx-owl-carousel-o": "^21.0.0",

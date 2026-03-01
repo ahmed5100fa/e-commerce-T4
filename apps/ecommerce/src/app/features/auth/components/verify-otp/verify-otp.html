@@ -1,21 +1,57 @@
-<p class="text-gray-600 mb-4">
-  @if (!canResend) {
-    You can request another code in:
-    <strong>{{ timer() }}s</strong>
-  } @else {
-    Didn’t receive the code?
-    <a
-      (click)="resendCode()"
-      class="text-blue-500 font-medium ml-1"
-      style="cursor: pointer;"
-    >
-      Resend Code
-    </a>
-  }
-</p>
+<section>
+  <div
+    class="container mx-auto flex flex-col justify-center items-center gap-4 px-4">
+    <!-- Title -->
+    <div>
+      <h2 class="font-semibold text-2xl">Enter The OTP Code</h2>
+      <div class="flex gap-2">
+        <p class="text-gray-600">We have sent a6-digit code to {{userEmail}}</p>
+        <a routerLink="/forget-password" class="text-blue-500 underline"
+          >Edit</a
+        >
+      </div>
+    </div>
 
+    <!-- OTP Form -->
+    <div class="w-full max-w-xs">
+      <form
+        [formGroup]="verifyCode"
+        (ngSubmit)="formSubmit()"
+        class="flex flex-col gap-4"
+      >
+        <div class="card flex justify-center">
+          <p-inputotp name="otp" [length]="6" formControlName="otp" />
+        </div>
 
-<lib-custom-button
-  [label]="'Verify'"
-  [buttonStyle]="'primary'"
-  (buttonClicked)="submitCode()"></lib-custom-button>
+        <!-- the buttonClicked not working -->
+
+        <lib-custom-button
+          [label]="'Verify'"
+          [buttonStyle]="'primary'"
+          (buttonClicked)="submitCode()"
+        ></lib-custom-button>
+      </form>
+      <p class="text-gray-600 mb-4">
+        @if (!canResend) { You can request another code in:
+        <strong>{{ timer() }}s</strong>
+        } @else { Didn’t receive the code?
+        <a
+          (click)="resendCode()"
+          class="text-blue-500 font-medium ml-1"
+          style="cursor: pointer"
+        >
+          Resend Code
+        </a>
+        }
+      </p>
+    </div>
+
+    <!-- Help Links -->
+    <div class="flex">
+      <p>Need help?</p>
+      <a class="font-bold text-red-900" routerLink="/..register-example"
+        >Contact us</a
+      >
+    </div>
+  </div>
+</section>
