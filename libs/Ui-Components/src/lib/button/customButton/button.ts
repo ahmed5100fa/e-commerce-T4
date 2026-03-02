@@ -22,7 +22,7 @@ export class CustomButton {
   // ==== Global Propierties for Button ======
   @Input() label!: string;
   @Input() disabledState = false;
-  @Input() icon!: readonly LucideIconNode[] | undefined;
+  @Input() icon?: readonly LucideIconNode[] | string;
   @Input() dir: 'ltr' | 'rtl' = 'ltr';
   @Input() buttonStyle: ButtonStyle = 'primary';
   @Input() buttonType: 'button' | 'submit' | 'reset' = 'button';

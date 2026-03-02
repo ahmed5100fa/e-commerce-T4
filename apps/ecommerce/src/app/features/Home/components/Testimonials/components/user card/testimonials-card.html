@@ -1,0 +1,32 @@
+<div
+  class="relative w-full max-w-sm bg-white rounded-3xl pt-16 pb-8 px-8 shadow-sm text-center"
+>
+  <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div
+      class="w-32 h-32 rounded-full border-4 border-white overflow-hidden shadow-md"
+    >
+      <img
+        [src]="userImg"
+        [alt]="userName"
+        class="w-full h-full object-cover"
+      />
+    </div>
+  </div>
+
+  <h2 class="text-[#2D2D2D] text-xl font-bold mb-4">{{userName}}</h2>
+
+  <div class="flex justify-center gap-1 mb-4 text-[#FFB800]">
+    <lucide-icon [img]="Star" class="w-5 h-5 fill-current"></lucide-icon>
+    <lucide-icon [img]="Star" class="w-5 h-5 fill-current"></lucide-icon>
+    <lucide-icon [img]="Star" class="w-5 h-5 fill-current"></lucide-icon>
+    <lucide-icon [img]="Star" class="w-5 h-5 fill-current"></lucide-icon>
+    <lucide-icon
+      [img]="Star"
+      class="w-5 h-5 text-[#FFB800] opacity-40"
+    ></lucide-icon>
+  </div>
+
+  <p class="text-[#4A4A4A] leading-relaxed mb-8 text-[15px]">{{userComment}}</p>
+
+  <div class="text-gray-400 text-sm font-medium">January 12, 2025</div>
+</div>
