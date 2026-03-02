@@ -1,0 +1,25 @@
+<section>
+  <!-- Head -->
+  <div class="flex justify-between items-center">
+    <!-- Most -->
+    <app-second-header [text]="'Most Popular'" />
+    <!-- Links -->
+    <ul class="flex gap-2">
+      <li class="text-zinc-700">Wedding</li>
+      <li class="text-[#A6252A]">Anniversary</li>
+      <li class="text-zinc-700">Birthday</li>
+      <li class="text-zinc-700">Engagement</li>
+    </ul>
+  </div>
+  <!-- Proudcts -->
+
+  <div class="grid grid-cols-12 gap-5">
+    @for (proudct of proudctsList; track $index) {
+    <div class="col-span-4">
+      <app-card [product]="proudct"></app-card>
+    </div>
+    }
+  </div>
+
+  <!-- view more button -->
+</section>

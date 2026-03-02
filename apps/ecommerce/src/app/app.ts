@@ -6,9 +6,7 @@ import { SliderModule } from 'primeng/slider';
 import { AuthLibraryService } from '@org/auth';
 import { PhoneInput } from './shared/components/phone-input/phone-input';
 import { FormInput } from './shared/components/form-input/form-input';
-import { SpecialGiftsComponent } from './features/Home/components/special gifts/special-gifts';
-import { SpecialGiftsCard } from './shared/components/special-gifts-card/special-gifts-card';
-import { HomePageComponent } from './features/Home/home';
+import { Navbar } from "./layouts/main layout/navbar/navbar";
 @Component({
   imports: [
     RouterModule,
@@ -17,10 +15,8 @@ import { HomePageComponent } from './features/Home/home';
     PhoneInput,
     NxWelcome,
     FormInput,
-    SpecialGiftsComponent,
-    SpecialGiftsCard,
-    HomePageComponent,
-  ],
+    Navbar
+],
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrls: ['./app.scss'],

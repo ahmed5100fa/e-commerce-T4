@@ -4,6 +4,10 @@
   [formGroup]="loginForm"
   (ngSubmit)="submitForm()"
 >
+
+
+
+
   <app-form-input
     formControlName="email"
     [label]="'Email'"
@@ -34,6 +38,7 @@
       </a>
     </div>
 
+<<<<<<< HEAD
     <div class="flex items-center">
       <input id="remember-me" type="checkbox" class="mr-2" />
       <label for="remember-me" class="text-sm text-red-950">Remember me</label>
@@ -41,6 +46,30 @@
   </div>
 
   <app-form-link
+=======
+
+
+   <div class="flex justify-end">
+    <a [routerLink]="'/forget-password'" class="text-red-950 hover:underline">
+      Forget Password?
+    </a>
+  </div>
+
+  <div class="flex items-center">
+    <input id="remember-me" type="checkbox" class="mr-2">
+    <label for="remember-me" class="text-sm text-red-950">Remember me</label>
+  </div>
+
+
+
+
+</div>
+
+
+
+<app-form-link
+
+>>>>>>> f3038d9e9a89215023a3b7a0532a409d659f8f82
     [routerLink]="'/register'"
     [label]="'Don\'t have an account yet?'"
     [link]="'Register'"
