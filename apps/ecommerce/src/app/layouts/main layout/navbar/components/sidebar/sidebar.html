@@ -78,21 +78,31 @@
         <span>About</span>
       </a>
     </div>
-    @if(isLoggedIn()){
-    <div class="p-4">
-      <button (click)="onToggleAccountDropdown()" class="flex items-center justify-between w-full py-2 text-navbar-link hover:text-navbar-link-hover">
-        <div class="flex items-center gap-3 text-text-primary">
-          <i class="fa-solid fa-user-circle text-xl w-6"></i>
-          <span class="font-medium ">My Account</span>
-        </div>
-        <i class="fa-solid fa-chevron-down text-sm transition-transform duration-200" [class.rotate-180]="isAccountDropdownOpen"></i>
-      </button>
+    @if(isLoggedIn()) {
+      <div class="p-4 relative">
 
-      <!-- Dropdown -->
-      @if (isAccountDropdownOpen) {
-        <app-dropdown-content></app-dropdown-content>
-      }
-    </div>
+        <button
+          (click)="onToggleAccountDropdown()"
+          class="flex items-center justify-between w-full py-2 text-navbar-link hover:text-navbar-link-hover">
+
+          <div class="flex items-center gap-3 text-text-primary">
+            <i class="fa-solid fa-user-circle text-xl w-6"></i>
+            <span class="font-medium">My Account</span>
+          </div>
+
+          <i class="fa-solid fa-chevron-down text-sm transition-transform duration-200"
+            [class.rotate-180]="isAccountDropdownOpen">
+          </i>
+
+        </button>
+
+        @if (isAccountDropdownOpen) {
+          <div class="absolute top-full right-0 mt-2 w-48 bg-white shadow-lg rounded-lg z-50">
+            <app-dropdown-content></app-dropdown-content>
+          </div>
+        }
+
+      </div>
     }@else {
       <a class="flex items-center gap-3 py-3 ps-4 text-text-primary cursor-pointer hover:text-sidebar-link-hover" routerLink="/login">
         <i class="fa-solid fa-user w-6"></i>
