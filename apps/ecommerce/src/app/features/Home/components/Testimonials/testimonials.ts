@@ -1,7 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TestimonialsCard } from './components/user card/testimonials-card';
 import { MainHeader } from 'apps/ecommerce/src/app/shared/components/mainHeader/mainHeader';
 import { SecondHeader } from 'apps/ecommerce/src/app/shared/components/secondHeader/secondHeader';
+import { TestimonialService } from '../../services/testimonialsService/testimonials.service';
+import { TestimonialsUsers } from 'apps/ecommerce/src/app/shared/interfaces/testimonials.interface';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'testimonials-section',
@@ -11,24 +14,19 @@ import { SecondHeader } from 'apps/ecommerce/src/app/shared/components/secondHea
   styleUrls: ['./testimonials.scss'],
 })
 export class TestimonialsSection {
-  users = [
-    {
-      userName: 'Jake Miller',
-      userComment:
-        "I've been ordering from this flower shop for years and they never disappoint. The quality and service are exceptional!",
-      userImg: './testimonials/1.png',
-    },
-    {
-      userName: 'Tyler Brooks',
-      userComment:
-        "Customer service is top-notch and the flowers last longer than any others I've bought. Highly recommend!",
-      userImg: './testimonials/2.png',
-    },
-    {
-      userName: 'Max Turner',
-      userComment:
-        'The team truly cares about every order. I always feel confident when I buy flowers from here. The checkout process was sup...',
-      userImg: './testimonials/3.png',
-    },
-  ];
+  private readonly _testimonialService = inject(TestimonialService);
+  users: TestimonialsUsers[] = [];
+  subscription = new Subscription();
+
+  ngOnInit(): void {
+    this.subscription = this._testimonialService.getTestmioinals().subscribe({
+      next: (res) => {
+        this.users = res.testimonials;
+      },
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
 }

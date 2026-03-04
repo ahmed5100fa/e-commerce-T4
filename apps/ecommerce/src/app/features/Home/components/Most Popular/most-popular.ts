@@ -15,16 +15,14 @@ import { Card } from 'apps/ecommerce/src/app/shared/components/card/card';
 export class MostPopularSection {
   private readonly proudctService = inject(ProductService);
 
-  proudctsList: Product[] = []
+  proudctsList: Product[] = [];
   subscription = new Subscription();
 
   ngOnInit(): void {
     this.subscription = this.proudctService.getProducts().subscribe({
       next: (res) => {
-        this.proudctsList = res.products;
-        console.log(this.proudctsList);
+        this.proudctsList = res.products.slice(0, 12);
       },
-      error: (err) => {},
     });
   }
 }

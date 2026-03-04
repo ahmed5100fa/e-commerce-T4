@@ -6,10 +6,6 @@
   class="flex flex-col gap-y-20 sm:flex-row sm:gap-5 items-center justify-center my-6 bg-[#FDE2E4] py-30"
 >
   @for (user of users; track $index) {
-  <testimonials-card
-    [userName]="user.userName"
-    [userComment]="user.userComment"
-    [userImg]="user.userImg"
-  />
+  <testimonials-card [testimonal]="user" />
   }
 </div>

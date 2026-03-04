@@ -7,26 +7,23 @@
     >
       <img
         [src]="userImg"
-        [alt]="userName"
+        [alt]="`${userFirstName} ${userLastName}`"
         class="w-full h-full object-cover"
       />
     </div>
   </div>
 
-  <h2 class="text-[#2D2D2D] text-xl font-bold mb-4">{{userName}}</h2>
-
-  <div class="flex justify-center gap-1 mb-4 text-[#FFB800]">
+  <h2 class="text-[#2D2D2D] text-xl font-bold mb-4">
+    {{`${userFirstName} ${userLastName}`}}
+  </h2>
+  <div class="flex justify-center gap-1 mb-4 text-yellow-500">
+    @for (rate of [1,2,3,4,5]; track $index) { @if (userRate >= $index + 1) {
     <lucide-icon [img]="Star" class="w-5 h-5 fill-current"></lucide-icon>
-    <lucide-icon [img]="Star" class="w-5 h-5 fill-current"></lucide-icon>
-    <lucide-icon [img]="Star" class="w-5 h-5 fill-current"></lucide-icon>
-    <lucide-icon [img]="Star" class="w-5 h-5 fill-current"></lucide-icon>
-    <lucide-icon
-      [img]="Star"
-      class="w-5 h-5 text-[#FFB800] opacity-40"
-    ></lucide-icon>
+    } @else {
+    <lucide-icon [img]="Star" class="w-5 h-5 text-yellow-500"></lucide-icon>
+    } }
   </div>
-
   <p class="text-[#4A4A4A] leading-relaxed mb-8 text-[15px]">{{userComment}}</p>
 
-  <div class="text-gray-400 text-sm font-medium">January 12, 2025</div>
+  <div class="text-gray-400 text-sm font-medium">{{commentDate}}</div>
 </div>
