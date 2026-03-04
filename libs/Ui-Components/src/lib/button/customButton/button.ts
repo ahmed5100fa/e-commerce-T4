@@ -26,13 +26,11 @@ export class CustomButton {
   @Input() dir: 'ltr' | 'rtl' = 'ltr';
   @Input() buttonStyle: ButtonStyle = 'primary';
   @Input() buttonType: 'button' | 'submit' | 'reset' = 'button';
- 
-
 
   // Accessor for Button Classes
   get buttonClasses(): string {
     let classes =
-      'spacing-custom-button rounded-2xl transition-all text-lg border-2 flex items-center justify-center gap-2 ';
+      'w-full spacing-custom-button rounded-2xl transition-all text-lg border-2 flex items-center justify-center gap-2 ';
 
     if (!this.disabledState) {
       if (this.buttonStyle === 'primary')
