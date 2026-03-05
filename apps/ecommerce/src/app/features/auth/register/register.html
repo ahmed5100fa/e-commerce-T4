@@ -166,24 +166,14 @@
 
     <!-- Button -->
 
-    <div class="">
-      <div class="">
-        <lib-custom-button
-          [label]="'Create Account'"
-          [buttonStyle]="'primary'"
-          [disabledState]="disableButton"
-          [icon]="filesName"
-          [buttonType]="'submit'"
-        ></lib-custom-button>
-      </div>
-
-      <app-form-link
-        [routerLink]="'/login'"
-        [label]="'Already have an account? '"
-        [link]="'Login'"
-      ></app-form-link>
-
-      <lib-custom-alert></lib-custom-alert>
+     <div class="">
+      <lib-custom-button
+        [label]="'Create Account'"
+        [buttonStyle]="'primary'"
+        [disabledState]="disableButton"
+        [icon="icon"
+        [buttonType]="'submit'"
+      ></lib-custom-button>
     </div>
   </form>
 </div>

@@ -26,6 +26,8 @@ export class CustomButton {
   @Input() dir: 'ltr' | 'rtl' = 'ltr';
   @Input() buttonStyle: ButtonStyle = 'primary';
   @Input() buttonType: 'button' | 'submit' | 'reset' = 'button';
+ 
+
 
   // Accessor for Button Classes
   get buttonClasses(): string {
