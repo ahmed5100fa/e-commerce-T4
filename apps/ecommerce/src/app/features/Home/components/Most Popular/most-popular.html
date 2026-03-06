@@ -6,23 +6,39 @@
     <!-- Most -->
     <app-second-header [text]="'Most Popular'" />
     <!-- Links -->
-    <ul class="flex gap-x-4">
-      <li class="text-zinc-700">Wedding</li>
-      <li class="text-[#A6252A] font-semibold">Anniversary</li>
-      <li class="text-zinc-700">Birthday</li>
-      <li class="text-zinc-700">Engagement</li>
+    <ul class="flex gap-x-10 overflow-scroll">
+      @for (item of occasionLinks; track $index) {
+      <li
+        class="text-nowrap"
+        (click)="filterProudcts(item.name,item._id)"
+        [ngClass]="
+        activeLink === item.name
+          ? 'text-[#A6252A] font-semibold'
+          : 'text-zinc-700'
+      "
+        class="cursor-pointer text-nowrap"
+      >
+        {{ item.name }}
+      </li>
+      }
     </ul>
   </div>
   <!-- Proudcts -->
 
   <div class="grid grid-cols-12 gap-5">
-    @for (proudct of proudctsList; track $index) {
+    @for (proudct of filteredList; track $index) {
     <div class="col-span-12 sm:col-span-6 lg:col-span-4">
       <app-card [product]="proudct"></app-card>
     </div>
     }
   </div>
+  @if (filteredList.length == 0) {
+  <p class="text-center my-4 text-5xl text-zinc-400">We Don't Have Proudcts</p>
+
+  }
 
   <!-- view more button -->
-  <p></p>
+  <p class="text-end text-red-800 font-semibold">
+    View More <i class="pi pi-arrow-right"></i>
+  </p>
 </section>
