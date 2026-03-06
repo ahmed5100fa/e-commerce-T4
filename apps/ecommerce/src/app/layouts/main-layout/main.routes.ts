@@ -1,4 +1,4 @@
-import { Route } from "@angular/router";
+import { Route } from '@angular/router';
 
 export const mainRouter :Route[]  = [
     {path: 'main', loadComponent:()=>import('../../layouts/main-layout/main-layout').then(m=>m.MainLayout),

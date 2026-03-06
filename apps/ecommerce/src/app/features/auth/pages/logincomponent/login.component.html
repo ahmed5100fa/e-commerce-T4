@@ -1,24 +1,15 @@
-
-
-
-<form-label [label]="'welcome'"></form-label>
-
+<form-label [label]="'Welcome'"></form-label>
 <form
   class="w-1/2 min-w-[300px] flex flex-col gap-1"
   [formGroup]="loginForm"
   (ngSubmit)="submitForm()"
 >
-
-
-
-
   <app-form-input
     formControlName="email"
     [label]="'Email'"
     [Id]="'email'"
     [placeholder]="'Enter your email'"
     [type]="'text'"
-    {msgError}="msgError"
   >
   </app-form-input>
 
@@ -31,34 +22,32 @@
   >
   </app-form-input>
 
-<lib-custom-button  [buttonType]="'submit'" [label]="'Login'"></lib-custom-button>
-<div class="flex flex-col w-full gap-2">
+  <lib-custom-button
+    [buttonType]="'submit'"
+    [label]="'Login'"
+  ></lib-custom-button>
+  <div class="flex flex-col w-full gap-2">
+    <div class="flex justify-end">
+      <a [routerLink]="'/forgetPassword'" class="text-red-950 hover:underline">
+        Forget Password?
+      </a>
+    </div>
 
+    <div class="flex justify-end">
+      <a [routerLink]="'/forget-password'" class="text-red-950 hover:underline">
+        Forget Password?
+      </a>
+    </div>
 
-
-   <div class="flex justify-end">
-    <a [routerLink]="'/forget-password'" class="text-red-950 hover:underline">
-      Forget Password?
-    </a>
+    <div class="flex items-center">
+      <input id="remember-me" type="checkbox" class="mr-2" />
+      <label for="remember-me" class="text-sm text-red-950">Remember me</label>
+    </div>
   </div>
 
-  <div class="flex items-center">
-    <input id="remember-me" type="checkbox" class="mr-2">
-    <label for="remember-me" class="text-sm text-red-950">Remember me</label>
-  </div>
-
-
-
-
-</div>
-
-
-
-<app-form-link
-
+  <app-form-link
     [routerLink]="'/register'"
     [label]="'Don\'t have an account yet?'"
     [link]="'Register'"
   ></app-form-link>
-
 </form>
