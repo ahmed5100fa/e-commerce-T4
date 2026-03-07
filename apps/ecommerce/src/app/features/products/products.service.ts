@@ -10,7 +10,7 @@ export class ProductsService {
   isLoading = signal(false);
   private readonly _http = inject(HttpClient);
   private readonly baseUrl = inject(BaseUrl);
-  getProducts(page=0, limit=12){
+  getProducts(page=0, limit=40){
     this.isLoading.set(true);
     this._http.get<gatAllProducts>(`${this.baseUrl}/products?page=${page}&limit=${limit}`).subscribe(res=>{
       this.products.set(res);
@@ -22,7 +22,8 @@ export class ProductsService {
     return this._http.get(`${this.baseUrl}/products/${productId}/reviews`);
   }
   getProductById(productId:string){
-    return this.products().products.find(product=>product._id === productId);
+    this.getProducts();
+    return this.products().products.find(product=>product._id == productId);
   }
 
 }

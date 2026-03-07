@@ -1,9 +1,8 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { ProductReview } from "../../components/product-review/product-review";
 import { Product } from 'apps/ecommerce/src/app/shared/interfaces/card-product';
 import { JsonPipe } from '@angular/common';
-import { ActivatedRoute, Route } from 'node_modules/@angular/router/types/_router_module-chunk';
-import { Router } from 'express';
+import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../products.service';
 @Component({
   selector: 'app-productdetails',
@@ -12,11 +11,13 @@ import { ProductsService } from '../../products.service';
   styleUrl: './productdetails.css',
 })
 export class Productdetails {
-product = signal<Product>({} as Product);
+product = signal<Product | null>(null);
 
 _ProductService= inject(ProductsService);
-constructor(route:ActivatedRoute, private router:Router){
-  this.product.set(this._ProductService.getProductById(route.snapshot.paramMap.get('id')??'') as Product);
+id :any= ''
+router = inject(ActivatedRoute)
+ngOnInit(){
+  this.product.set(this._ProductService.getProductById(this.router.snapshot.paramMap.get('id')??'') as Product);
+  this.id = this.router.snapshot.paramMap.get('id');
 }
-
 }

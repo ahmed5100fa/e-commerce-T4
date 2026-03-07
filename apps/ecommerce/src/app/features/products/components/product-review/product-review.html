@@ -1,3 +1,8 @@
-<div class="product-review">
-<app-second-header title="Product Reviews"></app-second-header>
+<div class="product-review flex justify-center items-center flex-col gap-4 w-full">
+    <div class="w-full header ">
+        <app-second-header text="Product Reviews"></app-second-header>
+        <p class="text-xl-semibold">General Rating</p>
+        <p class="text-2xl-bold">{{ generalRating.toFixed(1) }} <span class="text-sm-medium text-text-placeholder">({{ reviews.length }} Ratings)</span></p>
+        <p-rating [(ngModel)]="generalRating" [readonly]="true" [readonly]="true"></p-rating>
+    </div>
 </div>

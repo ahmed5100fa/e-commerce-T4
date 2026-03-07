@@ -1,3 +1,4 @@
-{{product() | json}}
 
-<app-product-review [productId]="product()._id"></app-product-review>
+@if(product()){
+<app-product-review [productId]="product()!._id"></app-product-review>
+}
