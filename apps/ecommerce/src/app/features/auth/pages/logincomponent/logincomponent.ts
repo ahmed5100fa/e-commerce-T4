@@ -60,7 +60,7 @@ export class LoginComponent {
             localStorage.setItem('token', res.token);
 
             setTimeout(() => {
-              this._router.navigate(['/home']);
+              this._router.navigate(['/main/home']);
             }, 2000);
           }
         },
