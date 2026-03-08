@@ -6,7 +6,6 @@ import { SliderModule } from 'primeng/slider';
 import { AuthLibraryService } from '@org/auth';
 import { PhoneInput } from './shared/components/phone-input/phone-input';
 import { FormInput } from './shared/components/form-input/form-input';
-import { Navbar } from './layouts/main layout/navbar/navbar';
 import { HomePageComponent } from './features/Home/home';
 import { LoginComponent } from './features/auth/pages/logincomponent/logincomponent';
 @Component({
@@ -17,7 +16,6 @@ import { LoginComponent } from './features/auth/pages/logincomponent/logincompon
     PhoneInput,
     NxWelcome,
     FormInput,
-    Navbar,
     HomePageComponent,
     LoginComponent,
   ],
