@@ -1,15 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from 'apps/ecommerce/src/app/environments/environment';
-import { gatAllProducts } from 'apps/ecommerce/src/app/shared/interfaces/card-product';
+import { IOccasion } from 'apps/ecommerce/src/app/shared/interfaces/occasions.interface';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProductService {
+export class OccasionService {
   private http = inject(HttpClient);
-  getProducts(): Observable<gatAllProducts> {
-    return this.http.get<gatAllProducts>(`${environment.baseUrl}/products`);
+
+  getOccasions(): Observable<IOccasion> {
+    return this.http.get<IOccasion>(`${environment.baseUrl}/occasions`);
   }
 }
