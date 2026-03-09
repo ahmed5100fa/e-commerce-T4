@@ -14,10 +14,17 @@ export class Productdetails {
 product = signal<Product | null>(null);
 
 _ProductService= inject(ProductsService);
-id :any= ''
+id :string= ''
 router = inject(ActivatedRoute)
 ngOnInit(){
-  this.product.set(this._ProductService.getProductById(this.router.snapshot.paramMap.get('id')??'') as Product);
-  this.id = this.router.snapshot.paramMap.get('id');
+this.getProductId();
+}
+getProductId(){
+  this.router.paramMap.subscribe(params =>{
+    const id = params.get('id') ?? '';
+    this.id=id;
+    const productData = this._ProductService.getProductById(this.id);
+    this.product.set(productData ?? null);
+  })
 }
 }
