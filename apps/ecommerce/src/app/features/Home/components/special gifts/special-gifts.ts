@@ -43,6 +43,26 @@ export class SpecialGiftsComponent {
   ];
   specialCardLabels: string[] = ['Wedding', 'Engagement', 'Anniversary'];
 
+  gifts = [
+    {
+      image : "special-gifts/4.png",
+      label : 'Wedding',
+      title : 'Celebrate Her Forever with a Gift She’ll Always Remember'
+    },
+    {
+      image : "special-gifts/5.png",
+      label : 'Engagement',
+      title : 'Honor the Beginning of a Beautiful Journey Together'
+    },
+    {
+      image : "special-gifts/6.png",
+      label : 'Anniversary',
+      title : 'Mark Every Year of Love with a Meaningful Surprise'
+    },
+
+
+  ]
+
   // lucide icons
   arrowIcon = ArrowRight;
 
