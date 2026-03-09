@@ -9,6 +9,6 @@ import { RouterModule } from "@angular/router";
   standalone: true,
   imports: [AuthRightImage, DicorImage, RouterModule],
   templateUrl: './authlayout.html',
-  styleUrls: ['./authlayout.css'],
+  styleUrls: ['./authlayouts.scss'],
 })
 export class Authlayout {}

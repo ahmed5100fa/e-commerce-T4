@@ -52,8 +52,6 @@ export class LoginComponent {
       this._authLibraryService.login(this.loginForm.value as any).subscribe({
         next: (res: AuthApiAdaptor) => {
           console.log(res);
-
-          if (res.message === 'success') {
             this.msgSuccess = 'Logged in successfully';
             this.msgError = '';
 
@@ -61,7 +59,9 @@ export class LoginComponent {
 
             setTimeout(() => {
               this._router.navigate(['/main/home']);
-            }, 2000);
+            }, 1000);
+          if (res.message === 'success') {
+
           }
         },
 
