@@ -20,3 +20,13 @@ export interface Reviews {
     updatedAt: string;
 
 }
+export interface ReviewsResponse {
+    reviews: Reviews[];
+    message:string,
+    metadata: {
+        totalItems: number;
+        totalPages: number;
+        currentPage: number;
+        limit: number;
+    }
+}

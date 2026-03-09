@@ -2,6 +2,7 @@ import { Injectable,inject, signal, WritableSignal } from '@angular/core';
 import {gatAllProducts} from '../../shared/interfaces/card-product'
 import { HttpClient } from '@angular/common/http';
 import { BaseUrl } from '@org/auth';
+import { ReviewsResponse } from '../../shared/interfaces/reviews';
 @Injectable({
   providedIn: 'root',
 })
@@ -19,7 +20,7 @@ export class ProductsService {
   }
 
   getProductReview(productId:string){
-    return this._http.get(`${this.baseUrl}/products/${productId}/reviews`);
+    return this._http.get<ReviewsResponse>(`${this.baseUrl}/products/${productId}/reviews`);
   }
   getProductById(productId:string){
     this.getProducts();
