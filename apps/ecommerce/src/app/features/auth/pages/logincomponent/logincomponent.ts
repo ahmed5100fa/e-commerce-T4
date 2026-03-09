@@ -17,6 +17,7 @@ import { AuthApiAdaptor } from 'libs/auth/src/lib/interfaces/adaptor';
 import { CustomButton } from '@Ui-components';
 import { FormLabel } from 'apps/ecommerce/src/app/shared/components/form-label/form-label';
 import { FormLink } from 'apps/ecommerce/src/app/shared/components/form-link/form-link';
+import { StoreUserData } from 'apps/ecommerce/src/app/core/services/cookies.service';
 
 @Component({
   selector: 'app-login',
@@ -36,8 +37,10 @@ import { FormLink } from 'apps/ecommerce/src/app/shared/components/form-link/for
 export class LoginComponent {
   private readonly _authLibraryService = inject(AuthLibraryService);
   private readonly _router = inject(Router);
+  private readonly cookies = inject(StoreUserData);
   msgSuccess: string = '';
   msgError: string = '';
+  remeberMe: boolean = false;
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -47,6 +50,10 @@ export class LoginComponent {
     ]),
   });
 
+  rememberMeOption(event: Event): void {
+    this.remeberMe = (event.target as HTMLInputElement).checked;
+  }
+
   submitForm(): void {
     if (this.loginForm.valid) {
       this._authLibraryService.login(this.loginForm.value as any).subscribe({
@@ -55,7 +62,8 @@ export class LoginComponent {
             this.msgSuccess = 'Logged in successfully';
             this.msgError = '';
 
-            localStorage.setItem('token', res.token);
+            // store data in cookies
+            this.cookies.setData('userData', res, this.remeberMe);
 
             setTimeout(() => {
               this._router.navigate(['/main/home']);
