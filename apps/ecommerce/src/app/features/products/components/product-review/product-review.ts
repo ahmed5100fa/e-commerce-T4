@@ -21,7 +21,7 @@ export class ProductReview {
   reviews = signal<Reviews[]>([]);
   rating:number = 0;
 
-  isloggedIn = signal(false); //temprorary until we have implemented
+  isloggedIn = signal(true); //temprorary until we have implemented
 
 
   formBuilder = inject(FormBuilder);
@@ -38,7 +38,7 @@ export class ProductReview {
   generalRating = computed(() => {
     const reviewsList = this.reviews();
     if (reviewsList.length === 0) return 0;
-    
+
     const totalRating = reviewsList.reduce((sum, review) => sum + review.rating, 0);
     return totalRating / reviewsList.length;
   });
