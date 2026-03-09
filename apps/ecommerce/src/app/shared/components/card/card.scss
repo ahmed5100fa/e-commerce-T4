@@ -19,3 +19,7 @@ p{
 img{
   height: 300px !important;
 }
+
+::ng-deep .p-card  {
+  background-color: var(--background-primary) !important;
+}

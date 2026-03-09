@@ -27,6 +27,10 @@
               <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">8</span>
             }
           </button>
+          <p-toggleswitch
+          [ngModel]="checked()"
+          (ngModelChange)="onThemeToggle($event)">
+        </p-toggleswitch>
         </div>
 
         <button (click)="onClose()" class="text-text-primary hover:text-rose-500">
