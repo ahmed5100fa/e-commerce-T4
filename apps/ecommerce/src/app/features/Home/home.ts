@@ -5,10 +5,11 @@ import { SpecialGiftsCard } from "../../shared/components/special-gifts-card/spe
 import { FeatureBar } from "./components/feature bar/feature-bar";
 import { BestSelling } from "./components/best-selling/best-selling";
 import { TrustedBy } from "./components/trusted-by/trusted-by";
+import { Galary } from "./components/galary/galary";
 @Component({
   selector: 'home-page',
   standalone: true,
-  imports: [SpecialGiftsCard, FeatureBar, BestSelling, TrustedBy],
+  imports: [SpecialGiftsCard, FeatureBar, BestSelling, TrustedBy, Galary],
   templateUrl: './home.html',
   styleUrls: ['./home.scss'],
 })
