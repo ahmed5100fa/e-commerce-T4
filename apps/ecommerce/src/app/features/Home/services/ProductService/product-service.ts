@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
   private http = inject(HttpClient);
-  getProducts():Observable<gatAllProducts> {
+  getProducts(): Observable<gatAllProducts> {
     return this.http.get<gatAllProducts>(`${environment.baseUrl}/products`);
   }
 }

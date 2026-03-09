@@ -1,0 +1,104 @@
+<header class="w-full bg-background-primary">
+  <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-6">
+
+    <!-- Left Section -->
+    <div class="flex items-center gap-6">
+      <!-- Logo -->
+      <div class="flex items-center gap-2">
+        <img src="Assets/image/logo.png" class="w-16" alt="Rose Logo" />
+      </div>
+
+      @if (isLoggedIn()) {
+      <!-- Location -->
+      <div class="hidden lg:flex items-center gap-2 text-sm">
+        <i class="fa-solid fa-location-dot text-rose-500"></i>
+        <div class="flex flex-col leading-tight">
+          <span class="text-gray-500 text-xs">Deliver to:</span>
+          <span class="font-semibold text-header-second-primary">Cairo</span>
+        </div>
+      </div>
+      }
+    </div>
+
+    <!-- Search Bar -->
+    <div class="flex-1 max-w-3xl">
+      <div class="relative">
+        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-text-primary"></i>
+        <input type="text" placeholder="What awesome gift are you looking for?" class="w-full pl-12 pr-4 py-3 bg-border-primary rounded-xl border border-gray-400 placeholder:text-sm placeholder:text-text-primary outline-none transition" />
+      </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="flex items-center gap-6">
+    @if(isLoggedIn()){
+      <!-- User Menu -->
+      <div class="relative hidden lg:flex items-center">
+        <button (click)="toggleUserMenu()" class="flex items-center gap-1 text-sm border-l border-gray-200 pl-6">
+          <span class="text-gray-500">Hello</span>
+          <span class="font-semibold text-header-second-primary">Jonathan</span>
+          <i class="fa-solid fa-chevron-down text-xs text-gray-400 transition-transform duration-200" [class.rotate-180]="isUserMenuOpen()"></i>
+        </button>
+
+        <!-- Dropdown -->
+
+            @if (isUserMenuOpen()) {
+              <div class="absolute right-0 top-full mt-3 w-56 bg-border-primary border border-border-primary rounded-t-xl shadow-xl z-50">
+                <div class="px-4 py-3 border-b border-gray-200 ">
+                  <p class="font-medium text-header-second-primary">Joseph McFall</p>
+                </div>
+                <app-dropdown-content></app-dropdown-content>
+              </div>
+          }
+
+
+      </div>
+    }@else {
+          <a class="flex text-text-primary items-center gap-2 p-2 hover:text-gray-500 rounded-lg cursor-pointer" routerLink="/login">
+                      <i class="fa-solid fa-user"></i> Login
+          </a>
+         }
+
+      <!-- Left Divider -->
+      <div class="h-10 w-px bg-gray-300 hidden lg:block"></div>
+
+      <!-- Icons -->
+      <div class="hidden lg:flex items-center gap-6">
+        <button class="text-text-primary hover:text-rose-500 transition"><i class="fa-regular fa-heart text-lg"></i></button>
+        <button class="relative text-text-primary hover:text-rose-500 transition">
+          <i class="fa-solid fa-cart-shopping text-lg"></i>
+          @if (isLoggedIn()) {
+          <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">8</span>
+          }
+        </button>
+        <button class="relative text-text-primary hover:text-rose-500 transition">
+          <i class="fa-regular fa-bell text-lg"></i>
+          @if (isLoggedIn()) {
+          <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">8</span>
+          }
+        </button>
+      </div>
+
+      <!-- Right Divider -->
+      <div class="h-10 w-px bg-gray-300 hidden lg:block"></div>
+
+      <!-- Language -->
+      <button class="text-sm font-medium text-text-primary hover:text-rose-500 transition hidden lg:block">العربية</button>
+
+      <!-- Menu Button -->
+      <button (click)="onToggleSidebar()" class="lg:hidden text-2xl text-text-primary hover:text-rose-500 transition">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Sidebar Component -->
+<app-sidebar
+  [isOpen]="isSidebarOpen()"
+  [isAccountDropdownOpen]="isAccountDropdownOpen()"
+  (closeSidebar)="closeSidebar()"
+  (toggleAccountDropdown)="toggleAccountDropdown()">
+</app-sidebar>
+
+<!-- Second Nav Component -->
+<app-second-nav></app-second-nav>

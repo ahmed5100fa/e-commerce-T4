@@ -1,24 +1,15 @@
-
-
-
-<form-label [label]="'welcome'"></form-label>
-
+<form-label [label]="'Welcome'"></form-label>
 <form
   class="w-1/2 min-w-[300px] flex flex-col gap-1"
   [formGroup]="loginForm"
   (ngSubmit)="submitForm()"
 >
-
-
- 
-
   <app-form-input
     formControlName="email"
     [label]="'Email'"
     [Id]="'email'"
     [placeholder]="'Enter your email'"
     [type]="'text'"
-    {msgError}="msgError"
   >
   </app-form-input>
 
@@ -37,7 +28,7 @@
  
 
    <div class="flex justify-end">
-    <a [routerLink]="'/forget-password'" class="text-red-950 hover:underline">
+    <a [routerLink]="'/forgetPassword'" class="text-red-950 hover:underline">
       Forget Password?
     </a>
   </div>
@@ -47,18 +38,11 @@
     <label for="remember-me" class="text-sm text-red-950">Remember me</label>
   </div>
 
-
- 
-
-</div>
-
-
-
-<app-form-link
-
+  <app-form-link
     [routerLink]="'/register'"
     [label]="'Don\'t have an account yet?'"
     [link]="'Register'"
   ></app-form-link>
-
+</div>
 </form>
+

@@ -7,11 +7,13 @@
       <!-- image -->
       <div class="col-span-6">
         <!-- image cover ! => , title!!    -->
-        <img
+    @if (currentImage) {
+          <img
           [ngSrc]="currentImage"
           class="w-full"
           [alt]="productDetails.title"
         />
+    }
        <div class="flex gap-3 mt-4">
 
   @for (img of productDetails?.images; track img) {
@@ -56,7 +58,8 @@
         </div>
 
         <div class="flex">
-          <lib-custom-button  [icon]="'pi pi-heart'"></lib-custom-button>
+         
+<lib-custom-button [icon]="'far fa-heart'"></lib-custom-button>
           <lib-custom-button
             [icon]=" 'pi pi-cart-minus'"
             [label]="'add to cart'"
@@ -67,3 +70,6 @@
     </div>
   </div>
 </section>
+<app-carousel [products]="productsList"></app-carousel>
+
+

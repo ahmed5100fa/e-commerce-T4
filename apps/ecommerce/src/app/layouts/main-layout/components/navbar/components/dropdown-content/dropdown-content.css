@@ -1,0 +1,21 @@
+::ng-deep .p-menu .p-menu-item:hover {
+  background-color: #a3a3a300 !important;
+}
+
+::ng-deep .p-menu .p-menu-item .p-menu-item-content{
+  color: var(--text-primary);
+}
+
+
+::ng-deep .p-menu .p-menu-item .p-menu-item-icon{
+  color: var(--text-primary);
+}
+
+::ng-deep .p-menu .p-menu-item .p-menu-item-icon:hover{
+  color: var(--text-secondary);
+}
+
+::ng-deep .p-menu .p-menu-item .p-menu-item-link:hover{
+  background-color: #a3a3a300 !important;
+  text-decoration: none !important;
+}

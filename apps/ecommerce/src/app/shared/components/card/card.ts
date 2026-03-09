@@ -5,6 +5,7 @@ import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../interfaces/card-product';
+import { LucideAngularModule , Star,StarHalf } from "lucide-angular";
 
 export type TagSeverity =
   | 'success'
@@ -18,11 +19,13 @@ export type TagSeverity =
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CardModule, TagModule, RatingModule, FormsModule , CommonModule],
+  imports: [CardModule, TagModule, RatingModule, FormsModule, CommonModule, LucideAngularModule],
   templateUrl: './card.html',
   styleUrls: ['./card.scss']
 })
 export class Card {
+
+  star  = Star
 
   @Input() product!: Product;
 

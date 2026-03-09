@@ -1,6 +1,6 @@
 :host {
-  display: inline !important;      /* عشان ياخد المساحة المخصصة من flex */
-  width: 100% !important;         /* مهم جدًا */
+  display: inline !important;
+  width: 100% !important;
 }
 
 *{
