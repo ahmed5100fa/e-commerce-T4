@@ -9,10 +9,11 @@ import { ProductService } from './services/ProductService/product-service';
 import { MostPopularSection } from "./components/Most Popular/most-popular";
 import { TestimonialsSection } from "./components/Testimonials/testimonials";
 import { SpecialGiftsComponent } from "./components/special gifts/special-gifts";
+import { Galary } from "./components/galary/galary";
 @Component({
   selector: 'home-page',
   standalone: true,
-  imports: [SpecialGiftsCard, FeatureBar, BestSelling, TrustedBy, MostPopularSection, TestimonialsSection, SpecialGiftsComponent, AboutUs],
+  imports: [SpecialGiftsCard, FeatureBar, BestSelling, TrustedBy, MostPopularSection, TestimonialsSection, SpecialGiftsComponent, AboutUs, Galary],
   templateUrl: './home.html',
   styleUrls: ['./home.scss'],
 })
