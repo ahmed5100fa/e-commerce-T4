@@ -27,6 +27,7 @@
 
  
 
+
    <div class="flex justify-end">
     <a [routerLink]="'/forgetPassword'" class="text-red-950 hover:underline">
       Forget Password?
@@ -36,6 +37,17 @@
   <div class="flex items-center">
     <input id="remember-me" type="checkbox" class="mr-2">
     <label for="remember-me" class="text-sm text-red-950">Remember me</label>
+
+    <div class="flex items-center">
+      <input
+        id="remember-me"
+        type="checkbox"
+        class="mr-2"
+        (change)="rememberMeOption($event)"
+      />
+      <label for="remember-me" class="text-sm text-red-950">Remember me</label>
+    </div>
+
   </div>
 
   <app-form-link
