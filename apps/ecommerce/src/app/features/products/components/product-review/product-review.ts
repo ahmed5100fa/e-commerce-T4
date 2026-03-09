@@ -1,6 +1,6 @@
 import { Component, computed, effect, inject, input, signal } from '@angular/core';
 import { ProductsService } from '../../products.service';
-import { Reviews } from 'apps/ecommerce/src/app/shared/interfaces/reviews';
+import { Reviews, ReviewsResponse } from 'apps/ecommerce/src/app/shared/interfaces/reviews';
 import { SecondHeader } from "apps/ecommerce/src/app/shared/components/secondHeader/secondHeader";
 import { RatingModule } from 'primeng/rating';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -45,10 +45,15 @@ export class ProductReview {
 
 
   ngOnInit(){
-    this._productService.getProductReview(this.productId()).subscribe((res:any)=>{
+    this.getReviews();
+}
+
+getReviews(){
+    this._productService.getProductReview(this.productId()).subscribe((res:ReviewsResponse)=>{
       this.reviews.set(res.reviews);
     });
 }
+
 onSubmit(){
   // this part won't do anything for now as said in the video
   if(this.reviewForm.valid){
