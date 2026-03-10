@@ -1,4 +1,4 @@
-<section class="">
+<section class="w-11/12 mx-auto">
   <div class="py-5 grid grid-cols-12 gap-3">
     <!-- another card -->
     <div class="hidden lg:block lg:col-span-3">
@@ -48,18 +48,14 @@
       </owl-carousel-o>
     </div>
   </div>
-  <div class="grid grid-cols-12 gap-5">
-    @for (img of specialCardImgs; track $index) {
-
-    <div class="col-span-4 h-50">
-      <special-card
-        [imgSrc]="img"
-        [label]="specialCardLabels[$index]"
-        [text]="specialCardTexts[$index]"
-      >
-      </special-card>
-    </div>
-
-    }
-  </div>
+  <section class="mx-auto flex flex-wrap  py-3 lg:px-0">
+  @for (gift of gifts; track $index) {
+    <app-special-gifts-card
+      [image]="gift.image"
+      [title]="gift.title"
+      [label]="gift.label"
+      class="w-full lg:w-1/3 md:w-1/2 "
+    ></app-special-gifts-card>
+  }
+</section>
 </section>
