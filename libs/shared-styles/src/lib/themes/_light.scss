@@ -1,8 +1,9 @@
 @import '../abstracts/_variables.scss';
-:root[data-theme='light'], :root:not([data-theme]) {
-    // Background colors
-    --background-primary: #{$background-primary-light};
-    --background-secondary: #{$background-secondary-light};
+:root[data-theme='light'],
+:root:not([data-theme]) {
+  // Background colors
+  --background-primary: #{$background-primary-light};
+  --background-secondary: #{$background-secondary-light};
 
     // Text colors
     --text-primary: #{$text-primary-light};
@@ -14,29 +15,48 @@
     --button-primary: #{$button-primary-light};
     --button-secondary: #{$button-secondary-light};
 
-    // Icon background colors
-    --icon-primary: #{$icon-primary-light};
+  --button-secondary: #{$button-secondary-light};
+  --button-secondary-onClick: #{$button-secondary-onClick-light};
+  --button-secondary-disapled: #{$button-secondary-disapled-light};
 
-    // Modal colors
-    --success: #{$success-light};
+  --button-third: #{$button-third-light};
+  --button-third-onClick: #{$button-third-onClick-light};
+  --button-third-disapled: #{$button-third-disapled-light};
 
-    // Link colors
-    --link-primary: #{$link-primary-light};
-    //borders
-    --border-primary: #{$border-primary-light};
+  --button-fourth: #{$button-fourth-light};
+  --button-fourth-onClick: #{$button-fourth-onClick-light};
+  --button-fourth-disapled: #{$button-fourth-disapled-light};
 
-    //headers
-    --header-main-primary: #{$header-main-primary-light};
-    --header-second-primary: #{$header-second-primary-light};
-    --header-second-background: #{$header-second-background-light};
-    --header-second-line: #{$header-second-line-light};
+  --button-fifth: #{$button-fifth-light};
+  --button-fifth-onClick: #{$button-fifth-onClick-light};
+  --button-fifth-disapled: #{$button-fifth-disapled-light};
 
-    //navbar
-    --navbar-link: #{$navbar-link-light};
-    --navbar-link-hover: #{$navbar-link-hover-light};
+  --button-sixth: #{$button-sixth-light};
+  --button-sixth-onClick: #{$button-sixth-onClick-light};
+  --button-sixth-disapled: #{$button-sixth-disapled-light};
 
-    //sidebar
-    --sidebar-link: #{$sidebar-link-light};
-    --sidebar-link-hover: #{$sidebar-link-hover-light};
+  // Icon background colors
+  --icon-primary: #{$icon-primary-light};
 
+  // Modal colors
+  --success: #{$success-light};
+
+  // Link colors
+  --link-primary: #{$link-primary-light};
+  //borders
+  --border-primary: #{$border-primary-light};
+
+  //headers
+  --header-main-primary: #{$header-main-primary-light};
+  --header-second-primary: #{$header-second-primary-light};
+  --header-second-background: #{$header-second-background-light};
+  --header-second-line: #{$header-second-line-light};
+
+  //navbar
+  --navbar-link: #{$navbar-link-light};
+  --navbar-link-hover: #{$navbar-link-hover-light};
+
+  //sidebar
+  --sidebar-link: #{$sidebar-link-light};
+  --sidebar-link-hover: #{$sidebar-link-hover-light};
 }
