@@ -25,18 +25,11 @@
 <lib-custom-button  [buttonType]="'submit'" [label]="'Login'"></lib-custom-button>
 <div class="flex flex-col w-full gap-2">
 
- 
-
-
    <div class="flex justify-end">
-    <a [routerLink]="'/forgetPassword'" class="text-red-950 hover:underline">
-      Forget Password?
-    </a>
-  </div>
-  
-  <div class="flex items-center">
-    <input id="remember-me" type="checkbox" class="mr-2">
-    <label for="remember-me" class="text-sm text-red-950">Remember me</label>
+      <a [routerLink]="'/forget-password'" class="text-red-950 hover:underline">
+        Forget Password?
+      </a>
+    </div>
 
     <div class="flex items-center">
       <input
@@ -47,9 +40,6 @@
       />
       <label for="remember-me" class="text-sm text-red-950">Remember me</label>
     </div>
-
-  </div>
-
   <app-form-link
     [routerLink]="'/register'"
     [label]="'Don\'t have an account yet?'"

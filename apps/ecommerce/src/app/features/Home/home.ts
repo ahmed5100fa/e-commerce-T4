@@ -10,6 +10,7 @@ import { MostPopularSection } from "./components/Most Popular/most-popular";
 import { TestimonialsSection } from "./components/Testimonials/testimonials";
 import { SpecialGiftsComponent } from "./components/special gifts/special-gifts";
 import { Galary } from "./components/galary/galary";
+import { LoadingService } from '../../shared/services/LoadingService/loading-service';
 @Component({
   selector: 'home-page',
   standalone: true,
@@ -19,6 +20,7 @@ import { Galary } from "./components/galary/galary";
 })
 export class HomePageComponent {
   Products !: Product[];
+    loadingService = inject(LoadingService);
 
   private productService = inject(ProductService);
   ngOnInit(): void {

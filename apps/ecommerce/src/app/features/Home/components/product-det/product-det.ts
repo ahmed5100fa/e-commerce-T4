@@ -24,6 +24,7 @@ export class ProductDet implements OnInit {
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly productService = inject(ProductService);
   private readonly destroyRef = inject(DestroyRef);
+
   productsList: Product[] = [];
 
   id: string | null = null;
@@ -46,6 +47,11 @@ export class ProductDet implements OnInit {
           }
         },
       });
+
+    this.productService.getProducts().subscribe((res) => {
+      this.productsList = res.products;
+    });
+
 
     //product rated
   }

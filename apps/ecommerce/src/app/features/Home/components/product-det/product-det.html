@@ -47,7 +47,7 @@
           EGP
      </div>
           <!-- rated -->
-          
+
       <div class="flex">
         <i class="pi pi-star-fill text-yellow-300"></i>
             <span>
@@ -58,10 +58,15 @@
         </div>
 
         <div class="flex">
-         
-<lib-custom-button [icon]="'far fa-heart'"></lib-custom-button>
+
+<!-- <lib-custom-button [icon]="'far fa-heart'"></lib-custom-button>
           <lib-custom-button
             [icon]=" 'pi pi-cart-minus'"
+            [label]="'add to cart'"
+          >
+          </lib-custom-button> -->
+          <lib-custom-button></lib-custom-button>
+          <lib-custom-button
             [label]="'add to cart'"
           >
           </lib-custom-button>
@@ -70,6 +75,8 @@
     </div>
   </div>
 </section>
-<app-carousel [products]="productsList"></app-carousel>
+<app-carousel
+[productsInput]="productsList"
+[productsNum]="4"></app-carousel>
 
 
