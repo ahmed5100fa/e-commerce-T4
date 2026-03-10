@@ -1,0 +1,13 @@
+:host ::ng-deep{
+    .p-rating-option-active .p-rating-icon{
+        color: orange !important;
+    }
+    .p-rating-icon, .p-rating-option{
+        border-color: orange !important;
+        color: orange !important;
+        background-color: transparent !important;
+        &:hover{
+            border-color: orange !important;
+        }
+    }
+}

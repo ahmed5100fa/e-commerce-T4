@@ -1,7 +1,5 @@
 @import 'tailwindcss';
 
-
-
 @theme inline {
   --color-background-primary: var(--background-primary);
   --color-background-secondary: var(--background-secondary);

@@ -5,22 +5,11 @@ import { SpecialGiftsCard } from '../../shared/components/special-gifts-card/spe
 import { FeatureBar } from './components/feature bar/feature-bar';
 import { BestSelling } from './components/best-selling/best-selling';
 import { TrustedBy } from './components/trusted-by/trusted-by';
-import { SpecialGiftsComponent } from './components/special gifts/special-gifts';
-import { MostPopularSection } from './components/Most Popular/most-popular';
-import { TestimonialsSection } from './components/Testimonials/testimonials';
+import { Galary } from './components/galary/galary';
 @Component({
   selector: 'home-page',
   standalone: true,
-  imports: [
-    SpecialGiftsCard,
-    FeatureBar,
-    BestSelling,
-    TrustedBy,
-    SpecialGiftsComponent,
-    MostPopularSection,
-    AboutUs,
-    TestimonialsSection,
-  ],
+  imports: [SpecialGiftsCard, FeatureBar, BestSelling, TrustedBy, Galary],
   templateUrl: './home.html',
   styleUrls: ['./home.scss'],
 })
