@@ -1,7 +1,12 @@
 @use './tailwind.css' as *;
-@import "@fortawesome/fontawesome-free/css/all.min.css";
+@import '@fortawesome/fontawesome-free/css/all.min.css';
 @import '../../../libs/shared-styles/src/lib/main.scss';
 @import 'primeicons/primeicons.css';
+
+@font-face {
+  font-family: 'edward-font';
+  src: url('assets/fonts/heading font/edwardianscriptitc.ttf');
+}
 // Temporarily removed Font Awesome import because Angular CSS resource plugin
 // cannot resolve its webfont URLs correctly. Re-add later via CDN <link>
 // or a custom asset configuration if needed.
@@ -29,4 +34,7 @@
   --p-select-option-selected-focus-color: #741c21 !important;
   --p-select-option-selected-background: #f3c5c7 !important;
   --p-select-option-selected-focus-background: #f3c5c7 !important;
+}
+.heading-font {
+  font-family: 'edward-font' !important;
 }

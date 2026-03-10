@@ -1,42 +1,62 @@
 @import '../abstracts/_variables.scss';
 :root[data-theme='dark'] {
-    // Background colors
-    --background-primary: #{$background-primary-dark};
-    --background-secondary: #{$background-secondary-dark};
+  // Background colors
+  --background-primary: #{$background-primary-dark};
+  --background-secondary: #{$background-secondary-dark};
 
-    // Text colors
-    --text-primary: #{$text-primary-dark};
-    --text-secondary: #{$text-secondary-dark};
-    --text-placeholder: #{$text-placeholder-dark};
+  // Text colors
+  --text-primary: #{$text-primary-dark};
+  --text-secondary: #{$text-secondary-dark};
+  --text-placeholder: #{$text-placeholder-dark};
 
-    // Button background colors
-    --button-primary: #{$button-primary-dark};
-    --button-secondary: #{$button-secondary-dark};
+  // Button background colors
+  --button-primary: #{$button-primary-dark};
+  --button-primary-onClick: #{$button-primary-onClick-dark};
+  --button-primary-disapled: #{$button-primary-disapled-dark};
 
-    // Icon background colors
-    --icon-primary: #{$icon-primary-dark};
+  --button-secondary: #{$button-secondary-dark};
+  --button-secondary-onClick: #{$button-secondary-onClick-dark};
+  --button-secondary-disapled: #{$button-secondary-disapled-dark};
 
-    // Modal colors
-    --success: #{$success-dark};
+  --button-third: #{$button-third-dark};
+  --button-third-onClick: #{$button-third-onClick-dark};
+  --button-third-disapled: #{$button-third-disapled-dark};
 
-    // Link colors
-    --link-primary: #{$link-primary-dark};
+  --button-fourth: #{$button-fourth-dark};
+  --button-fourth-onClick: #{$button-fourth-onClick-dark};
+  --button-fourth-disapled: #{$button-fourth-disapled-dark};
 
+  --button-fifth: #{$button-fifth-dark};
+  --button-fifth-onClick: #{$button-fifth-onClick-dark};
+  --button-fifth-disapled: #{$button-fifth-disapled-dark};
 
-    //borders
-    --border-primary: #{$border-primary-dark};
+  --button-sixth: #{$button-sixth-dark};
+  --button-sixth-onClick: #{$button-sixth-onClick-dark};
+  --button-sixth-disapled: #{$button-sixth-disapled-dark};
 
-    //headers
-    --header-main-primary: #{$header-main-primary-dark};
-    --header-second-primary: #{$header-second-primary-dark};
-    --header-second-background: #{$header-second-background-dark};
-    --header-second-line: #{$header-second-line-dark};
+  // Icon background colors
+  --icon-primary: #{$icon-primary-dark};
 
-    //navbar
-    --navbar-link: #{$navbar-link-dark};
-    --navbar-link-hover: #{$navbar-link-hover-dark};
+  // Modal colors
+  --success: #{$success-dark};
 
-    //sidebar
-    --sidebar-link: #{$sidebar-link-dark};
-    --sidebar-link-hover: #{$sidebar-link-hover-dark};
+  // Link colors
+  --link-primary: #{$link-primary-dark};
+
+  //borders
+  --border-primary: #{$border-primary-dark};
+
+  //headers
+  --header-main-primary: #{$header-main-primary-dark};
+  --header-second-primary: #{$header-second-primary-dark};
+  --header-second-background: #{$header-second-background-dark};
+  --header-second-line: #{$header-second-line-dark};
+
+  //navbar
+  --navbar-link: #{$navbar-link-dark};
+  --navbar-link-hover: #{$navbar-link-hover-dark};
+
+  //sidebar
+  --sidebar-link: #{$sidebar-link-dark};
+  --sidebar-link-hover: #{$sidebar-link-hover-dark};
 }

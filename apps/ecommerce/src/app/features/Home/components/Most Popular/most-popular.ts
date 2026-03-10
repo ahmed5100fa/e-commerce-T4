@@ -38,6 +38,28 @@ export class MostPopularSection {
   occasionSubscription!: Subscription;
   proudctSubscription!: Subscription;
 
+  // Occasion Carousel
+  startIndex: number = 0;
+  itemsPerView: number = 3;
+
+  get visibleOccasionLinks() {
+    return this.occasionLinks.slice(
+      this.startIndex,
+      this.startIndex + this.itemsPerView,
+    );
+  }
+
+  nextOccasion() {
+    if (this.startIndex + this.itemsPerView < this.occasionLinks.length) {
+      this.startIndex += this.itemsPerView;
+    }
+  }
+
+  prevOccasion() {
+    if (this.startIndex > 0) {
+      this.startIndex -= this.itemsPerView;
+    }
+  }
   // methods
 
   filterProudcts(link: string, id: string) {
@@ -55,7 +77,7 @@ export class MostPopularSection {
   ngOnInit(): void {
     this.proudctSubscription = this.proudctService.getProducts().subscribe({
       next: (res) => {
-        this.proudctList = res.products.slice(0, 15);
+        this.proudctList = res.products.slice(0, 12);
         this.filteredList = this.proudctList;
       },
     });
