@@ -43,10 +43,6 @@ export class ResetPassword {
       }
 
 
-                  setTimeout(() => {
-              this._route.navigate(['/login']);
-            }, 1000);
-
       this._AuthLibraryService.resetPassword({
         email: this.email(),
         newPassword: this.resetPasswordForm.get('password')?.value,
@@ -54,8 +50,9 @@ export class ResetPassword {
         next: (res)=>{
             this._currentstep.emit(1);
             this._notificationService.showSuccess("Password reset successfully!");
-              console.log()
-
+                  setTimeout(() => {
+              this._route.navigate(['/login']);
+            }, 1000);
         },
         error: (err)=>{
         }
