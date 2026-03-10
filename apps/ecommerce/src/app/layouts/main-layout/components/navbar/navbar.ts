@@ -7,6 +7,7 @@ import { AuthLibraryService } from '@org/auth';
 import { DropdownContent } from "./components/dropdown-content/dropdown-content";
 import { FormsModule } from '@angular/forms';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
+import { StoreUserData } from 'apps/ecommerce/src/app/core/services/cookies.service';
 
 @Component({
   selector: 'app-navbar',
@@ -21,6 +22,10 @@ export class Navbar {
   isSidebarOpen = signal(false);
   isAccountDropdownOpen = signal(false);
   isUserMenuOpen = signal(false);
+  private readonly cookies = inject(StoreUserData);
+  firstName = signal<string>('');
+  lastName = signal<string>('');
+
 
   onToggleSidebar() {
     this.isSidebarOpen.update(v => !v);
@@ -47,6 +52,9 @@ export class Navbar {
       const isDark = savedTheme ? savedTheme === 'dark' : true;
       this.checked.set(isDark);
       document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      this.firstName.set(this.cookies.getData('userData')?.firstName || '');
+      this.lastName.set(this.cookies.getData('userData')?.lastName || '');
+
     }
   }
 
