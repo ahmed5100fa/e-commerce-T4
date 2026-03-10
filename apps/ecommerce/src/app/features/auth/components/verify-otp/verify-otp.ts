@@ -124,7 +124,7 @@ export class VerifyOtp implements OnInit, OnDestroy {
   }
   submitCode() {
     console.log("submit code");
-    this.formSubmit();
+    // this.formSubmit();
     this._currentStep.emit(3);
   }
 
@@ -159,7 +159,8 @@ userEmail: string = '';
    const sub = this._authService.verifyResetCode(paylod).subscribe({
   next: (response) => {
     console.log(response);
-   
+     this.submitCode()
+
   },
   error: (err) => {
     this.msgError = err.error.message;
@@ -168,7 +169,7 @@ userEmail: string = '';
 
 this.subscriptions.push(sub);
 
-      
+
     }else{
       console.log("invalid form");
       console.log(this.verifyCode);
