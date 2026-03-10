@@ -13,4 +13,5 @@ import { ProductService } from '../../services/ProductService/product-service';
 })
 export class BestSelling {
   @Input() products: Product[] = [];
+
 }

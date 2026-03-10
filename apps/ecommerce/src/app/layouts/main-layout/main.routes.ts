@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+
 import { productsRoutes } from '../../features/products/products.routes';
 export const mainRouter :Route[]  = [
     {path: 'main', loadComponent:()=>import('../../layouts/main-layout/main-layout').then(m=>m.MainLayout),
@@ -11,3 +12,4 @@ export const mainRouter :Route[]  = [
     },
 
 ]
+

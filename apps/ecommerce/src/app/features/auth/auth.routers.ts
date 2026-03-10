@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+import { authGuardGuard } from '../../core/guards/auth-guard-guard';
 export const authRouters: Route[] = [
   {
     path: '',
@@ -7,20 +8,27 @@ export const authRouters: Route[] = [
     children: [
       {
         path: 'login',
+        canActivate: [authGuardGuard]
+        ,
         loadComponent: () =>
           import('./pages/logincomponent/logincomponent').then(
             (m) => m.LoginComponent,
           ),
       },
       {
-        path: 'forget-password',
+        path: 'forget-password'
+        ,
+        canActivate: [authGuardGuard]
+        ,
         loadComponent: () =>
           import('./pages/forgetPassword/forgetPassword').then(
             (m) => m.ForgetPassword,
           ),
       },
       {
-        path: 'register',
+        path: 'register'
+        ,
+        canActivate: [authGuardGuard],
         loadComponent: () =>
           import('../auth/register/register').then((m) => m.RegisterComponent),
       },

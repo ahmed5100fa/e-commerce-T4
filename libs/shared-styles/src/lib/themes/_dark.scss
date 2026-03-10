@@ -1,8 +1,11 @@
 @import '../abstracts/_variables.scss';
-:root[data-theme='dark'] {
-  // Background colors
-  --background-primary: #{$background-primary-dark};
-  --background-secondary: #{$background-secondary-dark};
+:root[data-theme='dark'],
+[data-theme='dark'],
+.theme-dark
+ {
+    // Background colors
+    --background-primary: #{$background-primary-dark};
+    --background-secondary: #{$background-secondary-dark};
 
   // Text colors
   --text-primary: #{$text-primary-dark};

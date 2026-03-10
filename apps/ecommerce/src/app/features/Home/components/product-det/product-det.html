@@ -1,0 +1,82 @@
+<!-- product => section -->
+<!-- [routerLink]="['/product', product.id]" -->
+
+<section>
+  <div class="container">
+    <div class="grid sm:grid-cols-12 items-center gap-4">
+      <!-- image -->
+      <div class="col-span-6">
+        <!-- image cover ! => , title!!    -->
+    @if (currentImage) {
+          <img
+          [ngSrc]="currentImage"
+          class="w-full"
+          [alt]="productDetails.title"
+        />
+    }
+       <div class="flex gap-3 mt-4">
+
+  @for (img of productDetails?.images; track img) {
+
+    <img
+      [ngSrc]="img"
+      width="80"
+      height="80"
+      class="w-20 h-20 object-cover cursor-pointer border rounded"
+      (click)="currentImage = img"
+    />
+
+  }
+
+</div>
+      </div>
+
+      <!-- content -->
+      <div class="col-span-6">
+        <!-- title !! -->
+        <h2 class="text-2xl">{{productDetails.title}}</h2>
+        <!-- description !! -->
+        <p class="text-gray-700 text-sm my-2">{{productDetails.description}}</p>
+
+        <div class="items-center">
+     <div class="flex">
+           <!-- priceAfterDiscount !! -->
+          <span class="text-gray-500" >{{productDetails.priceAfterDiscount}} </span>
+          <!-- price !! -->
+          <span>{{productDetails.price}} </span>
+          EGP
+     </div>
+          <!-- rated -->
+
+      <div class="flex">
+        <i class="pi pi-star-fill text-yellow-300"></i>
+            <span>
+            {{productDetails.rateAvg}}</span>
+
+          <span class="text-gray-400">{{productDetails.rateCount}}</span>
+      </div>
+        </div>
+
+        <div class="flex">
+
+<!-- <lib-custom-button [icon]="'far fa-heart'"></lib-custom-button>
+          <lib-custom-button
+            [icon]=" 'pi pi-cart-minus'"
+            [label]="'add to cart'"
+          >
+          </lib-custom-button> -->
+          <lib-custom-button></lib-custom-button>
+          <lib-custom-button
+            [label]="'add to cart'"
+          >
+          </lib-custom-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-carousel
+[productsInput]="productsList"
+[productsNum]="4"></app-carousel>
+
+

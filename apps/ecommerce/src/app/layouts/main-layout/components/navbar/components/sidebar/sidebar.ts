@@ -1,27 +1,39 @@
 import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
 import { DropdownContent } from "../dropdown-content/dropdown-content";
 import { RouterLink } from "@angular/router";
+import { FormsModule } from '@angular/forms';
+import { ToggleSwitchModule } from 'primeng/toggleswitch';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [DropdownContent, RouterLink],
+  imports: [DropdownContent, RouterLink , ToggleSwitchModule, FormsModule],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
 })
 export class Sidebar {
-    @Input() isOpen = false;
-    @Input() isAccountDropdownOpen = false;
-    @Output() closeSidebar = new EventEmitter<void>();
-    @Output() toggleAccountDropdown = new EventEmitter<void>();
-    isLoggedIn = signal<boolean>(false);
+  @Input() isOpen = false;
+  @Input() isAccountDropdownOpen = false;
+  @Output() closeSidebar = new EventEmitter<void>();
+  @Output() toggleAccountDropdown = new EventEmitter<void>();
+  isLoggedIn = signal<boolean>(false);
+  checked = signal(true);
 
-    ngOnInit() {
-      this.checkLoginStatus();
+  ngOnInit() {
+    this.checkLoginStatus();
+
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      const isDark = savedTheme ? savedTheme === 'dark' : true;
+      this.checked.set(isDark);
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
     }
+  }
 
-    checkLoginStatus() {
+  checkLoginStatus() {
+    if (typeof window !== 'undefined') {
       this.isLoggedIn.set(!!localStorage.getItem('token'));
     }
+  }
 
   onClose() {
     this.closeSidebar.emit();
@@ -31,5 +43,11 @@ export class Sidebar {
     this.toggleAccountDropdown.emit();
   }
 
-
+  onThemeToggle(value: boolean) {
+    this.checked.set(value);
+    if (typeof window !== 'undefined') {
+      document.documentElement.setAttribute('data-theme', value ? 'dark' : 'light');
+      localStorage.setItem('theme', value ? 'dark' : 'light');
+    }
+  }
 }
