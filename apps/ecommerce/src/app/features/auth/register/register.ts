@@ -118,7 +118,7 @@ export class RegisterComponent {
           this.registerForm.reset();
           setTimeout(() => {
             this.route.navigate(['/login']);
-          }, 2500);
+          }, 1000);
         },
         error: (err) => {
           this.disableButton = false;
