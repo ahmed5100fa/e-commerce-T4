@@ -64,4 +64,6 @@ onThemeToggle(value: boolean) {
   localStorage.setItem('theme', value ? 'dark' : 'light'); // حفظ في localStorage
 }
 
+
+
 }

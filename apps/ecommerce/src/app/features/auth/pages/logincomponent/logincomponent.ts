@@ -64,7 +64,7 @@ export class LoginComponent {
 
             // store data in cookies
             this.cookies.setData('userData', res, this.remeberMe);
-
+            window.localStorage.setItem('token', res.token);
             setTimeout(() => {
               this._router.navigate(['/main/home']);
             }, 1000);
