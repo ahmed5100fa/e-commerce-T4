@@ -35,40 +35,40 @@ export class CustomButton {
     if (!this.disabledState) {
       if (this.buttonStyle === 'primary')
         classes +=
-          'bg-[#A6252A] border-[#A6252A] text-white active:bg-[#741C21] active:border-[#741C21]';
+          'bg-button-primary border-button-primary text-white active:bg-button-primary-onClick active:border-button-primary-onClick';
       else if (this.buttonStyle === 'second')
         classes +=
-          'bg-[#FBEAEA] border-[#FBEAEA] text-[#A6252A] active:bg-[#F3C5C7] active:border-[#F3C5C7]';
+          'bg-button-secondary border-button-secondary text-button-primary active:bg-button-secondary-onClick active:border-button-secondary-onClick';
       else if (this.buttonStyle === 'third')
         classes +=
-          'bg-white border-[#A6252A] text-[#A6252A] active:bg-[#FBEAEA] active:border-[#A6252A]';
+          'bg-button-third border-button-primary text-button-primary active:bg-button-third-onClick active:border-button-primary';
       else if (this.buttonStyle === 'fourth')
         classes +=
-          'bg-zinc-50 border-zinc-400 text-zinc-400 active:bg-zinc-100 active:border-zinc-400';
+          'bg-button-fourh border-zinc-400 text-zinc-400 active:bg-button-fourth-onClick active:border-zinc-400';
       else if (this.buttonStyle === 'fifth')
         classes +=
-          'bg-white border-transparent text-zinc-800 active:bg-zinc-100 active:border-transparent';
+          'bg-button-fifth border-transparent text-zinc-800 active:bg-button-fifth-onClick active:border-transparent';
       else if (this.buttonStyle === 'sixth')
         classes +=
-          'bg-[#DC2626] border-[#DC2626] text-white active:bg-[#B91C1C] active:border-[#B91C1C]';
+          'bg-button-sixth border-button-sixth text-white active:bg-button-sixth-onClick active:border-button-sixth-onClick';
     } else {
       classes += 'cursor-not-allowed ';
 
       // Disapled State Styles
-
       if (
         this.buttonStyle === 'primary' ||
         this.buttonStyle === 'second' ||
         this.buttonStyle === 'sixth'
       ) {
-        classes += 'bg-zinc-300 border-zinc-300 text-zinc-500';
+        classes +=
+          'bg-button-primary-disapled border-button-primary text-zinc-500';
       } else if (
         this.buttonStyle === 'third' ||
         this.buttonStyle === 'fourth'
       ) {
-        classes += 'bg-zinc-100 border-zinc-400 text-zinc-400';
+        classes += 'bg-button-third-disapled border-zinc-400 text-zinc-400';
       } else if (this.buttonStyle === 'fifth') {
-        classes += 'bg-zinc-100 border-transparent text-zinc-400';
+        classes += 'bg-button-third-disapled border-transparent text-zinc-400';
       }
     }
 

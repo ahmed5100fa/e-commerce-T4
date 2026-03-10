@@ -6,7 +6,7 @@
       <div class="relative w-[230px] sm:w-[260px] lg:w-[300px]">
         <!-- Frame -->
         <div
-          class="absolute -top-2 w-[150px] h-full border-4 border-[#8B1E1E] rounded-[50px_100px_50px_100px]"
+          class="absolute -top-2 w-[150px] h-full border-4 border-text-placeholder rounded-[50px_100px_50px_100px]"
         ></div>
 
         <!-- Image -->
@@ -41,15 +41,15 @@
 
     <!-- RIGHT SIDE (TEXT) -->
     <div class="space-y-6 text-center lg:text-left">
-      <p class="text-sm tracking-[4px] text-pink-500 font-semibold">ABOUT</p>
+      <p class="text-sm tracking-[4px] !text-about-us-header font-semibold">ABOUT</p>
 
-      <h2 class="text-3xl lg:text-4xl font-bold text-[#7A1E1E] leading-snug">
-        Delivering the <span class="text-pink-500">Finest</span> Gift Boxes for
+      <h2 class="text-3xl lg:text-4xl font-bold !text-header-second-primary leading-snug">
+        Delivering the <span class="!text-about-us-header">Finest</span> Gift Boxes for
         Your
-        <span class="text-pink-500">Special Moments</span>
+        <span class="!text-about-us-header">Special Moments</span>
       </h2>
 
-      <p class="text-gray-600 text-sm lg:text-base leading-relaxed">
+      <p class="text-text-placeholder text-sm lg:text-base leading-relaxed">
         Make every moment memorable with our premium gift boxes. Carefully
         curated and beautifully packaged, each box is filled with handpicked
         items designed to impress.
@@ -57,35 +57,32 @@
 
       <!-- Button -->
 
- <div class="w-full lg:w-[200px] mx-auto lg:mx-0">
-   <lib-custom-button
-  [label]="'Discover'"
-></lib-custom-button>
- <!-- <lib-custom-button
-  [label]="'Discover'"
-  [icon="'pi pi-arrow-right'"
-></lib-custom-button> -->
-</div>
+      <div class="w-full lg:w-[200px] mx-auto lg:mx-0">
+        <lib-custom-button
+          [label]="'Discover'"
+          [icon]="arrowRight"
+        ></lib-custom-button>
+      </div>
 
       <!-- Features -->
-      <div class="grid sm:grid-cols-2 gap-4 pt-6 text-sm text-gray-700">
+      <div class="grid sm:grid-cols-2 gap-4 pt-6 text-sm text-text-placeholder">
         <div class="flex items-center gap-2">
-          <span class="text-[#8B1E1E]">✔</span>
+          <span class="text-text-placeholder">✔</span>
           Competitive Prices & Easy Shopping
         </div>
 
         <div class="flex items-center gap-2">
-          <span class="text-[#8B1E1E]">✔</span>
+          <span class="text-text-placeholder">✔</span>
           Premium Quality & Elegant Packaging
         </div>
 
         <div class="flex items-center gap-2">
-          <span class="text-[#8B1E1E]">✔</span>
+          <span class="text-text-placeholder">✔</span>
           Perfect for Every Occasion
         </div>
 
         <div class="flex items-center gap-2">
-          <span class="text-[#8B1E1E]">✔</span>
+          <span class="text-text-placeholder">✔</span>
           Fast & Reliable Delivery
         </div>
       </div>
