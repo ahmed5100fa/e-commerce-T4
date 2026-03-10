@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-auth-right-image',
@@ -6,4 +6,6 @@ import { Component } from '@angular/core';
   templateUrl: './auth-right-image.html',
   styleUrls: ['./auth-right-image.css'],  
 })
-export class AuthRightImage {}
+export class AuthRightImage  {
+
+}

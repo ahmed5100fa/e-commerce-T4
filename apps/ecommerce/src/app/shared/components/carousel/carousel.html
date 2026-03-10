@@ -1,37 +1,33 @@
-<div class="relative max-w-6xl mx-auto w-auto">
-<p-carousel
-  [value]="products"
-  [numVisible]="productsNum"
-  [numScroll]="1"
-  [circular]="true"
-  [autoplayInterval]="3000"
-  [responsiveOptions]="responsiveOptions"
-  [showIndicators]="false"
-  [prevButtonProps]="{
-    rounded: true,
-    style: {
-      backgroundColor: 'var(--icon-primary)',
-      color: 'white',
-      width: '40px',
-      height: '40px'
-    },
-    styleClass: 'absolute left-[20px] top-1/2 -translate-y-1/2 md:w-12 md:h-12 flex items-center justify-center shadow-lg hover:bg-blue-700 z-20'
-  }"
-  [nextButtonProps]="{
-    rounded: true,
-    style: {
-      backgroundColor: 'var(--icon-primary)',
-      color: 'white',
-      width: '40px',
-      height: '40px'
-    },
-    styleClass: 'absolute right-[20px] top-1/2 -translate-y-1/2 md:w-12 md:h-12 flex items-center justify-center shadow-lg hover:bg-blue-700 z-20'
-  }"
->
+@if(products()?.length){
+<div class="relative max-w-6xl mx-auto w-full">
+  <p-carousel
+    #carousel
+    [value]="products()"
+    [numVisible]="productsNum"
+    [numScroll]="1"
+    [circular]="true"
+    [autoplayInterval]="3000"
+    [responsiveOptions]="responsiveOptions"
+    [showIndicators]="false"
+    [prevButtonProps]="{
+      rounded: true,
+      style: { backgroundColor: 'var(--icon-primary)', color: 'white', width: '40px', height: '40px' },
+      styleClass: 'absolute left-[20px] top-1/2 -translate-y-1/2 md:w-12 md:h-12 flex items-center justify-center shadow-lg hover:bg-blue-700 z-20'
+    }"
+    [nextButtonProps]="{
+      rounded: true,
+      style: { backgroundColor: 'var(--icon-primary)', color: 'white', width: '40px', height: '40px' },
+      styleClass: 'absolute right-[20px] top-1/2 -translate-y-1/2 md:w-12 md:h-12 flex items-center justify-center shadow-lg hover:bg-blue-700 z-20'
+    }"
+  >
     <ng-template pTemplate="item" let-product>
-  <div class="p-2">
-    <app-card [product]="product"></app-card>
-  </div>
-</ng-template>
+      <div class="p-2">
+        <app-card [product]="product"></app-card>
+      </div>
+    </ng-template>
   </p-carousel>
 </div>
+}@else {
+  <p>hello worled </p>
+}
+

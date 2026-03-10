@@ -34,9 +34,9 @@ export class AuthLibraryService implements AuthApi {
 }
 
   verifyResetCode(data: authData.verifyResetCodeData): Observable<number> {
-    return this._httpClient.post<AuthAdapted>(`${this._baseUrl}/${AuthEndPoint.RESET_CODE}`, data, {observe: 'response'}).pipe(map(res=>res.status),);  
+    return this._httpClient.post<AuthAdapted>(`${this._baseUrl}/${AuthEndPoint.RESET_CODE}`, data, {observe: 'response'}).pipe(map(res=>res.status),);
   }
-  
+
   resetPassword(data: authData.resetPasswordData): Observable<AuthApiAdaptor> {
     return this._httpClient.put<AuthAdapted>(`${this._baseUrl}/${AuthEndPoint.RESET_PASSWORD}`, data).pipe(map(res=>this._AuthApiAdaptorService.adapt(res))
     );
@@ -61,6 +61,6 @@ export class AuthLibraryService implements AuthApi {
     return this._httpClient.get(`${this._baseUrl}/${AuthEndPoint.LOGOUT}`);
   }
   getUserInfo():Observable<any>{
-    return this._httpClient.get(`${this._baseUrl}/${AuthEndPoint.USERINFO}`); 
+    return this._httpClient.get(`${this._baseUrl}/${AuthEndPoint.USERINFO}`);
   }
 }

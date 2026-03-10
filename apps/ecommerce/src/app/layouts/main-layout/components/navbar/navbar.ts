@@ -5,21 +5,27 @@ import { Sidebar } from "./components/sidebar/sidebar";
 import { RouterLink } from "@angular/router";
 import { AuthLibraryService } from '@org/auth';
 import { DropdownContent } from "./components/dropdown-content/dropdown-content";
+import { FormsModule } from '@angular/forms';
+import { ToggleSwitchModule } from 'primeng/toggleswitch';
+import { StoreUserData } from 'apps/ecommerce/src/app/core/services/cookies.service';
 
 @Component({
   selector: 'app-navbar',
-  imports: [CommonModule, SecondNav, Sidebar, RouterLink, DropdownContent],
+  imports: [CommonModule, SecondNav, Sidebar, RouterLink, DropdownContent , ToggleSwitchModule, FormsModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
 export class Navbar {
   @Output() toggleSidebar = new EventEmitter<void>();
   isLoggedIn = signal<boolean>(false);
-
+  checked = signal(true);
   isSidebarOpen = signal(false);
   isAccountDropdownOpen = signal(false);
-
   isUserMenuOpen = signal(false);
+  private readonly cookies = inject(StoreUserData);
+  firstName = signal<string>('');
+  lastName = signal<string>('');
+
 
   onToggleSidebar() {
     this.isSidebarOpen.update(v => !v);
@@ -39,13 +45,30 @@ export class Navbar {
     this.isAccountDropdownOpen.set(false);
   }
 
- ngOnInit() {
-        this.checkLoginStatus();
+  ngOnInit() {
+    this.checkLoginStatus();
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme');
+      const isDark = savedTheme ? savedTheme === 'dark' : true;
+      this.checked.set(isDark);
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      this.firstName.set(this.cookies.getData('userData')?.firstName || '');
+      this.lastName.set(this.cookies.getData('userData')?.lastName || '');
+
+    }
   }
 
   checkLoginStatus() {
-    this.isLoggedIn.set(!!localStorage.getItem('token'));
+    if (typeof window !== 'undefined') {
+      this.isLoggedIn.set(!!localStorage.getItem('token'));
+    }
   }
 
-
+  onThemeToggle(value: boolean) {
+    this.checked.set(value);
+    if (typeof window !== 'undefined') {
+      document.documentElement.setAttribute('data-theme', value ? 'dark' : 'light');
+      localStorage.setItem('theme', value ? 'dark' : 'light');
+    }
+  }
 }

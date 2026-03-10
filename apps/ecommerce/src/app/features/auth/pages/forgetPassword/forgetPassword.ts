@@ -25,7 +25,7 @@ export class ForgetPassword implements OnInit {
   _AuthLibraryService = inject(AuthLibraryService);
   _notifyService = inject(NotificationService);
   private destroyRef = inject(DestroyRef);
-
+  disableButton = signal(false);
   ngOnInit(){
     this.forgetPasswordForm = this._formBuilder.group({
       email: ['', Validators.required],
@@ -34,21 +34,24 @@ export class ForgetPassword implements OnInit {
 
   onsubmit(){
     if(this.forgetPasswordForm.valid){
+        this.disableButton.set(true);
       // takeUntilDestroyed is used to automatically unsubscribe from the observable when the component is destroyed, preventing memory leaks.
       this._AuthLibraryService.forgotPassword(this.forgetPasswordForm.value).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
         next: (res)=>{
           if(res === 200){
             this.currentStep.set(2);
             this._notifyService.showSuccess("Password reset successfully!");
+            this.disableButton.set(false);
           }
         },
         error: (err)=>{
           this.forgetPasswordForm.markAllAsTouched();
-
+          this._notifyService.showError("Failed to reset password.");
+          this.disableButton.set(false);
         }
       })
 
-    }
+        }
       else{
     this.forgetPasswordForm.markAllAsTouched();
     this._notifyService.showError("Please fill in all required fields.");

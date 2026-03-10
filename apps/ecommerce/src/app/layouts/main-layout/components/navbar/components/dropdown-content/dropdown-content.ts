@@ -46,17 +46,23 @@ menuItems: MenuItem[] = [
   },
   { separator: true, styleClass: 'mt-2 pt-2 border-t border-gray-200' },
   {
-    label: 'Log out',
-    icon: 'fa-solid fa-right-from-bracket w-5',
-    styleClass: 'flex items-center gap-3 p-2  rounded-lg cursor-pointer text-red-500',
-    command: () => this.logout()
+  label: 'Log out',
+  icon: 'fa-solid fa-right-from-bracket w-5',
+  styleClass: 'flex items-center gap-3 p-2 rounded-lg cursor-pointer text-red-500',
+  command: () => {
+    console.log('logout clicked');
+    this.logout();
   }
+}
 ];
 
   logout() {
-    this.authService.logout().subscribe(() => {
-      this.router.navigate(['/login']);
-    });
-  }
+
+  this.authService.logout().subscribe({
+    next: () => {
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
+    }});
+}
 
 }

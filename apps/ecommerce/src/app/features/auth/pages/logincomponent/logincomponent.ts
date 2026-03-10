@@ -58,16 +58,18 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this._authLibraryService.login(this.loginForm.value as any).subscribe({
         next: (res: AuthApiAdaptor) => {
-          if (res.message === 'success') {
+          console.log(res);
             this.msgSuccess = 'Logged in successfully';
             this.msgError = '';
 
             // store data in cookies
             this.cookies.setData('userData', res, this.remeberMe);
-
+            window.localStorage.setItem('token', res.token);
             setTimeout(() => {
-              this._router.navigate(['/home']);
-            }, 2000);
+              this._router.navigate(['/main/home']);
+            }, 1000);
+          if (res.message === 'success') {
+
           }
         },
 

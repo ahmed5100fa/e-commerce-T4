@@ -9,6 +9,7 @@ import { inject } from '@angular/core';
 import { FormLink } from "apps/ecommerce/src/app/shared/components/form-link/form-link";
 import { AlertComponent, CustomButton, NotificationService } from "@Ui-components";
 import { Toast } from 'primeng/toast';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
@@ -23,6 +24,7 @@ export class ResetPassword {
   resetPasswordForm! : FormGroup;
  _formBuilder = inject(FormBuilder);
   _AuthLibraryService = inject(AuthLibraryService);
+  _route = inject(Router)
   _currentstep = output<1|2|3>();
   email = input('');
   ngOnInit(){
@@ -40,6 +42,7 @@ export class ResetPassword {
         return;
       }
 
+
       this._AuthLibraryService.resetPassword({
         email: this.email(),
         newPassword: this.resetPasswordForm.get('password')?.value,
@@ -47,6 +50,9 @@ export class ResetPassword {
         next: (res)=>{
             this._currentstep.emit(1);
             this._notificationService.showSuccess("Password reset successfully!");
+                  setTimeout(() => {
+              this._route.navigate(['/login']);
+            }, 1000);
         },
         error: (err)=>{
         }

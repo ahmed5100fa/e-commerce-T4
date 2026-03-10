@@ -1,12 +1,9 @@
-import { Component, inject, Input, signal, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, signal, ChangeDetectorRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { CarouselModule, Carousel } from 'primeng/carousel';
-import { TagModule } from 'primeng/tag';
 import { Card } from "../card/card";
-import { gatAllProducts, Product } from '../../interfaces/card-product';
-import { ProductService } from '../../../features/Home/services/ProductService/product-service';
-import { ChangeDetectorRef } from '@angular/core';
+import { Product } from '../../interfaces/card-product';
 
 @Component({
   selector: 'app-carousel',
@@ -16,11 +13,14 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrls: ['./carousel.css']
 })
 export class CarouselComponent {
+
   @ViewChild('carousel') carousel!: Carousel;
 
-  private productService = inject(ProductService);
+  products = signal<Product[]>([]);
 
-  @Input() products: Product[] = [];
+  @Input() set productsInput(value: Product[]) {
+    this.products.set(value);
+  }
 
   @Input() productsNum: number = 3;
 
@@ -31,7 +31,11 @@ export class CarouselComponent {
     { breakpoint: '575px', numVisible: 1, numScroll: 1 }
   ];
 
-  prev(e: MouseEvent) { this.carousel.navBackward(e); }
-  next(e: MouseEvent) { this.carousel.navForward(e); }
+  prev(e: MouseEvent) {
+    this.carousel.navBackward(e);
+  }
 
+  next(e: MouseEvent) {
+    this.carousel.navForward(e);
+  }
 }

@@ -1,18 +1,23 @@
 @import '../abstracts/_variables.scss';
-:root[data-theme='dark'] {
-  // Background colors
-  --background-primary: #{$background-primary-dark};
-  --background-secondary: #{$background-secondary-dark};
+:root[data-theme='dark'],
+[data-theme='dark'],
+.theme-dark
+ {
+    // Background colors
+    --background-primary: #{$background-primary-dark};
+    --background-secondary: #{$background-secondary-dark};
 
   // Text colors
   --text-primary: #{$text-primary-dark};
   --text-secondary: #{$text-secondary-dark};
   --text-placeholder: #{$text-placeholder-dark};
 
-  // Button background colors
-  --button-primary: #{$button-primary-dark};
-  --button-primary-onClick: #{$button-primary-onClick-dark};
-  --button-primary-disapled: #{$button-primary-disapled-dark};
+    // Link colors
+    --about-us-header: #{$about-us-header-dark};
+
+    // Button background colors
+    --button-primary: #{$button-primary-dark};
+    --button-secondary: #{$button-secondary-dark};
 
   --button-secondary: #{$button-secondary-dark};
   --button-secondary-onClick: #{$button-secondary-onClick-dark};
