@@ -1,5 +1,4 @@
-@if (loadingService.loading()) {
-  <!-- colors and btn width and right left btn -->
+<!-- colors and btn width and right left btn -->
 <special-gifts></special-gifts>
 
 <!-- colors -->
@@ -29,5 +28,8 @@ forget password (not work , link colors)
 -->
 
 
-
+@if (loadingService.loading()) {
+    <div class="fixed inset-0 flex items-center justify-center bg-black/30 z-50">
+      <app-spinner></app-spinner>
+  </div>
 }

@@ -56,19 +56,10 @@ export class AuthLibraryService implements AuthApi {
     return this._httpClient.put(`${this._baseUrl}/${AuthEndPoint.EDITPROFILE}`, data);
   }
 
-logout(): Observable<any> {
-
-  const token = localStorage.getItem('token');
-
-  return this._httpClient.get(
-    `${this._baseUrl}/${AuthEndPoint.LOGOUT}`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }
-  );
-}
+  logout(): Observable<any> {
+    // Implement logout logic
+    return this._httpClient.get(`${this._baseUrl}/${AuthEndPoint.LOGOUT}`);
+  }
   getUserInfo():Observable<any>{
     return this._httpClient.get(`${this._baseUrl}/${AuthEndPoint.USERINFO}`);
   }

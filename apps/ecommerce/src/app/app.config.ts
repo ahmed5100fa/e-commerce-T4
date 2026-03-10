@@ -19,13 +19,14 @@ import {
 import { MessageService } from 'primeng/api';
 import { err } from './core/interceptors/errorhandel.interceptor';
 import { loadingInterceptorInterceptor } from './shared/interceptors/loadingInterceptor/loading-interceptor-interceptor';
+import { tokenInterceptorInterceptor } from './shared/interceptors/tokenInterceptor/token-interceptor-interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(withEventReplay()),
     provideBrowserGlobalErrorListeners(),
     provideRouter(appRoutes),
-    provideHttpClient(withFetch(), withInterceptors([err , loadingInterceptorInterceptor])),
+    provideHttpClient(withFetch(), withInterceptors([err , loadingInterceptorInterceptor , tokenInterceptorInterceptor])),
     { provide: BaseUrl, useValue: 'https://flower.elevateegy.com/api/v1' },
     providePrimeNG({
       theme: {
