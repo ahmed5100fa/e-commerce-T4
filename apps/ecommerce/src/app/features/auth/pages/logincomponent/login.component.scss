@@ -1,2 +1,6 @@
 /* Logincomponent is fully styled using Tailwind utilities in the template. */
 
+a{
+  color: var(--button-primary);
+  text-decoration: none;
+}

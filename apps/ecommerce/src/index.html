@@ -10,5 +10,20 @@
   </head>
   <body class="bg-background-primary">
     <app-root></app-root>
+
+
+<script>
+  (function() {
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      const isDark = savedTheme ? savedTheme === 'dark' : true;
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+    } catch(e) {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+
+
   </body>
 </html>

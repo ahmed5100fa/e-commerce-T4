@@ -1,6 +1,6 @@
 <form-label [label]="'Welcome'"></form-label>
 <form
-  class="w-1/2 min-w-[300px] flex flex-col gap-1"
+  class="w-3/4 min-w-[300px] flex flex-col gap-1"
   [formGroup]="loginForm"
   (ngSubmit)="submitForm()"
 >
@@ -38,13 +38,9 @@
         class="mr-2"
         (change)="rememberMeOption($event)"
       />
-      <label for="remember-me" class="text-sm text-red-950">Remember me</label>
+      <label for="remember-me" class="text-sm text-text-primary">Remember me</label>
     </div>
-  <app-form-link
-    [routerLink]="'/register'"
-    [label]="'Don\'t have an account yet?'"
-    [link]="'Register'"
-  ></app-form-link>
+       <app-form-link [label]="' Don’t have an account yet?'" [link]="'Create one now!'" [routerLink]="'/register'"></app-form-link>
 </div>
 </form>
 
