@@ -1,5 +1,6 @@
-<div class="p-4">
-<div class="relative rounded-lg overflow-hidden shadow-lg group cursor-pointer h-[300px]">
+<div
+  class="w-full relative rounded-lg overflow-hidden shadow-lg group cursor-pointer h-[300px]"
+>
   <!-- Image -->
   <img
     [src]="image"
@@ -7,21 +8,25 @@
     class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
   />
 
-  <div class="absolute bottom-4 left-4 right-4">
-      <!-- Tag -->
-  <div class="mb-3 left-4">
-    @if (label) {
-    <span
-      class="bg-red-200 text-red-800 text-xs font-medium px-2 py-1 rounded">
-      {{ label }}
-    </span>
-  }
-  </div>
+  <div
+    class="absolute bottom-0 left-0 right-0 top-0 p-4 bg-linear-to-t from-[rgba(0,0,0,0.7)] to-transparent flex flex-col justify-end"
+  >
+    <!-- Tag -->
+    <div class="mb-3 left-4">
+      @if (label) {
+      <span
+        class="bg-red-200 text-red-800 text-xs font-medium px-2 py-1 rounded"
+      >
+        {{ label }}
+      </span>
+      }
+    </div>
 
-  <!-- Title -->
-  <div class=" text-white text-xl font-semibold drop-shadow-lg">
-    {{ title }}
-  </div>
+    <!-- Title -->
+    <div class="text-white text-lg font-semibold drop-shadow-lg">
+      {{ title }}
+    </div>
+    <ng-content></ng-content>
   </div>
 </div>
 </div>
