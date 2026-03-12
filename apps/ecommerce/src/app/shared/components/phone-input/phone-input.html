@@ -1,17 +1,17 @@
 <div class="mb-3">
-  <label class="form-label font-medium">Phone</label>
+  <label class="form-label font-medium text-text-primary">Phone</label>
 
   <div
-    class="flex items-center gap-2 border border-gray-300 rounded-md px-3 py-2 bg-white"
+    class="flex items-center gap-2 border border-gray-300 rounded-md px-3 py-2 !bg-border-primary rounded-xl border !border-gray-400 placeholder:!text-sm placeholder:!text-text-primary outline-none transition"
   >
-    <div class="flex items-center gap-1 text-gray-600 text-sm">
+    <div class="flex items-center gap-1 !bg-border-primary rounded-xl  placeholder:!text-sm placeholder:!text-text-primary outline-none transition">
       <img src="https://flagcdn.com/w20/eg.png" alt="EG" class="w-5 h-auto" />
       <span>+20</span>
     </div>
 
     <input
       type="text"
-      class="flex-1 border-none outline-none text-sm text-gray-700 placeholder-gray-400"
+      class="flex-1 border-none outline-none text-sm !bg-border-primary rounded-xl border !border-gray-400 placeholder:!text-sm placeholder:!text-text-primary outline-none transition"
       placeholder="1012345678"
       [value]="value"
       [disabled]="disabled"

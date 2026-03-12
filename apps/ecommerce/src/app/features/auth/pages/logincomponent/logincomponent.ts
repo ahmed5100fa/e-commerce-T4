@@ -1,5 +1,3 @@
-import { PASSWORD_REGEX } from './../../../../../../../../libs/auth/src/lib/shared/utils/regex.constants';
-import { loginData } from '../../../../../../../../libs/auth/src/lib/interfaces/auth-data';
 import { Component, inject } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { FormInput } from '../../../../shared/components/form-input/form-input';
@@ -11,13 +9,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { AuthApiAdaptorService } from 'libs/auth/src/lib/adaptor/auth-api.adaptor';
+
 import { AuthLibraryService } from '@org/auth';
 import { AuthApiAdaptor } from 'libs/auth/src/lib/interfaces/adaptor';
-import { CustomButton } from '@Ui-components';
+import { CustomButton, NotificationService } from '@Ui-components';
 import { FormLabel } from 'apps/ecommerce/src/app/shared/components/form-label/form-label';
 import { FormLink } from 'apps/ecommerce/src/app/shared/components/form-link/form-link';
 import { StoreUserData } from 'apps/ecommerce/src/app/core/services/cookies.service';
+import { PASSWORD_REGEX } from './../../../../../../../../libs/auth/src/lib/shared/utils/regex.constants';
 
 @Component({
   selector: 'app-login',
@@ -35,49 +34,74 @@ import { StoreUserData } from 'apps/ecommerce/src/app/core/services/cookies.serv
   ],
 })
 export class LoginComponent {
-  private readonly _authLibraryService = inject(AuthLibraryService);
-  private readonly _router = inject(Router);
+
+  private readonly authService = inject(AuthLibraryService);
+  private readonly router = inject(Router);
   private readonly cookies = inject(StoreUserData);
-  msgSuccess: string = '';
-  msgError: string = '';
-  remeberMe: boolean = false;
+  private readonly notification = inject(NotificationService);
+
+  rememberMe: boolean = false;
 
   loginForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
+    email: new FormControl('', [
+      Validators.required,
+      Validators.email
+    ]),
+
     password: new FormControl('', [
       Validators.required,
-      Validators.pattern(PASSWORD_REGEX),
+      Validators.pattern(PASSWORD_REGEX)
     ]),
   });
 
   rememberMeOption(event: Event): void {
-    this.remeberMe = (event.target as HTMLInputElement).checked;
+    this.rememberMe = (event.target as HTMLInputElement).checked;
   }
 
   submitForm(): void {
-    if (this.loginForm.valid) {
-      this._authLibraryService.login(this.loginForm.value as any).subscribe({
-        next: (res: AuthApiAdaptor) => {
-          console.log(res);
-            this.msgSuccess = 'Logged in successfully';
-            this.msgError = '';
 
-            // store data in cookies
-            this.cookies.setData('userData', res, this.remeberMe);
-            window.localStorage.setItem('token', res.token);
-            setTimeout(() => {
-              this._router.navigate(['/main/home']);
-            }, 1000);
-          if (res.message === 'success') {
-
-          }
-        },
-
-        error: (err: AuthApiAdaptor) => {
-          console.log(err);
-          this.msgError = err.message || 'Login failed';
-        },
-      });
+    if (this.loginForm.invalid) {
+      this.notification.showError('Please fill all required fields correctly');
+      return;
     }
+
+    const loginData = this.loginForm.value;
+
+    this.authService.login(loginData as any).subscribe({
+
+      next: (res: AuthApiAdaptor) => {
+
+        if (res.message === 'success') {
+
+          this.notification.showSuccess('Logged in successfully');
+
+          // store token
+          localStorage.setItem('token', res.token);
+
+          // store user data in cookies
+          this.cookies.setData('userData', res, this.rememberMe);
+
+          // navigate
+          this.router.navigate(['/main/home']);
+
+        } else {
+          this.notification.showError('Login failed');
+        }
+
+      },
+
+      error: (err: any) => {
+
+        const message =
+          err?.error?.message ||
+          err?.message ||
+          'Something went wrong';
+
+        this.notification.showError(message);
+
+        console.error(err);
+
+      },
+    });
   }
 }

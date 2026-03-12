@@ -1,5 +1,5 @@
-<div>
-  <form-label [label]="'Become part of our family!'"></form-label>
+<div class="w-full">
+    <form-label [label]="'Become part of our family!'"></form-label>
   <form
     class="w-full flex flex-col gap-1"
     [formGroup]="registerForm"
@@ -7,7 +7,7 @@
   >
     <!-- first and last name -->
 
-    <div class="grid gap-2 grid-cols-2">
+    <div class="grid gap-1 grid-cols-2">
       <!-- first name -->
 
       <div class="">
@@ -99,7 +99,7 @@
     <!-- =================== -->
     <!-- user Gender -->
     <div>
-      <label for="userGender" class="font-medium">Gender</label>
+      <label for="userGender" class="font-medium text-text-primary">Gender</label>
       <p-select
         formControlName="gender"
         [id]="'userGender'"
@@ -107,7 +107,7 @@
         optionLabel="name"
         optionValue="code"
         placeholder="Select a Gender"
-        class="w-full"
+        class="w-full !bg-border-primary rounded-xl border !border-gray-400 placeholder:!text-sm placeholder:!text-text-primary outline-none transition"
         name="selectGender"
         required="true"
         autofocus="false"
