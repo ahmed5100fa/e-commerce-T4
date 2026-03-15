@@ -15,6 +15,7 @@ import { Product } from '../../interfaces/card-product';
 export class CarouselComponent {
 
   @ViewChild('carousel') carousel!: Carousel;
+  @Input() product_Id!: string;
 
   products = signal<Product[]>([]);
 

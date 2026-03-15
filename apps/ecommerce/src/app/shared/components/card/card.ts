@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
 import { RatingModule } from 'primeng/rating';
@@ -6,6 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../interfaces/card-product';
 import { LucideAngularModule , Star,StarHalf } from "lucide-angular";
+import { CartServ } from '../../../features/Cart/services/cart-service/cart-serv';
+import { RouterLink } from '@angular/router';
+import { AlertComponent, NotificationService } from '@Ui-components';
 
 export type TagSeverity =
   | 'success'
@@ -19,7 +22,7 @@ export type TagSeverity =
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [CardModule, TagModule, RatingModule, FormsModule, CommonModule, LucideAngularModule],
+  imports: [CardModule, TagModule, RatingModule, FormsModule, CommonModule, LucideAngularModule , RouterLink , AlertComponent],
   templateUrl: './card.html',
   styleUrls: ['./card.scss']
 })
@@ -28,6 +31,12 @@ export class Card {
   star  = Star
 
   @Input() product!: Product;
+   _quantity: number = 1;
+   private cartService = inject(CartServ);
+   private readonly alertService = inject(NotificationService);
+   _notifyService = inject(NotificationService);
+
+   @Input() product_id !: string ;
 
   get name(): string {
     return this.product.title;
@@ -94,5 +103,18 @@ export class Card {
   const words = this.product.title.split(' ');
   return words.slice(0, 3).join(' ');
 }
+
+
+addToCart() {
+  this.cartService.addToCart(this.product_id, this._quantity).subscribe({
+    next: (response) => {
+      this._notifyService.showSuccess('Product added to cart successfully!');
+    },
+    error: (error) => {
+      this._notifyService.showError('Failed to add product to cart.');
+    }
+  });
+}
+
 
 }

@@ -20,6 +20,7 @@ import { Spinner } from "../../shared/components/spinner/spinner";
   styleUrls: ['./home.scss'],
 })
 export class HomePageComponent {
+  product_Id : string = '' ;
   Products: Product[] = [];
     loadingService = inject(LoadingService);
     private cdr = inject(ChangeDetectorRef);
@@ -27,7 +28,7 @@ export class HomePageComponent {
   ngOnInit(): void {
     this.productService.getProducts().subscribe((res) => {
       this.Products = res.products;
-            this.cdr.detectChanges();
+      this.cdr.detectChanges();
     });
   }
 
