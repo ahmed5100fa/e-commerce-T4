@@ -15,17 +15,44 @@
         class="absolute inset-0 bg-[#E6507380] bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"
       >
         <!-- Eye icon to view product details -->
-        <span class="bg-white eye flex justify-center items-center rounded-full">
-          <i class="fa text-icon-primary fa-eye"></i>
+        <span class="bg-white eye flex justify-center items-center rounded-full cursor-pointer">
+                    <lucide-icon [img]="icons[2]" class="w-5 h-5"></lucide-icon>
         </span>
       </div>
+      <div class ="absolute flex justify-between w-full px-2 top-2 items-center">
+        @if (addedToWishlist()) {
+                  <div class="relative group">
+          <div class="absolute top-2 p-2 bg-background-primary rounded-full transition-all duration-300 text-button-primary hover:scale-110 cursor-pointer">
+            <lucide-icon [img]="icons[0]" class="w-5 h-5 text-button-primary transition-colors duration-300  cursoul-pointer"></lucide-icon>
+          </div>
 
-      <!-- Product Tags -->
+          <div class="absolute top-2 left-12 px-3 py-1.5 bg-background-primary text-button-primary text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap shadow-lg pointer-events-none">
+            Add to Wishlist
+            <div class="absolute left-[-6px] top-1/2 transform -translate-y-1/2 w-3 h-3 bg-background-primary rotate-45"></div>
+          </div>
+        </div>
+        }@else {
+        <div class="relative group">
+          <div class="absolute top-2 p-2 bg-[#27272A] rounded-full transition-all duration-300 text-white hover:scale-110 cursor-pointer">
+            <lucide-icon [img]="icons[5]" class="w-5 h-5 text-white transition-colors duration-300  cursoul-pointer"></lucide-icon>
+          </div>
+
+          <div class="absolute top-2 left-12 px-3 py-1.5 bg-[#27272A] text-white text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap shadow-lg pointer-events-none">
+            Remove from Wishlist
+            <div class="absolute left-[-6px] top-1/2 transform -translate-y-1/2 w-3 h-3 bg-[#27272A] rotate-45"></div>
+          </div>
+        </div>
+        }
+
       <div class="absolute right-2 top-2 flex gap-1">
+
         @for (tag of tags; track tag.label) {
           <p-tag [value]="tag.label" [severity]="tag.severity"></p-tag>
         }
       </div>
+      </div>
+      <!-- Product Tags -->
+
     </div>
   </ng-template>
 
@@ -43,15 +70,17 @@
         @for (i of [1,2,3,4,5]; track $index) {
           @if (i <= fullStars) {
             <!-- Full Star -->
-            <i class="fa fa-star text-yellow-400"></i>
-          }
+              <lucide-icon
+                [img]="icons[3]"
+                class="w-5 h-5 text-yellow-400 fill-yellow-400">
+              </lucide-icon>          }
           @else if (i === fullStars + 1 && hasHalfStar) {
             <!-- Half Star -->
-            <i class="fa fa-star-half-alt text-yellow-400"></i>
+            <lucide-icon [img]="icons[4]" class="w-5 h-5 text-yellow-400 fill-yellow-400 "></lucide-icon>
           }
           @else {
             <!-- Empty Star -->
-            <i class="fa fa-star text-gray-300"></i>
+            <lucide-icon [img]="icons[3]" class="w-5 h-5 text-yellow-400  "></lucide-icon>
           }
         }
       </div>
@@ -75,7 +104,7 @@
     <!-- Add to Cart Button -->
     <button
       class="w-8 h-8 md:w-10 md:h-10 border text-white bg-icon-primary rounded-full flex items-center justify-center">
-      <i class="fa fa-shopping-cart"></i>
+          <lucide-icon [img]="icons[1]" class="w-5 h-5 "></lucide-icon>
     </button>
   </div>
 </p-card>

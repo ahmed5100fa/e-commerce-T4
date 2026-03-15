@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { AboutUs } from './components/about-us/about-us';
 import { SpecialGiftsCard } from "../../shared/components/special-gifts-card/special-gifts-card";
 import { FeatureBar } from "./components/feature bar/feature-bar";
@@ -20,13 +20,14 @@ import { Spinner } from "../../shared/components/spinner/spinner";
   styleUrls: ['./home.scss'],
 })
 export class HomePageComponent {
-  Products !: Product[];
+  Products: Product[] = [];
     loadingService = inject(LoadingService);
-
+    private cdr = inject(ChangeDetectorRef);
   private productService = inject(ProductService);
   ngOnInit(): void {
     this.productService.getProducts().subscribe((res) => {
       this.Products = res.products;
+            this.cdr.detectChanges();
     });
   }
 
