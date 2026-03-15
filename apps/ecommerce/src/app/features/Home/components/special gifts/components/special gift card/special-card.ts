@@ -4,7 +4,6 @@ import { Component, Input } from '@angular/core';
   selector: 'special-card',
   imports: [],
   templateUrl: './special-card.html',
-  styleUrls: ['./special-card.scss'],
 })
 export class SpecialCard {
   @Input() imgSrc: string = "bg-[url('/special-gifts/6.png')]";

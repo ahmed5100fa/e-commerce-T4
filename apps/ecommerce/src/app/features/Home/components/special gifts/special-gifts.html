@@ -1,12 +1,12 @@
-<section class="w-11/12 mx-auto">
-  <div class="py-5 grid grid-cols-12 gap-3">
+<section class="w-11/12 mx-auto py-7">
+  <div class="grid grid-cols-12 gap-3">
     <!-- another card -->
     <div class="hidden lg:block lg:col-span-3">
       <special-card
         [label]="'Staring from 10.99 EGP'"
         [text]="'Special Gifts For The People You Love'"
       >
-        <div class="mt-1">
+        <div class="mt-1 w-50">
           <lib-custom-button
             [buttonStyle]="'second'"
             [label]="'Shop Now'"
@@ -16,13 +16,13 @@
       </special-card>
     </div>
     <!-- Carousel -->
-    <div class="col-span-12 lg:col-span-9">
-      <owl-carousel-o [options]="customOptions">
-        @for (item of imges; track $index) {
+    <div class="col-span-12 lg:col-span-9 relative">
+      <owl-carousel-o [options]="customOptions" #owlCar>
+        @for (item of carouselItems; track $index) {
         <ng-template carouselSlide>
           <div class="relative">
             <div
-              [class]="imges[$index]"
+              [class]="item.image"
               class="w-full h-120 bg-center bg-cover rounded-2xl"
             >
               <div
@@ -30,11 +30,11 @@
               >
                 <div class="texts">
                   <h2 class="text-white font-semibold text-5xl pb-3">
-                    {{titles[$index]}}
+                    {{item.title}}
                   </h2>
-                  <p class="text-white text-xl">{{subTitle[$index]}}</p>
+                  <p class="text-white text-xl">{{item.subTitle}}</p>
                 </div>
-                <div class="mt-6">
+                <div class="mt-6 w-50">
                   <lib-custom-button
                     [buttonStyle]="'second'"
                     [label]="'I’m buying !'"
@@ -46,16 +46,34 @@
         </ng-template>
         }
       </owl-carousel-o>
+      <!-- Custom Nav Buttons -->
+      <div
+        class="flex gap-3 bg-[#FBEAEA] text-zinc-400 rounded-full py-0.5 absolute bottom-4 right-4 z-99999"
+      >
+        <button
+          (click)="goPrev()"
+          class="flex justify-center items-center hover:text-zinc-600 active:text-[#A6252A] transition-all"
+        >
+          <i class="pi pi-angle-left" style="font-size: 30px"></i>
+        </button>
+
+        <button
+          (click)="goNext()"
+          class="flex justify-center items-center hover:text-zinc-600 active:text-[#A6252A] transition-all"
+        >
+          <i class="pi pi-angle-right" style="font-size: 30px"></i>
+        </button>
+      </div>
     </div>
   </div>
-  <section class="mx-auto flex flex-wrap  py-3 lg:px-0">
-  @for (gift of gifts; track $index) {
+  <section class="grid grid-cols-3 gap-3 py-3">
+    @for (gift of SpecialCard; track $index) {
     <app-special-gifts-card
       [image]="gift.image"
       [title]="gift.title"
       [label]="gift.label"
-      class="w-full lg:w-1/3 md:w-1/2 "
+      class="w-full"
     ></app-special-gifts-card>
-  }
-</section>
+    }
+  </section>
 </section>
