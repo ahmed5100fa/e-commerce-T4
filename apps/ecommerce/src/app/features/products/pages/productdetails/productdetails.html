@@ -1,8 +1,116 @@
+<!-- product => section -->
+
+<section class="py-8 md:py-12">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
+
+      <!-- image -->
+      <div class="md:col-span-6">
+
+        @if (currentImage) {
+        <div class="overflow-hidden rounded-lg">
+            <img
+          [ngSrc]="currentImage"
+          width="400"
+          height="400"
+          priority
+          class=" object-cover aspect-square  "
+        
+          [alt]="productDetails.title"
+        />
+        </div>
+        }
+
+        <div class="flex gap-3 mt-4 flex-wrap">
+
+          @for (img of productDetails?.images?.slice(0,6); track img) {
+
+          <img
+            [ngSrc]="img"
+            width="80"
+            height="80"
+            class="w-20 h-20 object-cover cursor-pointer border-2 rounded-md hover:border-blue-500 transition-all "
+            (click)="currentImage = img"
+          />
+
+          }
+
+        </div>
+
+      </div>
+
+      <!-- content -->
+      <div class="md:col-span-6">
+
+              <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          {{productDetails.title}}
+        </h1>
+
+       
+        <div class="items-center">
+
+        <div class="flex items-center gap-3 mb-4">
+         
+          <span class="text-xl text-gray-400 line-through">
+            {{productDetails.price}} 
+          </span>
+           <span class="text-3xl font-bold text-gray-900">
+            {{productDetails.priceAfterDiscount}} EGP
+          </span>
+
+          
+        </div>
+
+          <!-- rating -->
+
+           <div class="flex items-center gap-2 mb-6">
+          <div class="flex items-center">
+            <i class="pi pi-star-fill text-yellow-400 text-lg"></i>
+            <span class="font-semibold ml-1">{{productDetails.rateAvg}}</span>
+          </div>
+          <span class="text-gray-400">/5</span>
+          <span class="text-gray-500 text-sm">
+            ({{productDetails.rateCount}} ratings)
+          </span>
+        </div>
+        </div>
+
+         <p class="text-gray-700 text-sm my-2">
+          {{productDetails.description}}
+        </p>
+
+
+        <div class="flex mt-4">
+
+          <lib-custom-button
+            [label]="'add to cart'">
+          </lib-custom-button>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- product reviews -->
 
 <div class="product-details-page min-h-screen p-4 flex flex-col w-full">
-@if(product()){
-<app-product-review [productId]="product()!._id"></app-product-review>
+
+@if(productDetails?._id){
+
+<app-product-review
+[productId]="productDetails._id">
+</app-product-review>
+
 }
+
 </div>
 
+<!-- related product -->
 
+<app-carousel
+[productsInput]="productsList"
+[productsNum]="4">
+</app-carousel>
