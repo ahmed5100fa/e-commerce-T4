@@ -1,27 +1,25 @@
-<!-- product => section -->
-
-<section class="py-8 md:py-12">
+<section class="py-12">
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
 
-      <!-- image -->
-      <div class="md:col-span-6">
+      <!-- images -->
+      <div>
 
         @if (currentImage) {
-        <div class="overflow-hidden rounded-lg">
-            <img
-          [ngSrc]="currentImage"
-          width="400"
-          height="400"
-          priority
-          class=" object-cover aspect-square  "
-        
-          [alt]="productDetails.title"
-        />
+        <div class="rounded-xl overflow-hidden">
+          <img
+            [ngSrc]="currentImage"
+            width="300"
+            height="300"
+            priority
+            class=" object-cover"
+            [alt]="productDetails.title"
+          />
         </div>
         }
 
-        <div class="flex gap-3 mt-4 flex-wrap">
+        <!-- thumbnails -->
+        <div class="flex gap-3 mt-4">
 
           @for (img of productDetails?.images?.slice(0,6); track img) {
 
@@ -29,7 +27,7 @@
             [ngSrc]="img"
             width="80"
             height="80"
-            class="w-20 h-20 object-cover cursor-pointer border-2 rounded-md hover:border-blue-500 transition-all "
+            class="w-[70px] h-[70px] object-cover rounded-md cursor-pointer border hover:border-red-400 transition"
             (click)="currentImage = img"
           />
 
@@ -39,53 +37,72 @@
 
       </div>
 
-      <!-- content -->
-      <div class="md:col-span-6">
+      <!-- product info -->
+      <div class="space-y-6">
 
-              <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <!-- title -->
+        <h1 class="text-3xl font-semibold">
           {{productDetails.title}}
         </h1>
 
-       
-        <div class="items-center">
+        <!-- price -->
+        <div class="flex items-center gap-3">
 
-        <div class="flex items-center gap-3 mb-4">
-         
-          <span class="text-xl text-gray-400 line-through">
-            {{productDetails.price}} 
+          <span class="line-through text-lg">
+            {{productDetails.price}}
           </span>
-           <span class="text-3xl font-bold text-gray-900">
+
+          <span class="text-3xl font-bold ">
             {{productDetails.priceAfterDiscount}} EGP
           </span>
 
-          
+          <span class="bg-gray-700 text-gray-200 text-xs px-3 py-1 rounded-full">
+            {{productDetails.quantity}} left in stock
+          </span>
+
         </div>
 
-          <!-- rating -->
+        <!-- rating -->
+        <div class="flex items-center gap-2 text-sm">
 
-           <div class="flex items-center gap-2 mb-6">
-          <div class="flex items-center">
-            <i class="pi pi-star-fill text-yellow-400 text-lg"></i>
-            <span class="font-semibold ml-1">{{productDetails.rateAvg}}</span>
-          </div>
-          <span class="text-gray-400">/5</span>
-          <span class="text-gray-500 text-sm">
+          <i class="pi pi-star-fill text-yellow-400"></i>
+
+          <span class="font-medium">
+            Rating: {{productDetails.rateAvg}}/5
+          </span>
+
+          <span class="text-blue-400">
             ({{productDetails.rateCount}} ratings)
           </span>
-        </div>
+
         </div>
 
-         <p class="text-gray-700 text-sm my-2">
+        <!-- description -->
+        <p class=" leading-relaxed max-w-xl">
           {{productDetails.description}}
         </p>
 
+        <!-- buttons -->
+        <div class="flex items-center gap-4 pt-4">
 
-        <div class="flex mt-4">
+          <!-- wishlist -- button -->
+          <button
+            class="w-12 h-12 shadow hover:bg-gray-300  flex items-center justify-center border rounded-lg transition">
 
-          <lib-custom-button
-            [label]="'add to cart'">
-          </lib-custom-button>
+            <i class="pi pi-heart"></i>
 
+          </button>
+
+          <!-- add to cart -- button -->
+          <button
+            class="flex-1 bg-text-primary  hover:bg-pink-500 font-medium py-3 rounded-lg transition flex items-center justify-center gap-2">
+
+            <i class="pi pi-shopping-cart"></i>
+
+            Add to Cart
+
+          </button>
+         
         </div>
 
       </div>
@@ -94,9 +111,10 @@
   </div>
 </section>
 
+
 <!-- product reviews -->
 
-<div class="product-details-page min-h-screen p-4 flex flex-col w-full">
+<div class="product-details-page min-h-screen p-6 flex flex-col w-full">
 
 @if(productDetails?._id){
 
@@ -107,6 +125,7 @@
 }
 
 </div>
+
 
 <!-- related product -->
 
