@@ -1,11 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
 import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../interfaces/card-product';
-import { LucideAngularModule , Star,StarHalf } from "lucide-angular";
+import { LucideAngularModule , Star,StarHalf , HeartPlus, ShoppingCart, Eye, HeartMinus } from "lucide-angular";
 
 export type TagSeverity =
   | 'success'
@@ -27,6 +27,11 @@ export class Card {
 
   star  = Star
 
+  readonly icons = [HeartPlus , ShoppingCart, Eye, Star, StarHalf , HeartMinus];
+
+
+  // added to wish list
+  addedToWishlist = signal<boolean>(true);
   @Input() product!: Product;
 
   get name(): string {
