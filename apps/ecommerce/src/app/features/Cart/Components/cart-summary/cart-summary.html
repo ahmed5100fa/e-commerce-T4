@@ -1,0 +1,57 @@
+<section class="p-2 rounded-xl w-full">
+
+  <!-- Title -->
+  <h2 class="text-2xl text-text-primary font-semibold mb-4">Summary</h2>
+
+  <!-- Coupon -->
+  <div class="flex gap-3 mb-4">
+    <input
+      type="text"
+      placeholder="Coupon Code"
+      class="flex-1 border rounded-lg px-4 py-2 placeholder:text-text-primary border-text-primary outline-none focus:ring-2 focus:ring-red-400"
+    />
+
+    <button
+      class="bg-button-primary text-navbar-link px-4 py-2 rounded-lg flex flex-wrap justify-center items-center gap-2 hover:bg-red-800 transition">
+      <lucide-icon [img]="icons[0]" class="w-5 h-5"></lucide-icon> Apply Coupon
+    </button>
+  </div>
+
+  <!-- Coupon Box -->
+  <div
+    class="border rounded-xl h-40 flex items-center justify-center text-text-primary mb-4">
+    No coupons applied
+  </div>
+
+  <!-- Price Details -->
+  <div class="space-y-3 border-t border-text-primary pt-4">
+
+    <!-- Discount -->
+    @if(isDiscount()){
+      <!-- Subtotal -->
+      <div class="flex justify-between text-text-primary">
+          <span>Subtotal</span>
+          <span class="font-medium">{{ Subtotal() }} EGP</span>
+      </div>
+      <div class="flex items-center gap-3 text-sm text-text-primary">
+        <div class="flex-1 border-t"></div>
+        <span>{{ Discount() }}% Discount</span>
+        <div class="flex-1 border-t"></div>
+      </div>
+    }
+
+    <!-- Total -->
+    <div class="flex justify-between text-xl text-text-primary font-semibold">
+      <span>Total</span>
+      <span>{{ Total() }} EGP</span>
+    </div>
+
+  </div>
+
+  <!-- Checkout -->
+  <button
+    class="w-full flex items-center justify-center mt-6 bg-button-primary text-navbar-link py-3 rounded-xl text-lg font-medium hover:bg-red-800 transition">
+    Checkout <lucide-icon [img]="icons[1]" class="w-5 h-5 ms-1 mt-[1px]"></lucide-icon>
+  </button>
+
+</section>

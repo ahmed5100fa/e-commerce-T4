@@ -13,7 +13,8 @@
       @for (product of products(); track $index) {
       <app-card
         [product]="product"
-        [routerLink]='["/main/product", product._id]'
+
+        [product_id]="product._id"
       ></app-card>
       }
     </div>

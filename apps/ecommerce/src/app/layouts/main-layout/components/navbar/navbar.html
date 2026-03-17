@@ -65,14 +65,14 @@
       <div class="hidden lg:flex items-center gap-6">
         <button class="text-text-primary hover:text-rose-500 transition"><lucide-icon [img]="icons[0]" class="w-5 h-5"></lucide-icon></button>
 
-        <button class="relative text-text-primary hover:text-rose-500 transition">
+        <button class="relative text-text-primary hover:text-rose-500 transition" routerLink="/main/cart">
           <lucide-icon [img]="icons[1]" class="w-5 h-5"></lucide-icon>
           @if (isLoggedIn()) {
           <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">8</span>
           }
         </button>
-        <button class="relative text-text-primary hover:text-rose-500 transition">
-          <lucide-icon [img]="icons[2]" class="w-5 h-5"></lucide-icon>
+        <button class="relative text-text-primary hover:text-rose-500 transition" >
+          <lucide-icon [img]="icons[2]" class="w-5 h-5" ></lucide-icon>
           @if (isLoggedIn()) {
           <span class="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">8</span>
           }

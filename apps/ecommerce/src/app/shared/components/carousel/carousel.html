@@ -22,12 +22,12 @@
   >
     <ng-template pTemplate="item" let-product>
       <div class="p-2">
-        <app-card [product]="product"></app-card>
+        <app-card [product]="product"
+        [product_id]="product._id"
+        ></app-card>
       </div>
     </ng-template>
   </p-carousel>
 </div>
-}@else {
-  <p>hello worled </p>
 }
 
