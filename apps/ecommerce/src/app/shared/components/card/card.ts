@@ -114,6 +114,8 @@ addToCart() {
   this.cartService.addToCart(this.product_id, this._quantity).subscribe({
     next: (response) => {
       this._notifyService.showSuccess('Product added to cart successfully!');
+      console.log("sucsee");
+
     },
     error: (error) => {
       this._notifyService.showError('Failed to add product to cart.');

@@ -103,7 +103,9 @@
 
     <!-- Add to Cart Button -->
     <button
-      class="w-8 h-8 md:w-10 md:h-10 border text-white bg-icon-primary rounded-full flex items-center justify-center">
+      class="w-8 h-8 md:w-10 md:h-10 border text-white bg-icon-primary rounded-full flex items-center justify-center"
+      (click)="addToCart()"
+      >
           <lucide-icon [img]="icons[1]" class="w-5 h-5 "></lucide-icon>
     </button>
   </div>

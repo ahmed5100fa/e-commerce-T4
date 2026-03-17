@@ -22,7 +22,7 @@ import { Spinner } from "../../shared/components/spinner/spinner";
 })
 export class Cart {
   icons= [BrushCleaning , Trash2 , MoveLeft];
-   _cartItems : CartItem[] = [];
+  _cartItems = signal<CartItem[]>([]);
    Products: Product[] = [];
    TotalPrice = signal<number>(0);
    numOfCartItems = signal<number>(0);
@@ -32,11 +32,10 @@ export class Cart {
    loadingService = inject(LoadingService);
   subscription!: Subscription;
 
-
   getCartItem(){
     this._cartService.getCartItems().subscribe({
       next: (res) => {
-        this._cartItems = res.cart.cartItems;
+        this._cartItems.set(res.cart.cartItems) ;
         this.TotalPrice.set(res.cart.totalPrice);
       },
       error: (err) => {
@@ -52,6 +51,15 @@ export class Cart {
     });
   }
 
+clearCart(){
+  this._cartService.clearCart().subscribe({
+    next : () => {
+      this._cartItems.set([]);
+      this.TotalPrice.set(0);
+      this.numOfCartItems.set(0);
+    }
+  })
+}
 
 
   ngOnInit(): void {
