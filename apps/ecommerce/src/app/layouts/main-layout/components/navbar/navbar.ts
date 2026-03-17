@@ -8,10 +8,11 @@ import { DropdownContent } from "./components/dropdown-content/dropdown-content"
 import { FormsModule } from '@angular/forms';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { StoreUserData } from 'apps/ecommerce/src/app/core/services/cookies.service';
+import { Heart, LucideAngularModule , ShoppingCart , Bell, User , ChevronDown ,MapPinPen , Search, Menu} from 'lucide-angular';
 
 @Component({
   selector: 'app-navbar',
-  imports: [CommonModule, SecondNav, Sidebar, RouterLink, DropdownContent , ToggleSwitchModule, FormsModule],
+  imports: [CommonModule, SecondNav, Sidebar, RouterLink, DropdownContent, ToggleSwitchModule, FormsModule, LucideAngularModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
@@ -25,6 +26,8 @@ export class Navbar {
   private readonly cookies = inject(StoreUserData);
   firstName = signal<string>('');
   lastName = signal<string>('');
+    readonly icons = [Heart , ShoppingCart , Bell , User , ChevronDown , MapPinPen ,Search , Menu];
+
 
 
   onToggleSidebar() {

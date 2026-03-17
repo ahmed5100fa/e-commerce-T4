@@ -1,14 +1,15 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, inject, Input, signal } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { TagModule } from 'primeng/tag';
 import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Product } from '../../interfaces/card-product';
-import { LucideAngularModule , Star,StarHalf } from "lucide-angular";
-import { CartServ } from '../../../features/Cart/services/cart-service/cart-serv';
+import { LucideAngularModule , Star,StarHalf , HeartPlus, ShoppingCart, Eye, HeartMinus } from "lucide-angular";
 import { RouterLink } from '@angular/router';
 import { AlertComponent, NotificationService } from '@Ui-components';
+import { CartServ } from '../../../features/Cart/services/cart-service/cart-serv';
+import { Subscription } from 'rxjs';
 
 export type TagSeverity =
   | 'success'
@@ -30,11 +31,18 @@ export class Card {
 
   star  = Star
 
+  readonly icons = [HeartPlus , ShoppingCart, Eye, Star, StarHalf , HeartMinus];
+
+
+  // added to wish list
+  addedToWishlist = signal<boolean>(true);
   @Input() product!: Product;
    _quantity: number = 1;
    private cartService = inject(CartServ);
    private readonly alertService = inject(NotificationService);
    _notifyService = inject(NotificationService);
+     subscription!: Subscription;
+
 
    @Input() product_id !: string ;
 
@@ -115,6 +123,11 @@ addToCart() {
     }
   });
 }
+
+ // Life Cycle Hooks
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
+  }
 
 
 }

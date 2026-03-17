@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CartServ } from './services/cart-service/cart-serv';
 import { Cartinter, CartResponse } from './interfaces/cart-Interface/cart-inter';
 import { log } from 'console';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -12,6 +13,8 @@ import { log } from 'console';
 export class Cart {
    _cartItems !: CartResponse;
    private _cartService = inject(CartServ);
+     subscription!: Subscription;
+
   ngOnInit(): void {
     this._cartService.getCartItems().subscribe({
       next: (res) => {
@@ -22,5 +25,10 @@ export class Cart {
         console.log(err);
       },
     });
+  }
+
+   // Life Cycle Hooks
+  ngOnDestroy(): void {
+    this.subscription?.unsubscribe();
   }
 }

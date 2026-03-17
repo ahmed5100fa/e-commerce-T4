@@ -4,10 +4,11 @@ import { RouterLink } from "@angular/router";
 import { FormsModule } from '@angular/forms';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { StoreUserData } from 'apps/ecommerce/src/app/core/services/cookies.service';
+import { Heart, LucideAngularModule , ShoppingCart , Bell, User  , House , Gift , ClipboardList , PartyPopper ,Headset , Info, MapPinPen} from 'lucide-angular';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [DropdownContent, RouterLink, ToggleSwitchModule, FormsModule],
+  imports: [DropdownContent, RouterLink, ToggleSwitchModule, FormsModule , LucideAngularModule],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
 })
@@ -16,6 +17,7 @@ export class Sidebar {
   @Input() isAccountDropdownOpen = false;
   @Output() closeSidebar = new EventEmitter<void>();
   @Output() toggleAccountDropdown = new EventEmitter<void>();
+  readonly icons = [Heart , ShoppingCart , Bell , User, House , Gift , ClipboardList , PartyPopper ,Headset , Info , MapPinPen];
 
   isLoggedIn = signal<boolean>(false);
   checked = signal(true);
