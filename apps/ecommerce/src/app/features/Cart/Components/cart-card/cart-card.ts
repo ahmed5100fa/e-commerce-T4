@@ -49,4 +49,12 @@ export class CartCard {
       }
     }
 
+
+  deleteFromCart(productId:string){
+    this._cartService.deleteFromCart(productId).subscribe({
+      next : (res) =>{
+        console.log(res);
+      }
+    })
+  }
 }
