@@ -30,7 +30,9 @@
             [rateAvg]="item.product.rateAvg || 0"
             [rateCount]="item.product.rateCount || 0"
             [quantity]="item.quantity"
-            [product_Id]="item.product._id">
+            [product_Id]="item.product._id"
+            (itemDeleted)="handleItemDeleted($event)"
+            (itemUpdated)="handleItemUpdated($event)">
           </app-cart-card>
         }
       </section>

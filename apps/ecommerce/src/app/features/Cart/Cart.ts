@@ -23,23 +23,22 @@ import { Spinner } from "../../shared/components/spinner/spinner";
 export class Cart {
   icons= [BrushCleaning , Trash2 , MoveLeft];
   _cartItems = signal<CartItem[]>([]);
-   Products: Product[] = [];
-   TotalPrice = signal<number>(0);
-   numOfCartItems = signal<number>(0);
-   numOfProduct = signal<number>(0);
-   private _cartService = inject(CartServ);
-   private cdr = inject(ChangeDetectorRef);
-   private productService = inject(ProductService);
-   loadingService = inject(LoadingService);
-   subscription!: Subscription;
+  Products: Product[] = [];
+  TotalPrice = signal<number>(0);
+  numOfCartItems = signal<number>(0);
+  numOfProduct = signal<number>(0);
+  private _cartService = inject(CartServ);
+  private cdr = inject(ChangeDetectorRef);
+  private productService = inject(ProductService);
+  loadingService = inject(LoadingService);
+  subscription!: Subscription;
 
   getCartItem(){
     this._cartService.getCartItems().subscribe({
       next: (res) => {
-        this._cartItems.set(res.cart.cartItems) ;
+        this._cartItems.set(res.cart.cartItems);
         this.TotalPrice.set(res.cart.totalPrice);
         console.log(res);
-
       },
       error: (err) => {
         console.log(err);
@@ -64,14 +63,40 @@ export class Cart {
     })
   }
 
-  UpdateCartProduct(quantity: number , productId: string){
-    this._cartService.UpdateCartProduct(quantity , productId).subscribe({
-      next : (res) =>{
-        console.log(res);
-      }
-    })
+  handleItemDeleted(productId: string) {
+    this._cartItems.update(items =>
+      items.filter(item => item.product._id !== productId)
+    );
+
+    const newTotalPrice = this.calculateTotalPrice();
+    this.TotalPrice.set(newTotalPrice);
   }
 
+  // Handle item quantity update
+  handleItemUpdated(event: {quantity: number, productId: string, newTotalPrice?: number}) {
+    this._cartItems.update(items =>
+      items.map(item =>
+        item.product._id === event.productId
+          ? { ...item, quantity: event.quantity }
+          : item
+      )
+    );
+
+    if (event.newTotalPrice) {
+      this.TotalPrice.set(event.newTotalPrice);
+    } else {
+      const newTotalPrice = this.calculateTotalPrice();
+      this.TotalPrice.set(newTotalPrice);
+    }
+  }
+
+  private calculateTotalPrice(): number {
+    let total = 0;
+    for (const item of this._cartItems()) {
+      total += item.price * item.quantity;
+    }
+    return total;
+  }
 
   ngOnInit(): void {
     this.getCartItem();

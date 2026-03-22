@@ -47,3 +47,5 @@ export interface Product {
   isSuperAdmin?: boolean;
   __v?: number;
 }
+
+
