@@ -48,9 +48,10 @@
       <div class="flex items-center gap-3">
 
         <button
+          (click)="increase()"
           class="w-10 h-10 md:w-12 md:h-12 bg-red-100 text-red-600 text-xl rounded-lg"
         >
-          -
+          +
         </button>
 
         <div class="w-16 md:w-20 h-10 md:h-12 border border-text-primary text-text-primary rounded-lg flex items-center justify-center">
@@ -58,9 +59,10 @@
         </div>
 
         <button
+          (click)="decrease()"
           class="w-10 h-10 md:w-12 md:h-12 bg-red-100 text-red-600 text-xl rounded-lg"
         >
-          +
+          -
         </button>
 
       </div>

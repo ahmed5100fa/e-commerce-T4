@@ -26,17 +26,20 @@ export class Cart {
    Products: Product[] = [];
    TotalPrice = signal<number>(0);
    numOfCartItems = signal<number>(0);
+   numOfProduct = signal<number>(0);
    private _cartService = inject(CartServ);
    private cdr = inject(ChangeDetectorRef);
    private productService = inject(ProductService);
    loadingService = inject(LoadingService);
-  subscription!: Subscription;
+   subscription!: Subscription;
 
   getCartItem(){
     this._cartService.getCartItems().subscribe({
       next: (res) => {
         this._cartItems.set(res.cart.cartItems) ;
         this.TotalPrice.set(res.cart.totalPrice);
+        console.log(res);
+
       },
       error: (err) => {
         console.log(err);
@@ -51,15 +54,23 @@ export class Cart {
     });
   }
 
-clearCart(){
-  this._cartService.clearCart().subscribe({
-    next : () => {
-      this._cartItems.set([]);
-      this.TotalPrice.set(0);
-      this.numOfCartItems.set(0);
-    }
-  })
-}
+  clearCart(){
+    this._cartService.clearCart().subscribe({
+      next : () => {
+        this._cartItems.set([]);
+        this.TotalPrice.set(0);
+        this.numOfCartItems.set(0);
+      }
+    })
+  }
+
+  UpdateCartProduct(quantity: number , productId: string){
+    this._cartService.UpdateCartProduct(quantity , productId).subscribe({
+      next : (res) =>{
+        console.log(res);
+      }
+    })
+  }
 
 
   ngOnInit(): void {

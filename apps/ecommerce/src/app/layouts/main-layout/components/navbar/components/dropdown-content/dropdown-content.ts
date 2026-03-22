@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { MenuModule } from 'primeng/menu';
   import { AfterViewInit, ElementRef, ViewChild } from '@angular/core';
 import { Heart, LucideAngularModule , ShoppingCart , Bell, User , ChevronDown ,MapPinPen , Search, Menu, MapPinHouse, ScrollText, Settings, LogOut} from 'lucide-angular';
+import { log } from 'console';
 
 @Component({
   selector: 'app-dropdown-content',
@@ -16,8 +17,6 @@ import { Heart, LucideAngularModule , ShoppingCart , Bell, User , ChevronDown ,M
 export class DropdownContent {
   private authService = inject(AuthLibraryService);
   private router = inject(Router);
-  userFirstName = 'Joseph';
-  userLastName = 'McFall';
   icons = [MapPinHouse , ScrollText , Settings , LogOut];
 
 menuItems: any = [
@@ -52,18 +51,21 @@ menuItems: any = [
   icon: LogOut,
   styleClass: 'flex items-center gap-3 p-2 rounded-lg cursor-pointer text-red-500',
   command: () => {
-    console.log('logout clicked');
     this.logout();
   }
 }
 ];
 
   logout() {
-
   this.authService.logout().subscribe({
     next: () => {
+        console.log("hello");
+
         localStorage.removeItem('token');
         this.router.navigate(['/login']);
+    },error : err =>{
+      console.log(err);
+
     }});
 }
 

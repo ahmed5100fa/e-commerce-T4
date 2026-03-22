@@ -27,6 +27,7 @@ export class Sidebar {
 
   ngOnInit() {
     this.checkLoginStatus();
+    // this.checkLoggin()
 
     if (typeof window !== 'undefined') {
       const savedTheme = localStorage.getItem('theme');
@@ -42,7 +43,10 @@ export class Sidebar {
 
   checkLoginStatus() {
     if (typeof window !== 'undefined') {
-      this.isLoggedIn.set(!!localStorage.getItem('token'));
+      const token = localStorage.getItem('token');
+      const userData = this.cookies.getData('userData');
+
+      this.isLoggedIn.set(!!token && !!userData);
     }
   }
 
@@ -65,4 +69,5 @@ export class Sidebar {
       localStorage.setItem('theme', value ? 'dark' : 'light');
     }
   }
+
 }
