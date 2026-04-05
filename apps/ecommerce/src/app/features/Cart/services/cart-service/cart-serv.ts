@@ -23,4 +23,12 @@ export class CartServ {
       quantity: quantity
     });
   }
+
+  deleteFromCart(productId: string){
+    return this._http.delete(`${this._baseUrl}/cart/${productId}`);
+  }
+
+  clearCart(){
+    return this._http.delete(`${this._baseUrl}/cart`)
+  }
 }
