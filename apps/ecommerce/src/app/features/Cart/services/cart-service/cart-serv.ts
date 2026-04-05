@@ -31,4 +31,10 @@ export class CartServ {
   clearCart(){
     return this._http.delete(`${this._baseUrl}/cart`)
   }
+
+  UpdateCartProduct(quantity: number, productId: string) {
+  return this._http.put(`${this._baseUrl}/cart/${productId}`, {
+    quantity
+  });
+}
 }

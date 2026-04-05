@@ -63,7 +63,10 @@ export class Navbar {
 
   checkLoginStatus() {
     if (typeof window !== 'undefined') {
-      this.isLoggedIn.set(!!localStorage.getItem('token'));
+      const token = localStorage.getItem('token');
+      const userData = this.cookies.getData('userData');
+
+      this.isLoggedIn.set(!!token && !!userData);
     }
   }
 
