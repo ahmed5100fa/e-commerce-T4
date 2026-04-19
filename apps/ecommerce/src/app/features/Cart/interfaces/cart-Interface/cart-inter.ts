@@ -48,4 +48,17 @@ export interface Product {
   __v?: number;
 }
 
+export interface AddressesResponse {
+  message: string
+  addresses: Addressinter[]
+}
 
+export interface Addressinter {
+  street: string
+  phone: string
+  city: string
+  lat: string
+  long: string
+  username: string
+  _id: string
+}

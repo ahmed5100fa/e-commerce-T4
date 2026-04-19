@@ -1,0 +1,54 @@
+<div class="max-w-4xl mx-auto p-6 font-sans">
+
+  <div class="flex items-center gap-4 mb-8">
+    <button (click)="goBack()"
+            class="flex items-center px-4 py-2 bg-button-fourth-onClick rounded-xl text-sm font-bold text-text-primary transition-all">
+      <span class="mr-2"><lucide-icon [img]="icons[0]" class="w-5 h-5"></lucide-icon></span> Back
+    </button>
+    <h2 class="text-2xl font-medium text-text-primary">Payment Method</h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8  items-start">
+
+    <div (click)="selectMethod('cash')"
+         class="relative cursor-pointer rounded-sm p-5 flex flex-col items-center text-center bg-background-primary transition-all shadow-sm"
+         [class.shadow-xl]="selectedMethod() === 'cash'"
+         [class.scale-[1.02]]="selectedMethod() === 'cash'">
+
+      <div class="w-48 h-32 mb-6 flex items-center justify-center bg-white rounded-lg">
+        <img src="./Assets/image/Cash.png" alt="Cash on Delivery">
+      </div>
+
+      <h3 class="text-2xl font-bold mb-2 transition-colors duration-300"
+          [class]="selectedMethod() === 'cash' ? 'text-button-primary' : 'text-text-primary'">
+        Cash on Delivery
+      </h3>
+      <p class="text-gray-500 text-sm leading-snug">You'll pay in cash when your order is delivered.</p>
+    </div>
+
+    <div (click)="selectMethod('card')"
+         class="relative cursor-pointer rounded-sm p-5 flex flex-col items-center text-center bg-background-primary transition-all shadow-sm"
+         [class.shadow-xl]="selectedMethod() === 'card'"
+         [class.scale-[1.02]]="selectedMethod() === 'card'">
+
+      <div class="w-48 h-32 mb-6 flex items-center justify-center bg-white rounded-lg">
+        <img src="./Assets/image/Cridt.png" alt="Credit Card">
+      </div>
+
+      <h3 class="text-2xl font-bold mb-2 transition-colors duration-300"
+          [class]="selectedMethod() === 'card' ? 'text-button-primary' : 'text-text-primary'">
+        Credit Card
+      </h3>
+      <p class="text-gray-500 text-sm leading-snug">You'll be securely redirected to Stripe to complete your payment.</p>
+    </div>
+  </div>
+
+  <div class="pt-8  flex justify-end">
+    <lib-custom-button
+            [buttonStyle]="'primary'"
+            [label]="'Checkout'"
+            [icon]="arrowIcon"
+    ></lib-custom-button>
+  </div>
+
+</div>
