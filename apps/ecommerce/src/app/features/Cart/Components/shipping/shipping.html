@@ -1,0 +1,9 @@
+<div class="max-w-2xl mx-auto p-6 pt-0 bg-background-primary font-sans">
+
+  <app-stepper
+    [currentStep]="currentStep"
+    [steps]="[{position: 30}, {position: 75}]">
+  </app-stepper>
+
+  <router-outlet></router-outlet>
+</div>

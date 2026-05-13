@@ -3,7 +3,6 @@ import { Component, EventEmitter, inject, Output, signal } from '@angular/core';
 import { SecondNav } from "./components/second-nav/second-nav";
 import { Sidebar } from "./components/sidebar/sidebar";
 import { RouterLink } from "@angular/router";
-import { AuthLibraryService } from '@org/auth';
 import { DropdownContent } from "./components/dropdown-content/dropdown-content";
 import { FormsModule } from '@angular/forms';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';

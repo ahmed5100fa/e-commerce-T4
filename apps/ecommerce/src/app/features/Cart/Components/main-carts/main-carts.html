@@ -1,0 +1,50 @@
+<header class="flex justify-between items-center pb-3">
+
+  <div class="flex items-end gap-3">
+    <h2 class="text-[32px] font-bold text-text-primary">Cart</h2>
+    <p class="text-sm text-gray-400">
+      {{ cartService._cartItems().length }} products
+    </p>
+  </div>
+
+  <button
+    class="px-6 py-2 bg-button-secondary rounded-lg flex items-center text-text-primary"
+    (click)="clearCart()">
+    <lucide-icon [img]="icons[0]" class="w-5 h-5 me-2"></lucide-icon>
+    Clear Cart
+  </button>
+
+</header>
+
+@if(cartService._cartItems().length > 0){
+
+<section class="pt-4 border rounded-lg">
+
+  @for(item of cartService._cartItems(); track item._id){
+    <app-cart-card
+      [price]="item.price"
+      [descreption]="item.product.title"
+      [Image]="item.product.imgCover"
+      [quantity]="item.quantity"
+      [product_Id]="item.product._id"
+      (itemDeleted)="handleItemDeleted($event)"
+      (itemUpdated)="handleItemUpdated($event)">
+    </app-cart-card>
+  }
+
+</section>
+
+} @else {
+
+<section class="flex justify-center">
+  <img src="./Assets/image/nothing.png" class="w-1/2">
+</section>
+
+}
+
+<button
+  class="mt-6 bg-button-primary text-background-primary px-10 py-3 rounded-xl flex items-center gap-3"
+  routerLink="/main/products">
+  <lucide-icon [img]="icons[2]" class="w-5 h-5 me-1"></lucide-icon>
+  Continue Shopping
+</button>

@@ -48,10 +48,15 @@
 
   </div>
 
-  <!-- Checkout -->
-  <button
-    class="w-full flex items-center justify-center mt-6 bg-button-primary text-navbar-link py-3 rounded-xl text-lg font-medium hover:bg-red-800 transition">
-    Checkout <lucide-icon [img]="icons[1]" class="w-5 h-5 ms-1 mt-[1px]"></lucide-icon>
-  </button>
+  @if (isMainCart()) {
+    <button
+      class="w-full flex items-center justify-center mt-6 bg-button-primary text-background-primary py-3 rounded-xl text-lg font-medium hover:bg-red-800 transition"
+      routerLink="shipping">
+
+      Checkout
+      <lucide-icon [img]="icons[1]" class="w-5 h-5 ms-1 mt-[1px]"></lucide-icon>
+
+    </button>
+  }
 
 </section>

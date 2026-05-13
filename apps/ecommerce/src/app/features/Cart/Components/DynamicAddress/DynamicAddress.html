@@ -1,0 +1,55 @@
+ <div class="flex justify-between items-center mb-10 pr-10">
+      <h1 class="text-3xl font-bold text-text-primary">My Addresses</h1>
+      <button class="bg-[#fdf2f2] text-[#a12020] px-6 py-2 rounded-xl font-bold text-sm shadow-sm hover:bg-[#fae1e1] transition-all" (click)="goToDynamicNewAddress()">
+        Add a New Address
+      </button>
+    </div>
+
+    <div class="space-y-10 p-8" dir="ltr">
+
+  @for (addr of addresses(); track addr._id) {
+    <div class="relative ">
+
+      <div class="absolute top-[-12px] left-6 z-10 px-2 bg-background-primary">
+        <span class="text-button-primary font-bold text-xl capitalize">
+          {{ addr.street }}
+        </span>
+      </div>
+
+      <div class="relative border-2 border-button-primary/30 rounded-[2.5rem] p-1 ">
+
+        <div class="bg-background-primary border border-gray-100 rounded-[2rem] p-6 flex items-center justify-between relative ml-[-2px] mt-[-2px] hover:shadow-md transition-shadow">
+
+          <div class="flex items-start gap-4">
+            <div class="bg-[#00c07f] p-2.5 rounded-full text-white shadow-lg shadow-green-100">
+              <lucide-icon [img]="icons[0]" class="w-5 h-5"></lucide-icon>
+            </div>
+
+            <div>
+              <h2 class="text-2xl font-bold text-text-primary tracking-tight">{{ addr.city }}</h2>
+              <div class="mt-2 inline-block bg-gray-100 px-4 py-1 rounded-lg text-gray-600 text-xs font-semibold">
+                {{ addr.street }}
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 text-gray-500 font-bold pr-16">
+            <lucide-icon [img]="icons[3]" class="w-5 h-5"></lucide-icon>
+            <span class="text-sm tracking-wide">{{ addr.phone }}</span>
+          </div>
+
+          <div class="absolute -right-4 top-1/2 -translate-y-1/2 flex flex-col gap-3">
+            <button class="bg-white p-2.5 rounded-full border border-gray-100 shadow-lg text-gray-400 hover:text-blue-500 hover:scale-110 transition-all">
+              <lucide-icon [img]="icons[1]" class="w-5 h-5"></lucide-icon>
+            </button>
+            <button class="bg-[#ef4444] p-2.5 rounded-full shadow-lg text-white hover:bg-red-700 hover:scale-110 transition-all">
+              <lucide-icon [img]="icons[2]" class="w-5 h-5"></lucide-icon>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  }
+
+</div>

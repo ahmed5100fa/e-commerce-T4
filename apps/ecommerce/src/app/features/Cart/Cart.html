@@ -1,71 +1,28 @@
-<!-- main section -->
 <section class="w-11/12 mx-auto flex flex-wrap">
-  <!-- left section -->
+
+  <!-- LEFT -->
   <section class="w-full lg:w-8/12 px-5 py-8">
-    <!-- header -->
-     <header class="flex justify-between flex-wrap items-center pb-3">
-      <!-- cart label -->
-      <div class="flex items-end gap-3">
-        <h2 class="text-[32px] font-bolder text-text-primary">Cart</h2>
-        <p class="text-[14px] text-gray-400 font-medium">{{_cartItems().length}} products</p>
-      </div>
-       <!-- clear button -->
-        <div>
-          <button class="px-8 py-2 bg-background-secondary text-button-primary font-normal rounded-lg flex items-center justify-center "
-          (click)="clearCart()"
-          >
-            <lucide-icon [img]="icons[0]" class="w-5 h-5 me-2"></lucide-icon>
-            Clear Cart
-          </button>
-        </div>
-     </header>
-     <!-- body -->
-      @if(_cartItems().length > 0 ){
-        <section class="pt-4 border rounded-lg border-[#E4E4E7]">
-        @for (item of _cartItems(); track item._id) {
-          <app-cart-card
-            [price]="item.price"
-            [descreption]="item.product.title"
-            [Image]="item.product.imgCover"
-            [rateAvg]="item.product.rateAvg || 0"
-            [rateCount]="item.product.rateCount || 0"
-            [quantity]="item.quantity"
-            [product_Id]="item.product._id"
-            (itemDeleted)="handleItemDeleted($event)"
-            (itemUpdated)="handleItemUpdated($event)">
-          </app-cart-card>
-        }
-      </section>
-      }@else{
-        <section class="flex justify-center items-center">
-          <img src="./Assets/image/nothing.png" alt="no item exist in cart page" class="w-[50%] mx-auto">
-        </section>
-      }
-      <!-- right btn -->
-      <button
-        class="w-auto flex items-center justify-center mt-6 bg-button-primary text-navbar-link py-3 px-12 rounded-xl font-medium hover:bg-red-800 transition"
-        routerLink="/main/products"
-        >
-        <lucide-icon [img]="icons[2]" class="w-5 h-5 me-1 mt-[1px]"></lucide-icon> Continue Shopping
-      </button>
+    <router-outlet></router-outlet>
   </section>
-  <!-- right section -->
-  <section class="w-full h-auto  lg:w-4/12">
+
+  <!-- RIGHT -->
+  <section class="w-full lg:w-4/12">
     <div class="shadow-lg p-6 rounded-xl">
-    <app-cart-summary
-      [Subtotal]="250"
-      [Discount]="50"
-      [Total]="TotalPrice()"
-      [isDiscount]="false">
-    </app-cart-summary>
+      <app-cart-summary
+        [Subtotal]="cartService.totalPrice()"
+        [Discount]="0"
+        [Total]="cartService.totalPrice()"
+        [isDiscount]="false">
+      </app-cart-summary>
     </div>
   </section>
 
-  <!-- second section -->
-   <section class="w-full mx-auto">
+  <!-- PRODUCTS -->
+  <section class="w-full">
     <app-second-header [text]="'Products You May Like'"></app-second-header>
     <app-carousel [productsNum]="4" [productsInput]="Products"></app-carousel>
-   </section>
+  </section>
+
 </section>
 
 @if (loadingService.loading()) {
