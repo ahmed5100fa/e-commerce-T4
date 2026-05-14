@@ -3,7 +3,8 @@
   "compilerOptions": {
     "ignoreDeprecations": "5.0",
     "outDir": "../dist/out-tsc",
-    "types": ["node"]
+    "types": ["node"],
+    "target": "ES2020"
   },
   "include": ["src/**/*.ts"],
   "exclude": [

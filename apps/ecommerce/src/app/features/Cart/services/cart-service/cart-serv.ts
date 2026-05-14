@@ -70,24 +70,6 @@ export class CartServ {
     );
   }
 
-  // ================= LOCAL UPDATE (Optimistic UI) =================
-  removeItemLocal(productId: string) {
-    this._cartItems.update(items =>
-      items.filter(item => item.product._id !== productId)
-    );
-    this.recalculateTotal();
-  }
-
-  updateItemLocal(productId: string, quantity: number) {
-    this._cartItems.update(items =>
-      items.map(item =>
-        item.product._id === productId
-          ? { ...item, quantity }
-          : item
-      )
-    );
-    this.recalculateTotal();
-  }
 
   private recalculateTotal() {
     let total = 0;

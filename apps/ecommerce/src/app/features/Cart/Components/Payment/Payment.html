@@ -9,38 +9,34 @@
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8  items-start">
+    @for (option of paymentOptions; track $index) {
+      <div
+        (click)="selectMethod(option.id)"
+        class="relative cursor-pointer rounded-sm p-5 flex flex-col items-center text-center bg-background-primary transition-all shadow-sm"
+        [class.shadow-xl]="selectedMethod() === option.id"
+        [class.scale-[1.02]]="selectedMethod() === option.id">
 
-    <div (click)="selectMethod('cash')"
-         class="relative cursor-pointer rounded-sm p-5 flex flex-col items-center text-center bg-background-primary transition-all shadow-sm"
-         [class.shadow-xl]="selectedMethod() === 'cash'"
-         [class.scale-[1.02]]="selectedMethod() === 'cash'">
+        <div class="w-48 h-32 mb-6 flex items-center justify-center bg-white rounded-lg">
+          <img [src]="option.image" [alt]="option.alt">
+        </div>
 
-      <div class="w-48 h-32 mb-6 flex items-center justify-center bg-white rounded-lg">
-        <img src="./Assets/image/Cash.png" alt="Cash on Delivery">
+        <h3
+          class="text-2xl font-bold mb-2 transition-colors duration-300"
+          [class]="selectedMethod() === option.id
+            ? 'text-button-primary'
+            : 'text-text-primary'">
+
+          {{ option.title }}
+
+        </h3>
+
+        <p class="text-gray-500 text-sm leading-snug">
+          {{ option.description }}
+        </p>
+
       </div>
 
-      <h3 class="text-2xl font-bold mb-2 transition-colors duration-300"
-          [class]="selectedMethod() === 'cash' ? 'text-button-primary' : 'text-text-primary'">
-        Cash on Delivery
-      </h3>
-      <p class="text-gray-500 text-sm leading-snug">You'll pay in cash when your order is delivered.</p>
-    </div>
-
-    <div (click)="selectMethod('card')"
-         class="relative cursor-pointer rounded-sm p-5 flex flex-col items-center text-center bg-background-primary transition-all shadow-sm"
-         [class.shadow-xl]="selectedMethod() === 'card'"
-         [class.scale-[1.02]]="selectedMethod() === 'card'">
-
-      <div class="w-48 h-32 mb-6 flex items-center justify-center bg-white rounded-lg">
-        <img src="./Assets/image/Cridt.png" alt="Credit Card">
-      </div>
-
-      <h3 class="text-2xl font-bold mb-2 transition-colors duration-300"
-          [class]="selectedMethod() === 'card' ? 'text-button-primary' : 'text-text-primary'">
-        Credit Card
-      </h3>
-      <p class="text-gray-500 text-sm leading-snug">You'll be securely redirected to Stripe to complete your payment.</p>
-    </div>
+    }
   </div>
 
   <div class="pt-8  flex justify-end">

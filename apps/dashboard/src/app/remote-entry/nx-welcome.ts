@@ -6,9 +6,11 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   template: `
-  <div class="bg-green-500 h=[100vh] w-full text-white text-center flex justify-center items-center">
-    Dahboard
-  </div>
+    <div
+      class="bg-green-500 h=[100vh] w-full text-white text-center flex justify-center items-center"
+    >
+      Dahboard
+    </div>
   `,
   styles: [],
   encapsulation: ViewEncapsulation.None,

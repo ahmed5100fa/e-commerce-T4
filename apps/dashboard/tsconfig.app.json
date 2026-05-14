@@ -3,7 +3,8 @@
   "compilerOptions": {
     "ignoreDeprecations": "5.0",
     "outDir": "../../dist/out-tsc",
-    "types": ["node"]
+    "types": ["node"],
+    "target": "ES2020"
   },
   "include": ["src/**/*.ts"],
   "exclude": [
@@ -20,5 +21,6 @@
     "src/**/*.test.jsx",
     "src/**/*.spec.jsx",
     "src/test-setup.ts"
-  ]
+  ],
+  "files": ["src/app/remote-entry/entry.routes.ts"]
 }
