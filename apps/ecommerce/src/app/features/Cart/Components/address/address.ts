@@ -4,7 +4,8 @@ import { Router, ActivatedRoute, RouterOutlet } from '@angular/router';
 import { Addressinter } from '../../interfaces/cart-Interface/cart-inter';
 import { CartServ } from '../../services/cart-service/cart-serv';
 import { ArrowRight, LucideAngularModule , Phone, X} from "lucide-angular";
-import { CustomButton } from "@Ui-components";
+import { CustomButton, NotificationService } from "@Ui-components";
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-address',
   standalone: true,
@@ -18,8 +19,9 @@ export class Address implements OnInit {
   isModalOpen = signal<boolean>(false);
   selectedAddressId = signal<string>('');
   arrowIcon = ArrowRight;
-
+  private readonly alertService = inject(NotificationService);
   readonly icons = [Phone , X];
+  private addressSub!: Subscription;
 
   addresses = signal<Addressinter[]>([]);
 
@@ -51,7 +53,7 @@ export class Address implements OnInit {
         queryParams: { addressId: addressId }
       });
     } else {
-      alert('Please select an address first');
+      this.alertService.showError('Please select an address first.');
     }
   }
 
@@ -64,5 +66,9 @@ openModal() {
 closeModal() {
   this.isModalOpen.set(false);
   this.router.navigate(['./'], { relativeTo: this.route });
+}
+
+ngOnDestroy () : void{
+  this.addressSub?.unsubscribe();
 }
 }

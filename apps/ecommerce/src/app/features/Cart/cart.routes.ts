@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+import { payGardGuard } from '../../core/guards/payGard/pay-gard-guard';
 
 export const cartRoutes: Route[] = [
   {
@@ -56,7 +57,8 @@ export const cartRoutes: Route[] = [
           {
             path: 'payment',
             loadComponent: () =>
-              import('./Components/Payment/Payment').then(m => m.Payment)
+              import('./Components/Payment/Payment').then(m => m.Payment),
+            canActivate : [payGardGuard]
           }
         ]
       }

@@ -7,11 +7,12 @@
   "tags": [],
   "targets": {
     "build": {
-      "executor": "@angular/build:application",
+      "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "index": "apps/ecommerce/src/index.html",
         "outputPath": "dist/ecommerce",
-        "browser": "apps/ecommerce/src/main.ts",
+        "main": "apps/ecommerce/src/main.ts",
         "tsConfig": "apps/ecommerce/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -28,13 +29,12 @@
         "styles": [
           "apps/ecommerce/src/styles.scss",
           "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
-          "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css"
+          "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
+          "node_modules/primeicons/primeicons.css"
         ],
-        "server": "apps/ecommerce/src/main.server.ts",
-        "ssr": {
-          "entry": "apps/ecommerce/src/server.ts"
-        },
-        "outputMode": "server"
+        "customWebpackConfig": {
+          "path": "apps/ecommerce/webpack.config.ts"
+        }
       },
       "configurations": {
         "production": {
@@ -50,7 +50,10 @@
               "maximumError": "8kb"
             }
           ],
-          "outputHashing": "all"
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/ecommerce/webpack.prod.config.ts"
+          }
         },
         "development": {
           "optimization": false,
@@ -62,7 +65,7 @@
     },
     "serve": {
       "continuous": true,
-      "executor": "@angular/build:dev-server",
+      "executor": "@nx/angular:module-federation-dev-server",
       "configurations": {
         "production": {
           "buildTarget": "ecommerce:build:production"
@@ -71,7 +74,10 @@
           "buildTarget": "ecommerce:build:development"
         }
       },
-      "defaultConfiguration": "development"
+      "defaultConfiguration": "development",
+      "options": {
+        "publicHost": "http://localhost:4200"
+      }
     },
     "lint": {
       "executor": "@nx/eslint:lint"
