@@ -7,11 +7,17 @@ import { User } from './Interfaces/profileInter/profile-inter';
 import { NgClass } from "../../../../../../../../node_modules/@angular/common/types/_common_module-chunk";
 import { FormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
+import { MessageService, ConfirmationService } from 'primeng/api';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
-  imports: [SharedInp, SharedPhoneInp, CustomButton, FileUploadModule, FormsModule],
+  imports: [SharedInp, SharedPhoneInp, CustomButton, FileUploadModule, FormsModule, ButtonModule, ConfirmDialogModule, ToastModule],
   templateUrl: './profile.html',
   styleUrl: './profile.css',
+  providers: [ConfirmationService, MessageService]
 })
 export class Profile {
   @Input() isDashboard: boolean = true;
@@ -20,12 +26,15 @@ export class Profile {
   profileServise = inject(ProfileServ);
   tempUser: User = {} as User;
   subscription!: Subscription;
+  router = inject(Router);
+
 
   getUserData(){
     this.profileServise.getProfile().subscribe({
       next : (res) => {
         this.userData.set(res.user as User);
        // console.log(this.userData());
+
       },
       error : (err) => {
         console.log(err);
@@ -51,6 +60,60 @@ export class Profile {
       }
       },
       error: (err) => console.log(err),
+    });
+  }
+private confirmationService = inject(ConfirmationService);
+  private messageService = inject(MessageService);
+
+  confirm2(event: Event) {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+
+      message: 'Are you sure you want to delete your account?',
+      header: 'Delete Account',
+      icon: 'pi pi-info-circle',
+
+      rejectLabel: 'Cancel',
+
+      rejectButtonProps: {
+        label: 'Cancel',
+        severity: 'secondary',
+        outlined: true,
+      },
+
+      acceptButtonProps: {
+        label: 'Delete',
+        severity: 'danger',
+      },
+
+      accept: () => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Deleted',
+          detail: 'Account deleted successfully',
+        });
+
+        console.log('delete account');
+        // API delete account
+        this.profileServise.deleteAccount().subscribe({
+          next: (res) => {
+            console.log(res);
+            localStorage.removeItem('token');
+            this.router.navigateByUrl('/login');
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
+      },
+
+      reject: () => {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Cancelled',
+          detail: 'Delete cancelled',
+        });
+      },
     });
   }
 

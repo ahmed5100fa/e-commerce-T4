@@ -24,4 +24,8 @@ updateProfilePhoto(data: FormData) {
     data
   );
 }
+
+deleteAccount(): Observable<any> {
+  return this.http.delete(`${this.baseUrl}/auth/deleteMe`)
+}
 }

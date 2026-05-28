@@ -1,3 +1,5 @@
+<p-toast></p-toast>
+<p-confirmdialog></p-confirmdialog>
 <div class="w-[50%] bg-[var(--button-fourth)] p-8">
 
   <!-- Header -->
@@ -115,11 +117,12 @@
 
       <div class="flex justify-center items-center flex-wrap">
         <button
-        type="button"
-        class="text-button-primary ms-2 text-sm font-medium hover:underline"
-      >
-        Delete My Account
-      </button>
+            type="button"
+            class="text-button-primary ms-2 text-sm font-medium hover:underline"
+            (click)="confirm2($event)"
+          >
+            Delete My Account
+          </button>
 
       <button
         type="button"
