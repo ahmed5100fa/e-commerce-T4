@@ -1,0 +1,16 @@
+<div class="flex flex-col gap-2 my-4 m-auto">
+  <label [for]="id" class="font-medium text-text-primary">
+    {{ label }}
+  </label>
+
+  <input
+    pInputText
+    [type]="type"
+    [id]="id"
+    [placeholder]="placeholder"
+    [value]="value"
+    [disabled]="disabled"
+    (input)="onInputChange($event)"
+    class="!bg-border-primary rounded-xl border !border-gray-400 placeholder:!text-sm placeholder:!text-text-primary outline-none transition"
+  />
+</div>
