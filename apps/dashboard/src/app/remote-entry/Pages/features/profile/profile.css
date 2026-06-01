@@ -1,0 +1,9 @@
+:host ::ng-deep .camera-btn .p-button-label,
+:host ::ng-deep .camera-btn .p-fileupload-choose span:not(.pi) {
+  display: none !important;
+}
+
+:host ::ng-deep .camera-btn .p-button {
+  min-width: auto !important;
+  padding: 0.75rem !important;
+}

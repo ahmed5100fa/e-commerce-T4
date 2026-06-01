@@ -22,7 +22,8 @@
       "@Ui-components": ["libs/Ui-Components/src/index.ts"],
       "dashboard/Routes": [
         "apps/dashboard/src/app/remote-entry/entry.routes.ts"
-      ]
+      ],
+      "@my-org/sharedInp": ["libs/shared/sharedInp/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

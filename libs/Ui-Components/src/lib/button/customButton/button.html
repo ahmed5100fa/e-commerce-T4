@@ -1,4 +1,4 @@
-<button [type]="buttonType" [class]="buttonClasses" [disabled]="disabledState">
+<button [attr.type]="buttonType" [class]="buttonClasses" [disabled]="disabledState">
   @if(icon && dir === "rtl" ){
   <lucide-icon [img]="icon" [size]="16"></lucide-icon>
   }
@@ -7,3 +7,5 @@
   <lucide-icon [img]="icon" [size]="16"></lucide-icon>
   }
 </button>
+
+<!-- [type]="buttonType" -->
