@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CategoriesResponse, OccasionsResponse } from '../../interfaces/prointer';
+import { CategoriesResponse, OccasionsResponse, specficProductResponse } from '../../interfaces/prointer';
 import { BaseUrl } from '../../../../Shared/baseUrl/baseUrl';
 
 @Injectable({
@@ -36,10 +36,14 @@ export class ProServ {
   }
 
   getOccasions(): Observable<OccasionsResponse> {
-    return this.http.get<OccasionsResponse>('https://flower.elevateegy.com/api/v1/occasions');
+    return this.http.get<OccasionsResponse>(`${this.baseUrl}/occasions`);
   }
 
   getCategories(): Observable<CategoriesResponse> {
-    return this.http.get<CategoriesResponse>('https://flower.elevateegy.com/api/v1/categories');
+    return this.http.get<CategoriesResponse>(`${this.baseUrl}/categories`);
+  }
+
+  getProductById(id: string): Observable<specficProductResponse> {
+    return this.http.get<specficProductResponse>(`${this.baseUrl}/products/${id}`);
   }
 }
