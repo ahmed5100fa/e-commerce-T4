@@ -1,0 +1,319 @@
+<form
+  [formGroup]="productForm"
+  (ngSubmit)="submit()"
+  class="w-full max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6"
+>
+
+    <!-- Title -->
+    <div>
+      <lib-shared-inp
+        label="Title *"
+        placeholder="Enter product title"
+        type="text"
+        id="title"
+        [value]="productForm.get('title')?.value"
+        (valueChange)="
+          productForm.get('title')?.setValue($event)
+        "
+      />
+
+      @if (
+        productForm.get('title')?.invalid &&
+        productForm.get('title')?.touched
+      ) {
+        <p class="text-red-500 mt-2">
+          Product title is required
+        </p>
+      }
+    </div>
+
+    <!-- Description -->
+    <div>
+
+      <label class="block font-medium text-text-primary mb-2">
+        Description *
+      </label>
+
+      <textarea
+        rows="6"
+        formControlName="description"
+        placeholder="Enter product description"
+        class="w-full rounded-2xl border px-4 py-4 outline-none resize-none"
+      ></textarea>
+
+      @if (
+        productForm.get('description')?.invalid &&
+        productForm.get('description')?.touched
+      ) {
+        <p class="text-red-500 mt-2">
+          Product description is required
+        </p>
+      }
+    </div>
+
+    <!-- Price Row -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+    >
+
+      <!-- Price -->
+      <div>
+        <lib-shared-inp
+          label="Price *"
+          placeholder="Example: 5000"
+          type="number"
+          id="price"
+          [value]="productForm.get('price')?.value"
+          (valueChange)="
+            productForm.get('price')?.setValue($event)
+          "
+        />
+
+        @if (
+
+          productForm.get('price')?.invalid &&
+          productForm.get('price')?.touched
+        ) {
+          <p class="text-red-500 mt-2">
+            Please enter a valid price
+          </p>
+        }
+      </div>
+
+      <!-- Discount -->
+      <div>
+        <lib-shared-inp
+          label="Discount"
+          placeholder="Example: 5"
+          type="number"
+          id="discount"
+          [value]="productForm.get('discount')?.value"
+          (valueChange)="
+            productForm.get('discount')?.setValue($event)
+          "
+        />
+      </div>
+
+      <!-- Price After Discount -->
+      <div>
+        <lib-shared-inp
+          label="Price after discount"
+          placeholder="Example: 0"
+          type="number"
+          id="priceAfterDiscount"
+          [value]="priceAfterDiscount"
+          [disabled]="true"
+        />
+      </div>
+
+    </div>
+
+    <!-- Quantity -->
+    <div>
+
+      <lib-shared-inp
+        label="Quantity *"
+        placeholder="Example: 200"
+        type="number"
+        id="quantity"
+        [value]="productForm.get('quantity')?.value"
+        (valueChange)="
+          productForm.get('quantity')?.setValue($event)
+        "
+      />
+
+      @if (
+        productForm.get('quantity')?.invalid &&
+        productForm.get('quantity')?.touched
+      ) {
+        <p class="text-red-500 mt-2">
+          Product quantity is required
+        </p>
+      }
+    </div>
+
+    <!-- Uploads -->
+      <div
+        class="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-5"
+      >
+
+    <!-- Cover -->
+    <div>
+
+      <label class="block font-medium text-text-primary mb-2">
+        Product cover *
+      </label>
+
+      <div
+        class="border rounded-2xl min-h-[56px] flex items-center justify-between gap-3 px-3 sm:px-4 overflow-hidden"
+      >
+        <input
+          hidden
+          type="file"
+          accept="image/*"
+          #coverInput
+          (change)="onCoverChange($event)"
+        />
+
+        <span
+          class="flex-1 truncate text-xs sm:text-sm text-gray-500"
+        >
+          {{ coverFileName || '' }}
+        </span>
+
+        <button
+          type="button"
+          class="text-red-500 text-xs sm:text-sm whitespace-nowrap"
+          (click)="coverInput.click()"
+        >
+          ↑ Upload file
+        </button>
+      </div>
+
+      @if (productForm.get('cover')?.errors?.['required']
+      && productForm.get('cover')?.touched) {
+        <p class="text-red-500 mt-2">
+          Product cover is required
+        </p>
+      }
+
+      @if (productForm.get('cover')?.errors?.['invalidType']) {
+        <p class="text-red-500 mt-2">
+          Only images are allowed
+        </p>
+      }
+
+    </div>
+
+    <!-- Gallery -->
+    <div>
+
+      <label class="block font-medium text-text-primary mb-2">
+        Product gallery *
+      </label>
+
+      <div
+        class="border rounded-2xl min-h-[56px] flex items-center justify-between gap-3 px-3 sm:px-4 overflow-hidden"
+      >
+        <input
+          hidden
+          type="file"
+          multiple
+          accept="image/*"
+          #galleryInput
+          (change)="onGalleryChange($event)"
+        />
+
+        <span
+          class="flex-1 truncate text-xs sm:text-sm text-gray-500"
+        >
+          {{ galleryFileText || '' }}
+        </span>
+
+        <button
+          type="button"
+          class="text-red-500 text-xs sm:text-sm whitespace-nowrap"
+          (click)="galleryInput.click()"
+        >
+          ↑ Upload file
+        </button>
+      </div>
+
+      @if (productForm.get('gallery')?.errors?.['required']
+      && productForm.get('gallery')?.touched) {
+        <p class="text-red-500 mt-2">
+          Product gallery images are required
+        </p>
+      }
+
+      @if (productForm.get('gallery')?.errors?.['invalidType']) {
+        <p class="text-red-500 mt-2">
+          Only images are allowed
+        </p>
+      }
+
+      @if (galleryFileText) {
+        <p class="text-green-600 mt-2">
+          Multiple file selection.
+        </p>
+      }
+
+    </div>
+
+  </div>
+
+    <!-- Category -->
+    <div>
+
+      <label class="block font-medium text-text-primary mb-2">
+        Category *
+      </label>
+
+        <select
+          formControlName="category"
+          class="w-full min-h-[56px] rounded-2xl border px-4 text-sm sm:text-base outline-none"
+        >
+        <option value="">
+          Select an option
+        </option>
+        @for (item of categories(); track $index) {
+        <option value="{{item._id}}">
+          {{item.name}}
+        </option>
+      }
+      </select>
+
+      @if (
+        productForm.get('category')?.invalid &&
+        productForm.get('category')?.touched
+      ) {
+        <p class="text-red-500 mt-2">
+          Please select a category for the product
+        </p>
+      }
+    </div>
+
+    <!-- Occasion -->
+    <div>
+
+      <label class="block font-medium text-text-primary mb-2">
+        Occasion *
+      </label>
+
+      <select
+        formControlName="occasion"
+        class="w-full min-h-[56px] rounded-2xl border px-4 text-sm sm:text-base outline-none"
+      >
+        <option value="">
+          Select an option
+        </option>
+        @for (item of occasions(); track $index) {
+        <option value="{{item._id}}">
+          {{item.name}}
+        </option>
+        }
+
+      </select>
+
+      @if (
+        productForm.get('occasion')?.invalid &&
+        productForm.get('occasion')?.touched
+      ) {
+        <p class="text-red-500 mt-2">
+          Occasion is required
+        </p>
+      }
+    </div>
+
+    <!-- Button -->
+    <div class="pt-10">
+
+      <lib-custom-button
+        [label]="mode === 'create' ? 'Add Product' : 'Update Product'"
+        [buttonStyle]="'primary'"
+        [buttonType]="'submit'"
+      />
+
+    </div>
+
+  </form>

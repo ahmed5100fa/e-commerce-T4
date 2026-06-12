@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+textarea {
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  textarea {
+    min-height: 140px;
+  }
+}

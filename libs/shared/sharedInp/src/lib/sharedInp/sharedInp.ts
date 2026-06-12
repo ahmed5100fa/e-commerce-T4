@@ -43,7 +43,7 @@ export class SharedInp implements ControlValueAccessor {
 
   @Output() valueChange = new EventEmitter<string>();
 
-  disabled = false;
+  @Input() disabled = false;
 
   private onChange: (value: any) => void = () => {};
   private onTouched: () => void = () => {};

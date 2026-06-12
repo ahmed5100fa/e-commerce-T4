@@ -1,15 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BaseUrl } from './../../../../../../../../../../libs/auth/src/lib/enums/authEndPointsToken';
 import { Observable } from 'rxjs';
 import { ProfileInter, User } from '../../Interfaces/profileInter/profile-inter';
+import { BaseUrl } from '../../../../Shared/baseUrl/baseUrl';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProfileServ {
   http = inject(HttpClient);
-  baseUrl = "https://flower.elevateegy.com/api/v1";
+  baseUrl = BaseUrl;
 
 getProfile(data?: User): Observable<ProfileInter> {
   return this.http.put<ProfileInter>(
