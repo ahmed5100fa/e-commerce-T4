@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CategoriesResponse, OccasionsResponse, specficProductResponse } from '../../interfaces/prointer';
+import { CategoriesResponse, IDeleteProductResponse, OccasionsResponse, specficProductResponse } from '../../interfaces/prointer';
 import { BaseUrl } from '../../../../Shared/baseUrl/baseUrl';
 
 @Injectable({
@@ -45,5 +45,9 @@ export class ProServ {
 
   getProductById(id: string): Observable<specficProductResponse> {
     return this.http.get<specficProductResponse>(`${this.baseUrl}/products/${id}`);
+  }
+
+  deleteProduct(id: string): Observable<IDeleteProductResponse> {
+    return this.http.delete<IDeleteProductResponse>(`${this.baseUrl}/products/${id}`);
   }
 }
