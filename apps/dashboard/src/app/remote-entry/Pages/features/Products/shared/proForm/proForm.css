@@ -12,3 +12,11 @@ textarea {
     min-height: 140px;
   }
 }
+
+button {
+  border: 1px solid #d1d5db !important;
+}
+
+img{
+  height: 280px !important;
+}

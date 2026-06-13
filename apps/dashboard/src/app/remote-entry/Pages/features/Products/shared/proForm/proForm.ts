@@ -27,6 +27,7 @@ import {
 } from '../../interfaces/prointer';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { CircleX, Heart, Image, Images, LucideAngularModule, MoveLeft, MoveRight } from 'lucide-angular';
 
 @Component({
   selector: 'app-pro-form',
@@ -34,15 +35,20 @@ import { ActivatedRoute } from '@angular/router';
     ReactiveFormsModule,
     SharedInp,
     CustomButton,
-  ],
+    LucideAngularModule
+],
   templateUrl: './proForm.html',
   styleUrl: './proForm.css',
 })
 export class ProForm implements OnChanges {
   productForm!: FormGroup;
-
+  readonly icons = [Image , Images , CircleX , MoveRight , MoveLeft];
   @Input() mode: 'create' | 'edit' = 'create';
   productData = signal<Product | null>(null);
+
+  showViewer = false;
+  viewerImages: string[] = [];
+  currentImageIndex = 0;
 
   id : string  = "";
   occasions = signal<Occasion[]>([]);
@@ -484,6 +490,46 @@ buildUpdateFormData(): FormData {
   );
 
   return formData;
+}
+
+openCover() {
+  const cover = this.productData()?.imgCover;
+
+  if (!cover) return;
+  this.viewerImages = [cover];
+  this.currentImageIndex = 0;
+  this.showViewer = true;
+}
+
+openGallery() {
+  const images = this.productData()?.images;
+  if (!images?.length) return;
+
+  this.viewerImages = images;
+  this.currentImageIndex = 0;
+  this.showViewer = true;
+}
+
+closeViewer() {
+  this.showViewer = false;
+  this.viewerImages = [];
+  this.currentImageIndex = 0;
+}
+
+nextImage() {
+  if (this.currentImageIndex < this.viewerImages.length - 1) {
+    this.currentImageIndex++;
+  }
+}
+
+prevImage() {
+  if (this.currentImageIndex > 0) {
+    this.currentImageIndex--;
+  }
+}
+
+goToImage(index: number) {
+  this.currentImageIndex = index;
 }
 
   ngOnDestroy(): void {
