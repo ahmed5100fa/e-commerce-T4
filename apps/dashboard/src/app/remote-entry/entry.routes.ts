@@ -1,33 +1,15 @@
 import { Route } from '@angular/router';
 import { RemoteEntry } from './entry';
 import { Profile } from './Pages/features/profile/profile';
-import { BreadCrumb } from './shared/breadCrumb/breadCrumb';
-import { MainLayout } from './layouts/main-layout/main-layout';
-import { Overview } from './Pages/features/Overview/Overview';
-import { Occassion } from './Pages/features/Occassion/Occassion';
 import { Products } from './Pages/features/Products/Products';
+import { Home } from './Pages/features/home/home';
+import { AddProduct } from './Pages/features/Products/pages/addProduct/addProduct';
+import { EditProduct } from './Pages/features/Products/pages/editProduct/editProduct';
 
-export const remoteRoutes: Route[] = [
-   {
-    path: '',
-    component: MainLayout,
-    children: [
-      {
-        path: 'profile',
-        component: Profile,
-      },
-      {
-        path: 'overview',
-        component: Overview,
-      },
-      {
-        path: 'occassion',
-        component: Occassion,
-      },
-      {
-        path: 'products',
-        component: Products,
-      },
-    ],
-  },
+export const remoteRoutes: Route[] = [{ path: '', component: Home }
+  ,{ path: 'products', component: Products , children:[
+    {path : '' , redirectTo : 'add' , pathMatch : 'full'},
+    {path : 'add' , component : AddProduct},
+    {path : 'edit/:id' , component : EditProduct}
+  ] }
 ];
