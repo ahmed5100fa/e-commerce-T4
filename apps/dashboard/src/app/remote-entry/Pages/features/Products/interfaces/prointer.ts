@@ -74,3 +74,16 @@ export interface Product {
   favoriteId: any
   isInWishlist: boolean
 }
+
+export interface IProduct {
+  _id: string;
+  title: string;
+  slug: string;
+  description: string;
+  imgCover: string;
+}
+
+export interface IDeleteProductResponse {
+  message: string;
+  document: IProduct;
+}
